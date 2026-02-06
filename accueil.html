@@ -25,25 +25,37 @@
 
     /* --- Header --- */
     header {
-      background-color: #0056b3;
-      color: white;
-      padding: 15px 20px;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      background-color: #0056b3;
+      padding: 10px 20px;
+      position: relative;
       flex-wrap: wrap;
     }
 
-    header img {
+    /* Logo à gauche */
+    header .logo img {
       height: 50px;
     }
 
+    /* Titre centré */
     header h1 {
-      margin: 0 20px;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      color: white;
+      margin: 0;
       font-size: 24px;
+      text-align: center;
     }
 
-    nav a {
+    /* Menu à droite */
+    header nav {
+      margin-left: auto;
+    }
+
+    header nav a {
       margin-left: 15px;
       font-weight: bold;
       color: white;
@@ -77,13 +89,25 @@
       font-weight: bold;
     }
 
-    /* --- Liste des bus --- */
+    /* --- Bus Section --- */
+    .bus-section {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .side-logo img {
+      width: 80px;
+      height: auto;
+    }
+
     .bus-list {
       display: flex;
       flex-wrap: wrap;
       gap: 20px;
-      justify-content: center;
-      margin-top: 30px;
+      justify-content: flex-start;
+      flex: 1;
     }
 
     .bus {
@@ -124,17 +148,36 @@
 
     /* --- Responsive --- */
     @media(max-width:600px){
-      .bus-list {
+      header {
         flex-direction: column;
         align-items: center;
       }
 
-      header {
-        justify-content: center;
+      header h1 {
+        position: static;
+        transform: none;
+        margin: 10px 0;
       }
 
-      nav a {
+      header nav {
+        margin-left: 0;
+      }
+
+      header nav a {
         margin: 5px 10px;
+      }
+
+      .bus-section {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .side-logo img {
+        margin-bottom: 15px;
+      }
+
+      .bus-list {
+        justify-content: center;
       }
     }
   </style>
@@ -143,10 +186,10 @@
 
 <!-- Header -->
 <header>
-  <div style="display:flex;align-items:center;">
-    <img src="logo.png" alt="Logo StiBus">
-    <h1>StiBus Maubeuge</h1>
+  <div class="logo">
+    <img src="images/logo.png" alt="Logo StiBus">
   </div>
+  <h1>StiBus Maubeuge</h1>
   <nav>
     <a href="#">Accueil</a>
     <a href="#buses">Nos bus</a>
@@ -163,31 +206,39 @@
 
 <!-- Contenu principal -->
 <div class="container">
-  <div id="buses" class="bus-list">
-    <div class="bus">
-      <img src="images/200.jpg" alt="Bus 200">
-      <h3>Bus 200</h3>
-      <p>Ligne : A/B</p>
-      <p>Statut : En service</p>
+  <div class="bus-section">
+    <!-- Nouveau logo à gauche -->
+    <div class="side-logo">
+      <img src="images/logoS.png" alt="Logo partenaire">
     </div>
-    <div class="bus">
-      <img src="images/103.png" alt="Bus 103">
-      <h3>Bus 103</h3>
-      <p>Ligne : A/B/55</p>
-      <p>Statut : Maintenance</p>
-    </div>
-    <div class="bus">
-      <img src="images/201Av.png" alt="Bus 201">
-      <h3>Bus 201</h3>
-      <p>Ligne : Toutes</p>
-      <p>Statut : En service</p>
+
+    <!-- Liste des bus -->
+    <div id="buses" class="bus-list">
+      <div class="bus">
+        <img src="images/200.jpg" alt="Bus 200">
+        <h3>Bus 200</h3>
+        <p>Ligne : A/B</p>
+        <p>Statut : En service</p>
+      </div>
+      <div class="bus">
+        <img src="images/103.png" alt="Bus 103">
+        <h3>Bus 103</h3>
+        <p>Ligne : A/B/55</p>
+        <p>Statut : Maintenance</p>
+      </div>
+      <div class="bus">
+        <img src="images/201Av.png" alt="Bus 201">
+        <h3>Bus 201</h3>
+        <p>Ligne : Toutes</p>
+        <p>Statut : En service</p>
+      </div>
     </div>
   </div>
 </div>
 
 <!-- Footer -->
 <footer>
-  &copy; 2026 TC-Infos-HDF | Contact : <a href="tcinfoshdf@hmail.com">tcinfoshdf@gmail.com</a>
+  &copy; 2026 TC-Infos-HDF | Contact : <a href="mailto:tcinfoshdf@gmail.com">tcinfoshdf@gmail.com</a>
 </footer>
 
 </body>
