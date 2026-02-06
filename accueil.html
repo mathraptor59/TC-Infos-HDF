@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TC-Infos-HDF</title>
+  <style>
+    /* --- Global --- */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 20px auto;
+      padding: 0 15px;
+    }
+
+    /* --- Header --- */
+    header {
+      background-color: #0056b3;
+      color: white;
+      padding: 15px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    header img {
+      height: 50px;
+    }
+
+    header h1 {
+      margin: 0 20px;
+      font-size: 24px;
+    }
+
+    nav a {
+      margin-left: 15px;
+      font-weight: bold;
+      color: white;
+    }
+
+    /* --- Hero --- */
+    .hero {
+      background-color: #0077cc;
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+      border-radius: 0 0 20px 20px;
+    }
+
+    .hero h2 {
+      font-size: 28px;
+      margin: 0 0 10px;
+    }
+
+    .hero p {
+      margin: 0 0 20px;
+      font-size: 18px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #ff6600;
+      color: white;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+
+    /* --- Liste des bus --- */
+    .bus-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      margin-top: 30px;
+    }
+
+    .bus {
+      background: white;
+      padding: 15px;
+      border-radius: 10px;
+      width: 250px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      text-align: center;
+    }
+
+    .bus img {
+      width: 100%;
+      border-radius: 5px;
+    }
+
+    .bus h3 {
+      margin: 10px 0 5px;
+    }
+
+    .bus p {
+      margin: 5px 0;
+    }
+
+    /* --- Footer --- */
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 15px 10px;
+      margin-top: 40px;
+    }
+
+    footer a {
+      color: #ff6600;
+      font-weight: bold;
+    }
+
+    /* --- Responsive --- */
+    @media(max-width:600px){
+      .bus-list {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      header {
+        justify-content: center;
+      }
+
+      nav a {
+        margin: 5px 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+  <div style="display:flex;align-items:center;">
+    <img src="logo.png" alt="Logo StiBus">
+    <h1>StiBus Maubeuge</h1>
+  </div>
+  <nav>
+    <a href="#">Accueil</a>
+    <a href="#buses">Nos bus</a>
+    <a href="#">Contact</a>
+  </nav>
+</header>
+
+<!-- Hero -->
+<div class="hero">
+  <h2>Bienvenue sur TC-Infos-HDF !</h2>
+  <p>Toutes les infos sur nos bus, leurs lignes, statuts et modèles en un seul endroit.</p>
+  <a href="#buses" class="btn">Voir la liste des bus</a>
+</div>
+
+<!-- Contenu principal -->
+<div class="container">
+  <div id="buses" class="bus-list">
+    <div class="bus">
+      <img src="images/200.jpg" alt="Bus 200">
+      <h3>Bus 200</h3>
+      <p>Ligne : A/B</p>
+      <p>Statut : En service</p>
+    </div>
+    <div class="bus">
+      <img src="images/103.png" alt="Bus 103">
+      <h3>Bus 103</h3>
+      <p>Ligne : A/B/55</p>
+      <p>Statut : Maintenance</p>
+    </div>
+    <div class="bus">
+      <img src="images/201Av.png" alt="Bus 201">
+      <h3>Bus 201</h3>
+      <p>Ligne : Toutes</p>
+      <p>Statut : En service</p>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer>
+  &copy; 2026 TC-Infos-HDF | Contact : <a href="tcinfoshdf@hmail.com">tcinfoshdf@gmail.com</a>
+</footer>
+
+</body>
+</html>
