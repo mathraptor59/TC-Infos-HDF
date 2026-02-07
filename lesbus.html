@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TC-Infos-HDF</title>
+  <link rel="icon" href="images/logo.png" type="image/png">
+  <link rel="apple-touch-icon" href="images/logo.png" type="image/png">
+
+  <style>
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 20px auto;
+      padding: 0 15px;
+    }
+
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #0056b3;
+      padding: 10px 20px;
+
+
+      position: relative;
+      flex-wrap: wrap;
+    }
+
+
+    header .logo img {
+      height: 90px;
+
+    }
+
+    header h1 {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      color: white;
+      margin: 0;
+      font-size: 24px;
+      text-align: center;
+    }
+
+    header nav {
+      margin-left: auto;
+    }
+
+    header nav a {
+      margin-left: 15px;
+      font-weight: bold;
+      color: white;
+
+      display: inline-block;
+      padding: 8px 16px;
+      background-color: #0077cc;
+      border-radius: 8px;
+      border: 2px solid white;
+      transition: 0.2s;
+    }
+
+    header nav a:hover {
+      background-color: white;
+      color: #0056b3;
+    }
+
+    .hero {
+      background-color: #0077cc;
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+      border-radius: 0 0 20px 20px;
+    }
+
+    .hero h2 {
+      font-size: 28px;
+      margin: 0 0 10px;
+    }
+
+    .hero p {
+      margin: 0 0 20px;
+      font-size: 18px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #ff6600;
+      color: white;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+
+    .bus-section {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .side-logo img {
+      width: 80px;
+      height: auto;
+    }
+
+    .bus-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: flex-start;
+      flex: 1;
+    }
+
+    .bus {
+      background: white;
+      padding: 15px;
+      border-radius: 10px;
+      width: 250px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      text-align: center;
+    }
+
+    .bus img {
+      width: 100%;
+      border-radius: 5px;
+    }
+
+    .bus h3 {
+      margin: 10px 0 5px;
+    }
+
+    .bus p {
+      margin: 5px 0;
+    }
+
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 15px 10px;
+      margin-top: 40px;
+    }
+
+    footer a {
+      color: #ff6600;
+      font-weight: bold;
+    }
+
+    @media(max-width:600px){
+      header {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      header h1 {
+        position: static;
+        transform: none;
+        margin: 10px 0;
+      }
+
+      header nav {
+        margin-left: 0;
+      }
+
+      header nav a {
+        margin: 5px 10px;
+      }
+
+      .bus-section {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .side-logo img {
+        margin-bottom: 15px;
+      }
+
+      .bus-list {
+        justify-content: center;
+      }
+    }
+
+    details {
+      margin-top: 10px;
+      background: #eee;
+      background-color: #ff6600;
+      color: whitesmoke;
+      padding: 8px;
+      border-radius: 6px;
+    }
+
+    summary {
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .popup {
+      display: none; /* caché par défaut */
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5); /* fond semi-transparent */
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .popup-content {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 600px;
+      width: 90%;
+      max-height: 80vh;
+      overflow-y: auto;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      position: relative;
+    }
+
+    .popup .close {
+      position: absolute;
+      top: 5px;
+      right: 10px;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+
+
+
+
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <img src="images/logo.png" alt="Logo StiBus">
+  </div>
+  <h1>TC-Infos-HDF</h1>
+  <nav>
+    <a href="accueil.html">Accueil</a>
+    <a href="lesbus.html">Les bus</a>
+    <a href="#">Contact</a>
+  </nav>
+</header>
+
+<div class="hero">
+  <h2>Le parc de véhicules</h2>
+  <p>Vous trouverez sur cette page, les diverses informations sur chaque bus du réseau STIBUS</p>
+</div>
+
+
+
+
+
+<div class="container">
+  <div class="bus-section">
+    <div class="side-logo">
+      <img src="images/logoS.png" alt="Logo partenaire">
+    </div>
+
+
+
+
+
+
+
+
+    <div id="buses" class="bus-list">
+      <div class="bus">
+        <img src="images/200.jpg" alt="Bus 200">
+        <img src="images/logoS.png" alt="Logo partenaire">
+        <h3>Bus 200</h3>
+        <p>Ligne : A/B</p>
+        <p>Statut : En service</p>
+        <details>
+          <summary>Informations détaillées</summary>
+          <p>Fabricant : IVECO BUS</p>
+          <p>Modèle : IVECO URBANWAY 18</p>
+          <p>Plaque : FM-642-TX</p>
+          <p>Motorisation : Diesel</p>
+          <p>Moteur : IVECO CURSOR 8</p>
+          <p>Date de mise en service : Mars 2020</p>
+        </details>
+      </div>
+      <div class="bus">
+        <img src="images/103.png" alt="Bus 103">
+        <h3>Bus 103</h3>
+        <p>Ligne : A/B/55</p>
+        <p>Statut : Maintenance</p>
+        <details>
+          <summary>Informations détaillées</summary>
+          <p>Fabricant : IRISBUS</p>
+          <p>Modèle : IVECO CREALIS 18</p>
+          <p>Plaque : AY-468-VP</p>
+          <p>Date de mise en service : Janvier 2009</p>
+        </details>
+      </div>
+      <div class="bus">
+        <img src="images/201Av.png" alt="Bus 201">
+        <h3>Bus 201</h3>
+        <p>Ligne : Toutes</p>
+        <p>Statut : En service</p>
+        <details>
+          <summary>Informations détaillées</summary>
+          <p>Fabricant : IVECO BUS</p>
+          <p>Modèle : IVECO URBANWAY 12</p>
+          <p>Plaque : FM-993-JD</p>
+          <p>Date de mise en service : Mars 2020</p>
+        </details>
+      </div>
+
+      <div class="bus">
+        <img src="images/logoS.png" alt="IVECO URBANWAY 18">
+        <h3>IVECO URBANWAY 18</h3>
+        <details>
+          <summary>Voir les bus de ce modèle</summary>
+          <ul>
+            <li>Bus 200 - Plaque FM-642-TX - En service</li>
+            <li>Bus 203 - Plaque FM-643-TX - Maintenance</li>
+          </ul>
+        </details>
+      </div>
+
+      <div class="bus">
+        <img src="images/urbanway18.jpg" alt="IVECO URBANWAY 18">
+        <h3>IVECO URBANWAY 18</h3>
+        <button onclick="openPopup('urbanway18')">Voir les bus de ce modèle</button>
+      </div>
+
+      <!-- Fenêtre pop-up cachée -->
+      <div id="popup-urbanway18" class="popup">
+        <div class="popup-content">
+          <span class="close" onclick="closePopup('urbanway18')">&times;</span>
+          <h3>IVECO URBANWAY 18</h3>
+          <img src="images/201Av.png" alt="IVECO URBANWAY 18" style="width:150px; height:auto; display:block; margin: 10px auto;">
+
+          <table style="width:100%; border-collapse: collapse; margin-top: 10px;">
+            <thead>
+            <tr style="background-color:#0077cc; color:white;">
+              <th style="padding:8px; border:1px solid #ddd;">Numéro</th>
+              <th style="padding:8px; border:1px solid #ddd;">Plaque</th>
+              <th style="padding:8px; border:1px solid #ddd;">Statut</th>
+              <th style="padding:8px; border:1px solid #ddd;">Motorisation</th>
+              <th style="padding:8px; border:1px solid #ddd;">Moteur</th>
+              <th style="padding:8px; border:1px solid #ddd;">Date de mise en service</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td style="padding:8px; border:1px solid #ddd;">200</td>
+              <td style="padding:8px; border:1px solid #ddd;">FM-642-TX</td>
+              <td style="padding:8px; border:1px solid #ddd;">En service</td>
+              <td style="padding:8px; border:1px solid #ddd;">Diesel</td>
+              <td style="padding:8px; border:1px solid #ddd;">IVECO CURSOR 8</td>
+              <td style="padding:8px; border:1px solid #ddd;">Mars 2020</td>
+            </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+
+
+
+    </div>
+  </div>
+</div>
+</div>
+
+<footer>
+  &copy; 2026 TC-Infos-HDF | Contact : <a href="mailto:tcinfoshdf@gmail.com">tcinfoshdf@gmail.com</a>
+</footer>
+
+<script>
+  function openPopup(id) {
+    document.getElementById('popup-' + id).style.display = 'flex';
+  }
+
+  function closePopup(id) {
+    document.getElementById('popup-' + id).style.display = 'none';
+  }
+</script>
+
+
+</body>
+</html>

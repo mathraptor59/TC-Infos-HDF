@@ -4,8 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TC-Infos-HDF</title>
+  <link rel="icon" href="images/logo.png" type="image/png">
+  <link rel="apple-touch-icon" href="images/logo.png" type="image/png">
   <style>
-    /* --- Global --- */
+
     body {
       margin: 0;
       font-family: Arial, sans-serif;
@@ -23,7 +25,7 @@
       padding: 0 15px;
     }
 
-    /* --- Header --- */
+
     header {
       display: flex;
       align-items: center;
@@ -34,12 +36,11 @@
       flex-wrap: wrap;
     }
 
-    /* Logo à gauche */
     header .logo img {
       height: 50px;
     }
 
-    /* Titre centré */
+
     header h1 {
       position: absolute;
       left: 50%;
@@ -50,7 +51,7 @@
       text-align: center;
     }
 
-    /* Menu à droite */
+
     header nav {
       margin-left: auto;
     }
@@ -61,7 +62,7 @@
       color: white;
     }
 
-    /* --- Hero --- */
+
     .hero {
       background-color: #0077cc;
       color: white;
@@ -89,7 +90,7 @@
       font-weight: bold;
     }
 
-    /* --- Bus Section --- */
+
     .bus-section {
       display: flex;
       align-items: flex-start;
@@ -132,7 +133,7 @@
       margin: 5px 0;
     }
 
-    /* --- Footer --- */
+
     footer {
       background-color: #333;
       color: white;
@@ -146,7 +147,6 @@
       font-weight: bold;
     }
 
-    /* --- Responsive --- */
     @media(max-width:600px){
       header {
         flex-direction: column;
@@ -184,59 +184,26 @@
 </head>
 <body>
 
-<!-- Header -->
 <header>
   <div class="logo">
     <img src="images/logo.png" alt="Logo StiBus">
   </div>
-  <h1>StiBus Maubeuge</h1>
+  <h1>TC-Infos-HDF</h1>
   <nav>
-    <a href="#">Accueil</a>
-    <a href="#buses">Nos bus</a>
+    <a href="accueil.html">Accueil</a>
+    <a href="lesbus.html">Le parc</a>
     <a href="#">Contact</a>
   </nav>
 </header>
 
-<!-- Hero -->
+
 <div class="hero">
   <h2>Bienvenue sur TC-Infos-HDF !</h2>
   <p>Toutes les infos sur nos bus, leurs lignes, statuts et modèles en un seul endroit.</p>
-  <a href="#buses" class="btn">Voir la liste des bus</a>
+  <a href="lesbus.html" class="btn">Voir la liste des bus</a>
 </div>
 
-<!-- Contenu principal -->
-<div class="container">
-  <div class="bus-section">
-    <!-- Nouveau logo à gauche -->
-    <div class="side-logo">
-      <img src="images/logoS.png" alt="Logo partenaire">
-    </div>
 
-    <!-- Liste des bus -->
-    <div id="buses" class="bus-list">
-      <div class="bus">
-        <img src="images/200.jpg" alt="Bus 200">
-        <h3>Bus 200</h3>
-        <p>Ligne : A/B</p>
-        <p>Statut : En service</p>
-      </div>
-      <div class="bus">
-        <img src="images/103.png" alt="Bus 103">
-        <h3>Bus 103</h3>
-        <p>Ligne : A/B/55</p>
-        <p>Statut : Maintenance</p>
-      </div>
-      <div class="bus">
-        <img src="images/201Av.png" alt="Bus 201">
-        <h3>Bus 201</h3>
-        <p>Ligne : Toutes</p>
-        <p>Statut : En service</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Footer -->
 <footer>
   &copy; 2026 TC-Infos-HDF | Contact : <a href="mailto:tcinfoshdf@gmail.com">tcinfoshdf@gmail.com</a>
 </footer>
