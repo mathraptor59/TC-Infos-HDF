@@ -259,6 +259,43 @@
       padding: 15px 10px;
     }
 
+    /* Conteneur des images dans le pop-up */
+    .popup-images {
+      display: flex;
+      justify-content: center;  /* centre horizontalement les images */
+      align-items: center;      /* aligne verticalement */
+      gap: 20px;                /* espace entre les images */
+      margin: 10px 0;
+      width: 100%;              /* prend toute la largeur du pop-up */
+    }
+
+    /* Image principale du bus */
+    .popup-images .bus-img {
+      width: 200px;             /* plus grande que le logo */
+      height: auto;
+      border-radius: 5px;
+    }
+
+    /* Logo à droite */
+    .popup-images .side-img {
+      width: 200px;             /* maintenant même taille que le bus si tu veux */
+      height: auto;
+      border-radius: 5px;
+    }
+
+    @media(max-width:600px) {
+      .popup-images {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .popup-images img {
+        width: 70%;   /* adapte la largeur sur petit écran */
+        margin: 5px 0;
+      }
+    }
+
+
 
 
   </style>
@@ -299,7 +336,7 @@
 
     <div class="bus">
       <img src="images/806.jpg" alt="IRISBUS CREALIS 12">
-      <h3><IRISBUS CREALIS 12</I></h3>
+      <h3>IRISBUS CREALIS 12</h3>
       <button onclick="openPopup('crealis12')">Voir les bus de ce modèle</button>
     </div>
 
@@ -307,12 +344,16 @@
     <div id="popup-crealis12" class="popup">
       <div class="popup-content">
         <span class="close" onclick="closePopup('crealis12')">&times;</span>
-        <h3>IVECO URBANWAY 12</h3>
-        <img src="images/806.jpg" alt="IRISBUS CREALIS 12" style="width:150px; height:auto; display:block; margin: 10px auto;">
+        <h3>IRISBUS CREALIS 12</h3>
+        <!-- Conteneur des images côte à côte -->
+        <div class="popup-images">
+          <img src="images/804.jpg" alt="IRISBUS CREALIS 12" class="bus-img">
+          <img src="images/logoS.png" alt="Logo partenaire" class="side-img">
+        </div>
 
         <table style="width:100%; border-collapse: collapse; margin-top: 10px;">
           <thead>
-          <tr style="background-color:#0077cc; color:white;">
+          <tr style="background-color:purple; color:white;">
             <th style="padding:8px; border:1px solid #ddd;">Numéro</th>
             <th style="padding:8px; border:1px solid #ddd;">Plaque</th>
             <th style="padding:8px; border:1px solid #ddd;">Statut</th>
@@ -325,11 +366,29 @@
           <tbody>
 
           <tr>
-            <td style="padding:8px; border:1px solid #ddd;">800</td>
+            <td style="padding:8px; border:1px solid #ddd;">100</td>
             <td style="padding:8px; border:1px solid #ddd;">A remplir</td>
-            <td style="padding:8px; border:1px solid #ddd;">Incendié</td>
+            <td style="padding:8px; border:1px solid #ddd;">En service</td>
             <td style="padding:8px; border:1px solid #ddd;">Diesel</td>
             <td style="padding:8px; border:1px solid #ddd;">IVECO CURSOR 7</td>
+            <td style="padding:8px; border:1px solid #ddd;">Novembre 2008</td>
+          </tr>
+
+          <tr>
+            <td style="padding:8px; border:1px solid #ddd;">101</td>
+            <td style="padding:8px; border:1px solid #ddd;">A remplir</td>
+            <td style="padding:8px; border:1px solid #ddd;">En service</td>
+            <td style="padding:8px; border:1px solid #ddd;">Diesel</td>
+            <td style="padding:8px; border:1px solid #ddd;">IVECO CURSOR 7</td>
+            <td style="padding:8px; border:1px solid #ddd;">Novembre 2008</td>
+          </tr>
+
+          <tr>
+            <td style="padding:8px; border:1px solid #ddd;">800</td>
+            <td style="padding:8px; border:1px solid #ddd;">757-DGA-59</td>
+            <td style="padding:8px; border:1px solid #ddd;">Incendié</td>
+            <td style="padding:8px; border:1px solid #ddd;">Diesel</td>
+            <td style="padding:8px; border:1px solid #ddd;">IVECO CURSOR 8</td>
             <td style="padding:8px; border:1px solid #ddd;">Novembre 2008</td>
           </tr>
 
@@ -339,7 +398,7 @@
             <td style="padding:8px; border:1px solid #ddd;">A remplir</td>
             <td style="padding:8px; border:1px solid #ddd;">En service</td>
             <td style="padding:8px; border:1px solid #ddd;">Diesel</td>
-            <td style="padding:8px; border:1px solid #ddd;">IVECO CURSOR 7</td>
+            <td style="padding:8px; border:1px solid #ddd;">IVECO CURSOR 8</td>
             <td style="padding:8px; border:1px solid #ddd;">Novembre 2008</td>
           </tr>
 
@@ -348,7 +407,7 @@
             <td style="padding:8px; border:1px solid #ddd;">A remplir</td>
             <td style="padding:8px; border:1px solid #ddd;">En service</td>
             <td style="padding:8px; border:1px solid #ddd;">Diesel</td>
-            <td style="padding:8px; border:1px solid #ddd;">IVECO CURSOR 7</td>
+            <td style="padding:8px; border:1px solid #ddd;">IVECO CURSOR 8</td>
             <td style="padding:8px; border:1px solid #ddd;">Novembre 2008</td>
           </tr>
 
@@ -357,7 +416,7 @@
             <td style="padding:8px; border:1px solid #ddd;">A remplir</td>
             <td style="padding:8px; border:1px solid #ddd;">En service</td>
             <td style="padding:8px; border:1px solid #ddd;">Diesel</td>
-            <td style="padding:8px; border:1px solid #ddd;">IVECO CURSOR 7</td>
+            <td style="padding:8px; border:1px solid #ddd;">IVECO CURSOR 8</td>
             <td style="padding:8px; border:1px solid #ddd;">Novembre 2008</td>
           </tr>
 
@@ -366,7 +425,7 @@
             <td style="padding:8px; border:1px solid #ddd;">A remplir</td>
             <td style="padding:8px; border:1px solid #ddd;">En service</td>
             <td style="padding:8px; border:1px solid #ddd;">Diesel</td>
-            <td style="padding:8px; border:1px solid #ddd;">IVECO CURSOR 7</td>
+            <td style="padding:8px; border:1px solid #ddd;">IVECO CURSOR 8</td>
             <td style="padding:8px; border:1px solid #ddd;">Novembre 2008</td>
           </tr>
 
@@ -375,7 +434,7 @@
             <td style="padding:8px; border:1px solid #ddd;">A remplir</td>
             <td style="padding:8px; border:1px solid #ddd;">En service</td>
             <td style="padding:8px; border:1px solid #ddd;">Diesel</td>
-            <td style="padding:8px; border:1px solid #ddd;">IVECO CURSOR 7</td>
+            <td style="padding:8px; border:1px solid #ddd;">IVECO CURSOR 8</td>
             <td style="padding:8px; border:1px solid #ddd;">Novembre 2008</td>
           </tr>
 
@@ -384,7 +443,7 @@
             <td style="padding:8px; border:1px solid #ddd;">A remplir</td>
             <td style="padding:8px; border:1px solid #ddd;">En service</td>
             <td style="padding:8px; border:1px solid #ddd;">Diesel</td>
-            <td style="padding:8px; border:1px solid #ddd;">IVECO CURSOR 7</td>
+            <td style="padding:8px; border:1px solid #ddd;">IVECO CURSOR 8</td>
             <td style="padding:8px; border:1px solid #ddd;">Novembre 2008</td>
           </tr>
 
@@ -393,7 +452,7 @@
             <td style="padding:8px; border:1px solid #ddd;">A remplir</td>
             <td style="padding:8px; border:1px solid #ddd;">En service</td>
             <td style="padding:8px; border:1px solid #ddd;">Diesel</td>
-            <td style="padding:8px; border:1px solid #ddd;">IVECO CURSOR 7</td>
+            <td style="padding:8px; border:1px solid #ddd;">IVECO CURSOR 8</td>
             <td style="padding:8px; border:1px solid #ddd;">Novembre 2008</td>
           </tr>
 
@@ -402,7 +461,7 @@
             <td style="padding:8px; border:1px solid #ddd;">A remplir</td>
             <td style="padding:8px; border:1px solid #ddd;">En service</td>
             <td style="padding:8px; border:1px solid #ddd;">Diesel</td>
-            <td style="padding:8px; border:1px solid #ddd;">IVECO CURSOR 7</td>
+            <td style="padding:8px; border:1px solid #ddd;">IVECO CURSOR 8</td>
             <td style="padding:8px; border:1px solid #ddd;">Novembre 2008</td>
           </tr>
 
@@ -411,7 +470,7 @@
             <td style="padding:8px; border:1px solid #ddd;">A remplir</td>
             <td style="padding:8px; border:1px solid #ddd;">En service</td>
             <td style="padding:8px; border:1px solid #ddd;">Diesel</td>
-            <td style="padding:8px; border:1px solid #ddd;">IVECO CURSOR 7</td>
+            <td style="padding:8px; border:1px solid #ddd;">IVECO CURSOR 8</td>
             <td style="padding:8px; border:1px solid #ddd;">Novembre 2008</td>
           </tr>
 
@@ -420,7 +479,7 @@
             <td style="padding:8px; border:1px solid #ddd;">A remplir</td>
             <td style="padding:8px; border:1px solid #ddd;">En service</td>
             <td style="padding:8px; border:1px solid #ddd;">Diesel</td>
-            <td style="padding:8px; border:1px solid #ddd;">IVECO CURSOR 7</td>
+            <td style="padding:8px; border:1px solid #ddd;">IVECO CURSOR 8</td>
             <td style="padding:8px; border:1px solid #ddd;">Novembre 2008</td>
           </tr>
 
@@ -429,7 +488,7 @@
             <td style="padding:8px; border:1px solid #ddd;">A remplir</td>
             <td style="padding:8px; border:1px solid #ddd;">En service</td>
             <td style="padding:8px; border:1px solid #ddd;">Diesel</td>
-            <td style="padding:8px; border:1px solid #ddd;">IVECO CURSOR 7</td>
+            <td style="padding:8px; border:1px solid #ddd;">IVECO CURSOR 8</td>
             <td style="padding:8px; border:1px solid #ddd;">Novembre 2008</td>
           </tr>
 
@@ -438,7 +497,7 @@
             <td style="padding:8px; border:1px solid #ddd;">A remplir</td>
             <td style="padding:8px; border:1px solid #ddd;">En service</td>
             <td style="padding:8px; border:1px solid #ddd;">Diesel</td>
-            <td style="padding:8px; border:1px solid #ddd;">IVECO CURSOR 7</td>
+            <td style="padding:8px; border:1px solid #ddd;">IVECO CURSOR 8</td>
             <td style="padding:8px; border:1px solid #ddd;">Novembre 2008</td>
           </tr>
 
@@ -447,7 +506,7 @@
             <td style="padding:8px; border:1px solid #ddd;">A remplir</td>
             <td style="padding:8px; border:1px solid #ddd;">En service</td>
             <td style="padding:8px; border:1px solid #ddd;">Diesel</td>
-            <td style="padding:8px; border:1px solid #ddd;">IVECO CURSOR 7</td>
+            <td style="padding:8px; border:1px solid #ddd;">IVECO CURSOR 8</td>
             <td style="padding:8px; border:1px solid #ddd;">Novembre 2008</td>
           </tr>
 
@@ -456,7 +515,7 @@
             <td style="padding:8px; border:1px solid #ddd;">A remplir</td>
             <td style="padding:8px; border:1px solid #ddd;">En service</td>
             <td style="padding:8px; border:1px solid #ddd;">Diesel</td>
-            <td style="padding:8px; border:1px solid #ddd;">IVECO CURSOR 7</td>
+            <td style="padding:8px; border:1px solid #ddd;">IVECO CURSOR 8</td>
             <td style="padding:8px; border:1px solid #ddd;">Novembre 2008</td>
           </tr>
 
@@ -465,7 +524,7 @@
             <td style="padding:8px; border:1px solid #ddd;">A remplir</td>
             <td style="padding:8px; border:1px solid #ddd;">En service</td>
             <td style="padding:8px; border:1px solid #ddd;">Diesel</td>
-            <td style="padding:8px; border:1px solid #ddd;">IVECO CURSOR 7</td>
+            <td style="padding:8px; border:1px solid #ddd;">IVECO CURSOR 8</td>
             <td style="padding:8px; border:1px solid #ddd;">Novembre 2008</td>
           </tr>
 
@@ -474,7 +533,7 @@
             <td style="padding:8px; border:1px solid #ddd;">A remplir</td>
             <td style="padding:8px; border:1px solid #ddd;">En service</td>
             <td style="padding:8px; border:1px solid #ddd;">Diesel</td>
-            <td style="padding:8px; border:1px solid #ddd;">IVECO CURSOR 7</td>
+            <td style="padding:8px; border:1px solid #ddd;">IVECO CURSOR 8</td>
             <td style="padding:8px; border:1px solid #ddd;">Novembre 2008</td>
           </tr>
 
@@ -483,7 +542,7 @@
             <td style="padding:8px; border:1px solid #ddd;">A remplir</td>
             <td style="padding:8px; border:1px solid #ddd;">En service</td>
             <td style="padding:8px; border:1px solid #ddd;">Diesel</td>
-            <td style="padding:8px; border:1px solid #ddd;">IVECO CURSOR 7</td>
+            <td style="padding:8px; border:1px solid #ddd;">IVECO CURSOR 8</td>
             <td style="padding:8px; border:1px solid #ddd;">Novembre 2008</td>
           </tr>
 
@@ -495,8 +554,144 @@
 
 
 
+      <!-- CREALIS NEO 12-->
+
+    <div class="bus">
+      <img src="images/1108.jpg" alt="IRISBUS CREALIS NEO 12">
+      <h3>IRISBUS CREALIS NEO 12</h3>
+      <button onclick="openPopup('crealisneo12')">Voir les bus de ce modèle</button>
+    </div>
+
+    <div id="popup-crealisneo12" class="popup">
+      <div class="popup-content">
+        <span class="close" onclick="closePopup('crealisneo12')">&times;</span>
+        <h3>IVECO URBANWAY 12</h3>
+        <!-- Conteneur des images côte à côte -->
+        <div class="popup-images">
+          <img src="images/1108.jpg" alt="IRISBUS CREALIS NEO 12" class="bus-img">
+          <img src="images/logoS.png" alt="Logo partenaire" class="side-img">
+        </div>
+
+        <table style="width:100%; border-collapse: collapse; margin-top: 10px;">
+          <thead>
+          <tr style="background-color:purple; color:white;">
+            <th style="padding:8px; border:1px solid #ddd;">Numéro</th>
+            <th style="padding:8px; border:1px solid #ddd;">Plaque</th>
+            <th style="padding:8px; border:1px solid #ddd;">Statut</th>
+            <th style="padding:8px; border:1px solid #ddd;">Motorisation</th>
+            <th style="padding:8px; border:1px solid #ddd;">Moteur</th>
+            <th style="padding:8px; border:1px solid #ddd;">Date de mise en service</th>
+
+          </tr>
+          </thead>
+          <tbody>
+
+          <tr>
+            <td style="padding:8px; border:1px solid #ddd;">1100</td>
+            <td style="padding:8px; border:1px solid #ddd;">BP-543-KW</td>
+            <td style="padding:8px; border:1px solid #ddd;">En service</td>
+            <td style="padding:8px; border:1px solid #ddd;">Diesel</td>
+            <td style="padding:8px; border:1px solid #ddd;">IVECO CURSOR 8</td>
+            <td style="padding:8px; border:1px solid #ddd;">Juin 2011</td>
+          </tr>
+
+          <tr>
+            <td style="padding:8px; border:1px solid #ddd;">1101</td>
+            <td style="padding:8px; border:1px solid #ddd;">BP-433-KW</td>
+            <td style="padding:8px; border:1px solid #ddd;">En service</td>
+            <td style="padding:8px; border:1px solid #ddd;">Diesel</td>
+            <td style="padding:8px; border:1px solid #ddd;">IVECO CURSOR 8</td>
+            <td style="padding:8px; border:1px solid #ddd;">Juin 2011</td>
+          </tr>
+
+          <tr>
+            <td style="padding:8px; border:1px solid #ddd;">1102</td>
+            <td style="padding:8px; border:1px solid #ddd;">BP-267-KW</td>
+            <td style="padding:8px; border:1px solid #ddd;">En service</td>
+            <td style="padding:8px; border:1px solid #ddd;">Diesel</td>
+            <td style="padding:8px; border:1px solid #ddd;">IVECO CURSOR 8</td>
+            <td style="padding:8px; border:1px solid #ddd;">Juin 2011</td>
+          </tr>
+
+          <tr>
+            <td style="padding:8px; border:1px solid #ddd;">1103</td>
+            <td style="padding:8px; border:1px solid #ddd;">BP-504-KW</td>
+            <td style="padding:8px; border:1px solid #ddd;">En service</td>
+            <td style="padding:8px; border:1px solid #ddd;">Diesel</td>
+            <td style="padding:8px; border:1px solid #ddd;">IVECO CURSOR 8</td>
+            <td style="padding:8px; border:1px solid #ddd;">Juin 2011</td>
+          </tr>
+
+          <tr>
+            <td style="padding:8px; border:1px solid #ddd;">1104</td>
+            <td style="padding:8px; border:1px solid #ddd;">BP-305-KW</td>
+            <td style="padding:8px; border:1px solid #ddd;">En service</td>
+            <td style="padding:8px; border:1px solid #ddd;">Diesel</td>
+            <td style="padding:8px; border:1px solid #ddd;">IVECO CURSOR 8</td>
+            <td style="padding:8px; border:1px solid #ddd;">Juin 2011</td>
+          </tr>
+
+          <tr>
+            <td style="padding:8px; border:1px solid #ddd;">1105</td>
+            <td style="padding:8px; border:1px solid #ddd;">BP-392-KW</td>
+            <td style="padding:8px; border:1px solid #ddd;">En service</td>
+            <td style="padding:8px; border:1px solid #ddd;">Diesel</td>
+            <td style="padding:8px; border:1px solid #ddd;">IVECO CURSOR 8</td>
+            <td style="padding:8px; border:1px solid #ddd;">Juin 2011</td>
+          </tr>
+
+          <tr>
+            <td style="padding:8px; border:1px solid #ddd;">1106</td>
+            <td style="padding:8px; border:1px solid #ddd;">BQ-096-PR</td>
+            <td style="padding:8px; border:1px solid #ddd;">En service</td>
+            <td style="padding:8px; border:1px solid #ddd;">Diesel</td>
+            <td style="padding:8px; border:1px solid #ddd;">IVECO CURSOR 8</td>
+            <td style="padding:8px; border:1px solid #ddd;">Juin 2011</td>
+          </tr>
+
+          <tr>
+            <td style="padding:8px; border:1px solid #ddd;">1107</td>
+            <td style="padding:8px; border:1px solid #ddd;">BQ-147-PR</td>
+            <td style="padding:8px; border:1px solid #ddd;">En service</td>
+            <td style="padding:8px; border:1px solid #ddd;">Diesel</td>
+            <td style="padding:8px; border:1px solid #ddd;">IVECO CURSOR 8</td>
+            <td style="padding:8px; border:1px solid #ddd;">Juin 2011</td>
+          </tr>
+
+          <tr>
+            <td style="padding:8px; border:1px solid #ddd;">1108</td>
+            <td style="padding:8px; border:1px solid #ddd;">BQ-195-PR</td>
+            <td style="padding:8px; border:1px solid #ddd;">Incendié</td>
+            <td style="padding:8px; border:1px solid #ddd;">Diesel</td>
+            <td style="padding:8px; border:1px solid #ddd;">IVECO CURSOR 8</td>
+            <td style="padding:8px; border:1px solid #ddd;">Juin 2011</td>
+          </tr>
+
+          <tr>
+            <td style="padding:8px; border:1px solid #ddd;">1109</td>
+            <td style="padding:8px; border:1px solid #ddd;">BQ-286-PR</td>
+            <td style="padding:8px; border:1px solid #ddd;">En service</td>
+            <td style="padding:8px; border:1px solid #ddd;">Diesel</td>
+            <td style="padding:8px; border:1px solid #ddd;">IVECO CURSOR 8</td>
+            <td style="padding:8px; border:1px solid #ddd;">Juin 2011</td>
+          </tr>
+
+          <tr>
+            <td style="padding:8px; border:1px solid #ddd;">1110</td>
+            <td style="padding:8px; border:1px solid #ddd;">BQ-356-PR</td>
+            <td style="padding:8px; border:1px solid #ddd;">En service</td>
+            <td style="padding:8px; border:1px solid #ddd;">Diesel</td>
+            <td style="padding:8px; border:1px solid #ddd;">IVECO CURSOR 8</td>
+            <td style="padding:8px; border:1px solid #ddd;">Juin 2011</td>
+          </tr>
 
 
+
+
+          </tbody>
+        </table>
+      </div>
+    </div>
 
 
 
@@ -517,11 +712,15 @@
         <div class="popup-content">
           <span class="close" onclick="closePopup('urbanway12')">&times;</span>
           <h3>IVECO URBANWAY 12</h3>
-          <img src="images/201Av.png" alt="IVECO URBANWAY 12" style="width:150px; height:auto; display:block; margin: 10px auto;">
+          <!-- Conteneur des images côte à côte -->
+          <div class="popup-images">
+            <img src="images/201Av.png" alt="IVECO URBANWAY 12" class="bus-img">
+            <img src="images/logoS.png" alt="Logo partenaire" class="side-img">
+          </div>
 
           <table style="width:100%; border-collapse: collapse; margin-top: 10px;">
             <thead>
-            <tr style="background-color:#0077cc; color:white;">
+            <tr style="background-color:purple; color:white;">
               <th style="padding:8px; border:1px solid #ddd;">Numéro</th>
               <th style="padding:8px; border:1px solid #ddd;">Plaque</th>
               <th style="padding:8px; border:1px solid #ddd;">Statut</th>
@@ -674,6 +873,84 @@
         </div>
       </div>
 
+
+<!-- IRISBUS CREALIS 18 -->
+    <div class="bus">
+      <img src="images/103.png" alt="IVECO CREALIS 18">
+      <h3>IVECO CREALIS 18</h3>
+      <button onclick="openPopup('crealis18')">Voir les bus de ce modèle</button>
+    </div>
+
+    <!-- Fenêtre pop-up cachée -->
+    <div id="popup-crealis18" class="popup">
+      <div class="popup-content">
+        <span class="close" onclick="closePopup('crealis18')">&times;</span>
+        <h3>IVECO CREALIS 18</h3>
+        <!-- Conteneur des images côte à côte -->
+        <div class="popup-images">
+          <img src="images/103.png" alt="IVECO CREALIS 18" class="bus-img">
+          <img src="images/logoS.png" alt="Logo partenaire" class="side-img">
+        </div>
+
+        <table style="width:100%; border-collapse: collapse; margin-top: 10px;">
+          <thead>
+          <tr style="background-color:purple; color:white;">
+            <th style="padding:8px; border:1px solid #ddd;">Numéro</th>
+            <th style="padding:8px; border:1px solid #ddd;">Plaque</th>
+            <th style="padding:8px; border:1px solid #ddd;">Statut</th>
+            <th style="padding:8px; border:1px solid #ddd;">Motorisation</th>
+            <th style="padding:8px; border:1px solid #ddd;">Moteur</th>
+            <th style="padding:8px; border:1px solid #ddd;">Date de mise en service</th>
+
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td style="padding:8px; border:1px solid #ddd;">102</td>
+            <td style="padding:8px; border:1px solid #ddd;">AY-529-VP</td>
+            <td style="padding:8px; border:1px solid #ddd;">En service</td>
+            <td style="padding:8px; border:1px solid #ddd;">Diesel</td>
+            <td style="padding:8px; border:1px solid #ddd;">IVECO CURSOR 8</td>
+            <td style="padding:8px; border:1px solid #ddd;">Aout 2010</td>
+          </tr>
+
+          <tr>
+            <td style="padding:8px; border:1px solid #ddd;">103</td>
+            <td style="padding:8px; border:1px solid #ddd;">AY-468-VP</td>
+            <td style="padding:8px; border:1px solid #ddd;">En panne</td>
+            <td style="padding:8px; border:1px solid #ddd;">Diesel</td>
+            <td style="padding:8px; border:1px solid #ddd;">IVECO CURSOR 8</td>
+            <td style="padding:8px; border:1px solid #ddd;">Aout 2010</td>
+          </tr>
+
+          <tr>
+            <td style="padding:8px; border:1px solid #ddd;">818</td>
+            <td style="padding:8px; border:1px solid #ddd;">923-DHL-59</td>
+            <td style="padding:8px; border:1px solid #ddd;">Moteur HS</td>
+            <td style="padding:8px; border:1px solid #ddd;">Diesel</td>
+            <td style="padding:8px; border:1px solid #ddd;">IVECO CURSOR 8</td>
+            <td style="padding:8px; border:1px solid #ddd;">Janvier 2009</td>
+          </tr>
+
+          <tr>
+            <td style="padding:8px; border:1px solid #ddd;">819</td>
+            <td style="padding:8px; border:1px solid #ddd;">HA-142-ST</td>
+            <td style="padding:8px; border:1px solid #ddd;">En service</td>
+            <td style="padding:8px; border:1px solid #ddd;">Diesel</td>
+            <td style="padding:8px; border:1px solid #ddd;">IVECO CURSOR 8</td>
+            <td style="padding:8px; border:1px solid #ddd;">Janvier 2009</td>
+          </tr>
+
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+
+
+
+
     <div class="bus">
       <img src="images/200.jpg" alt="IVECO URBANWAY 18">
       <h3>IVECO URBANWAY 18</h3>
@@ -685,11 +962,16 @@
         <div class="popup-content">
           <span class="close" onclick="closePopup('urbanway18')">&times;</span>
           <h3>IVECO URBANWAY 18</h3>
-          <img src="images/200.jpg" alt="IVECO URBANWAY 18" style="width:150px; height:auto; display:block; margin: 10px auto;">
+          <!-- Conteneur des images côte à côte -->
+          <div class="popup-images">
+            <img src="images/200.jpg" alt="IVECO URBANWAY 18" class="bus-img">
+            <img src="images/logoS.png" alt="Logo partenaire" class="side-img">
+          </div>
+
 
           <table style="width:100%; border-collapse: collapse; margin-top: 10px;">
             <thead>
-            <tr style="background-color:#0077cc; color:white;">
+            <tr style="background-color:purple; color:white;">
               <th style="padding:8px; border:1px solid #ddd;">Numéro</th>
               <th style="padding:8px; border:1px solid #ddd;">Plaque</th>
               <th style="padding:8px; border:1px solid #ddd;">Statut</th>
@@ -723,7 +1005,7 @@
 
 
 <footer>
-  &copy; 2026 TC-Infos-HDF | Conçu par MR et ML | Contact : <a href="mailto:tcinfoshdf@gmail.com">tcinfoshdf@gmail.com</a>
+  &copy; 2026 TC-Infos-HDF | Conçu par MR et ML | Contact : <a href="mailto:tcinfoshdf@gmail.com">tcinfoshdf@gmail.com</a>  | Mis à jour le 08/02/2026
 </footer>
 
 <script>
