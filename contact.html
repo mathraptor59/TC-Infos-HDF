@@ -2,9 +2,236 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact</title>
+    <link rel="stylesheet" href="contact.css">
+    <script src="JavaScript/contact.js" defer></script>
+
+    <style>
+
+        /* ------------------ GLOBAL ------------------ */
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', Arial, sans-serif;
+            background-color: floralwhite;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ------------------ HEADER (style TC-Infos-HDF) ------------------ */
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #0056b3;
+            padding: 10px 20px;
+            position: relative;
+            flex-wrap: wrap;
+        }
+
+        header .logo img {
+            height: 90px;
+            width: auto;
+        }
+
+        header h1 {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            margin: 0;
+            font-size: 24px;
+            text-align: center;
+        }
+
+        header nav {
+            margin-left: auto;
+        }
+
+        header nav a {
+            margin-left: 15px;
+            font-weight: bold;
+            color: white;
+            display: inline-block;
+            padding: 8px 16px;
+            background-color: #0077cc;
+            border-radius: 8px;
+            border: 2px solid white;
+            transition: 0.2s;
+            text-decoration: none;
+        }
+
+        header nav a:hover {
+            background-color: #ff6600;
+            color: white;
+        }
+
+        /* ------------------ SECTIONS ------------------ */
+        section {
+            border-radius: 40px;
+            box-shadow: 2px 2px 6px green;
+            margin: 30px auto;
+            padding: 15px;
+            width: 75%;
+            max-width: 850px;
+        }
+
+        section h2 {
+            color: red;
+            text-align: center;
+        }
+
+        /* ------------------ TITRES ------------------ */
+        h1 {
+            text-align: center;
+            color: purple;
+        }
+
+        /* ------------------ FORMULAIRE CONTACT ------------------ */
+        #contact {
+            max-width: 500px;
+            margin: 40px auto;
+            padding: 20px;
+            border-radius: 12px;
+            background-color: #f9f9f9;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        #contact h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        #contact form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        #contact input,
+        #contact textarea {
+            padding: 12px 15px;
+            border-radius: 8px;
+            border: 1.5px solid #ccc;
+            font-size: 16px;
+            font-family: inherit;
+            resize: vertical;
+            transition: 0.3s;
+        }
+
+        #contact input:focus,
+        #contact textarea:focus {
+            outline: none;
+            border-color: orange;
+            box-shadow: 0 0 5px rgba(255, 165, 0, 0.6);
+        }
+
+        #contact textarea {
+            min-height: 120px;
+        }
+
+        #contact button {
+            background-color: orange;
+            color: white;
+            font-weight: 700;
+            padding: 14px;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #contact button:hover {
+            background-color: darkorange;
+        }
+
+        /* ------------------ FOOTER ------------------ */
+        main {
+            flex: 1; /* prend tout l’espace disponible */
+        }
+
+
+
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 15px 10px;
+            margin-top: 40px;
+            margin-top: auto;
+        }
+
+        footer a {
+            color: #ff6600;
+        }
+
+        /* ------------------ RESPONSIVE ------------------ */
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            header h1 {
+                position: static;
+                transform: none;
+                margin: 10px 0;
+            }
+
+            header nav {
+                margin-left: 0;
+            }
+
+            header nav a {
+                margin: 5px;
+            }
+        }
+
+    </style>
+
 </head>
 <body>
-<p>test </p>
+<header>
+    <div class="logo">
+        <img src="images/logo.png" alt="Logo StiBus">
+    </div>
+    <h1>Contact</h1>
+    <nav>
+        <a href="index.html">Accueil</a>
+        <a href="lesbus.html">Le parc</a>
+        <a href="#ancienparcbus">L'ancien parc</a>
+        <a href="#">Galerie</a>
+        <a href="contact.html">Contact</a>
+
+    </nav>
+
+</header>
+
+<main>
+<section id="contact">
+    <h2>Contactez-nous</h2>
+    <form>
+        <input type="text" name="nom" placeholder="Votre nom" required>
+        <input type="email" name="email" placeholder="Votre email" required>
+        <textarea name="message" placeholder="Votre message" required></textarea>
+        <button type="submit">Envoyer</button>
+    </form>
+</section>
+</main>
+<footer>
+    &copy; 2026 TC-Infos-HDF | Conçu par MR et ML | Contact : <a href="mailto:tcinfoshdf@gmail.com">tcinfoshdf@gmail.com</a>  | Mis à jour le 10/02/2026
+</footer>
+
+
+</body>
+
 </body>
 </html>
