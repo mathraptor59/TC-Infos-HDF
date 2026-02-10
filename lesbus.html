@@ -208,19 +208,27 @@
     }
 
     .popup {
-      display: none; /* caché par défaut */
+      display: none;
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(0,0,0,0.5); /* fond semi-transparent */
+      background-color: rgba(0,0,0,0.5);
       justify-content: center;
       align-items: center;
       z-index: 1000;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    .popup.show {
+      display: flex;
+      opacity: 1;
     }
 
     .popup-content {
+      position: relative;
       background: white;
       padding: 20px;
       border-radius: 10px;
@@ -228,20 +236,40 @@
       max-width: 1200px;
       max-height: 90vh;
       overflow-y: auto;
+      transform: scale(0.95);
+      transition: transform 0.2s ease;
+
 
     }
+
+    .popup.show .popup-content {
+      transform: scale(1);
+    }
+
+    body.popup-open {
+      overflow: hidden;
+    }
+
+    .popup .close {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .popup .close:hover {
+      opacity: 0.7;
+    }
+
+
     .popup-content table {
       width: 100%;
       font-size: 14px;   /* un peu plus compact pour laptop */
     }
 
-    .popup .close {
-      position: absolute;
-      top: 5px;
-      right: 10px;
-      font-size: 24px;
-      cursor: pointer;
-    }
+
 
 
 
@@ -404,7 +432,7 @@
             <th style="padding:8px; border:1px solid #ddd;">Motorisation</th>
             <th style="padding:8px; border:1px solid #ddd;">Moteur</th>
             <th style="padding:8px; border:1px solid #ddd;">Date de mise en service</th>
-            <th style="padding:8px; border:1px solid #ddd;">Date de mise en service</th>
+            <th style="padding:8px; border:1px solid #ddd;">Date de réforme</th>
 
 
           </tr>
@@ -665,7 +693,7 @@
           <tr>
             <td style="padding:8px; border:1px solid #ddd;">1104</td>
             <td style="padding:8px; border:1px solid #ddd;">BP-305-KW</td>
-            <td style="padding:8px; border:1px solid #ddd;">En service</td>
+            <td style="padding:8px; border:1px solid #ddd;">En panne</td>
             <td style="padding:8px; border:1px solid #ddd;">Diesel</td>
             <td style="padding:8px; border:1px solid #ddd;">IVECO CURSOR 8 EURO 4 EEV</td>
             <td style="padding:8px; border:1px solid #ddd;">Juin 2011</td>
@@ -692,7 +720,7 @@
           <tr>
             <td style="padding:8px; border:1px solid #ddd;">1107</td>
             <td style="padding:8px; border:1px solid #ddd;">BQ-147-PR</td>
-            <td style="padding:8px; border:1px solid #ddd;">En service</td>
+            <td style="padding:8px; border:1px solid #ddd;">En panne</td>
             <td style="padding:8px; border:1px solid #ddd;">Diesel</td>
             <td style="padding:8px; border:1px solid #ddd;">IVECO CURSOR 8 EURO 4 EEV</td>
             <td style="padding:8px; border:1px solid #ddd;">Juin 2011</td>
@@ -845,7 +873,7 @@
               <td style="padding:8px; border:1px solid #ddd;">GK-287-ZJ</td>
               <td style="padding:8px; border:1px solid #ddd;">En service</td>
               <td style="padding:8px; border:1px solid #ddd;">Diesel</td>
-              <td style="padding:8px; border:1px solid #ddd;">IVECO CURSOR 9 EURO VI</td>
+              <td style="padding:8px; border:1px solid #ddd;">IVECO CURSOR 9 EURO VI D</td>
               <td style="padding:8px; border:1px solid #ddd;">Janvier 2023</td>
             </tr>
 
@@ -854,7 +882,7 @@
               <td style="padding:8px; border:1px solid #ddd;">GK-432-ZJ</td>
               <td style="padding:8px; border:1px solid #ddd;">En service</td>
               <td style="padding:8px; border:1px solid #ddd;">Diesel</td>
-              <td style="padding:8px; border:1px solid #ddd;">IVECO CURSOR 9 EURO VI</td>
+              <td style="padding:8px; border:1px solid #ddd;">IVECO CURSOR 9 EURO VI D</td>
               <td style="padding:8px; border:1px solid #ddd;">Janvier 2023</td>
             </tr>
 
@@ -863,7 +891,7 @@
               <td style="padding:8px; border:1px solid #ddd;">GK-494-ZJ</td>
               <td style="padding:8px; border:1px solid #ddd;">En service</td>
               <td style="padding:8px; border:1px solid #ddd;">Diesel</td>
-              <td style="padding:8px; border:1px solid #ddd;">IVECO CURSOR 9 EURO VI</td>
+              <td style="padding:8px; border:1px solid #ddd;">IVECO CURSOR 9 EURO VI D</td>
               <td style="padding:8px; border:1px solid #ddd;">Janvier 2023</td>
             </tr>
 
@@ -872,7 +900,7 @@
               <td style="padding:8px; border:1px solid #ddd;">GK-568-ZJ</td>
               <td style="padding:8px; border:1px solid #ddd;">En service</td>
               <td style="padding:8px; border:1px solid #ddd;">Diesel</td>
-              <td style="padding:8px; border:1px solid #ddd;">IVECO CURSOR 9 EURO VI</td>
+              <td style="padding:8px; border:1px solid #ddd;">IVECO CURSOR 9 EURO VI D</td>
               <td style="padding:8px; border:1px solid #ddd;">Janvier 2023</td>
             </tr>
 
@@ -908,7 +936,7 @@
               <td style="padding:8px; border:1px solid #ddd;">HH-054-XR</td>
               <td style="padding:8px; border:1px solid #ddd;">En préparation</td>
               <td style="padding:8px; border:1px solid #ddd;">Diesel hybride</td>
-              <td style="padding:8px; border:1px solid #ddd;">CURSOR 9 DIESEL HYBRIDE EURO VI/E4100 GSR </td>
+              <td style="padding:8px; border:1px solid #ddd;">CURSOR 9 DIESEL HYBRIDE EURO VI/E 4100 GSR </td>
               <td style="padding:8px; border:1px solid #ddd;">En préparation</td>
             </tr>
 
@@ -1222,17 +1250,40 @@
 </div>
 
 <footer>
-  &copy; 2026 TC-Infos-HDF | Conçu par MR et ML | Contact : <a href="mailto:tcinfoshdf@gmail.com">tcinfoshdf@gmail.com</a>  | Mis à jour le 08/02/2026
+  &copy; 2026 TC-Infos-HDF | Conçu par MR et ML | Contact : <a href="mailto:tcinfoshdf@gmail.com">tcinfoshdf@gmail.com</a>  | Mis à jour le 10/02/2026
 </footer>
+
 
 <script>
   function openPopup(id) {
-    document.getElementById('popup-' + id).style.display = 'flex';
+    const popup = document.getElementById("popup-" + id);
+    popup.classList.add("show");
+    document.body.classList.add("popup-open");
   }
 
   function closePopup(id) {
-    document.getElementById('popup-' + id).style.display = 'none';
+    const popup = document.getElementById("popup-" + id);
+    popup.classList.remove("show");
+    document.body.classList.remove("popup-open");
   }
+
+  /* fermer en cliquant sur le fond */
+  document.querySelectorAll(".popup").forEach(popup => {
+    popup.addEventListener("click", e => {
+      if (e.target === popup) {
+        popup.classList.remove("show");
+        document.body.classList.remove("popup-open");
+      }
+    });
+  });
+
+  /* fermer avec ESC */
+  document.addEventListener("keydown", e => {
+    if (e.key === "Escape") {
+      document.querySelectorAll(".popup.show").forEach(p => p.classList.remove("show"));
+      document.body.classList.remove("popup-open");
+    }
+  });
 </script>
 
 </body>
