@@ -63,18 +63,17 @@
       margin-left: 15px;
       font-weight: bold;
       color: white;
-
       display: inline-block;
       padding: 8px 16px;
-      background-color: #0077cc;
+      background-color: #2dac3a;
       border-radius: 8px;
       border: 2px solid white;
       transition: 0.2s;
     }
 
     header nav a:hover {
-      background-color: white;
-      color: #0056b3;
+      background-color: #ff6600;
+      color: white;
     }
 
     .hero {
@@ -326,9 +325,6 @@
       }
     }
 
-
-
-
   </style>
 </head>
 <body>
@@ -378,7 +374,7 @@
         </div>
 
         <div class="bus">
-          <img src="images/201Av.png" alt="IVECO URBANWAY 12">
+          <img src="images/201.jpg" alt="IVECO URBANWAY 12">
           <h3>IVECO URBANWAY 12</h3>
           <button onclick="openPopup('urbanway12')">Voir les bus de ce modèle</button>
         </div>
@@ -417,7 +413,6 @@
       <div class="popup-content">
         <span class="close" onclick="closePopup('crealis12')">&times;</span>
         <h3>IRISBUS CREALIS 12</h3>
-        <!-- Conteneur des images côte à côte -->
         <div class="popup-images">
           <img src="images/804.jpg" alt="IRISBUS CREALIS 12" class="bus-img">
           <img src="images/logoS.png" alt="Logo partenaire" class="side-img">
@@ -654,7 +649,6 @@
       <div class="popup-content">
         <span class="close" onclick="closePopup('crealisneo12')">&times;</span>
         <h3>IVECO CREALIS NEO 12</h3>
-        <!-- Conteneur des images côte à côte -->
         <div class="popup-images">
           <img src="images/1108.jpg" alt="IRISBUS CREALIS NEO 12" class="bus-img">
           <img src="images/logoS.png" alt="Logo partenaire" class="side-img">
@@ -800,7 +794,6 @@
         <div class="popup-content">
           <span class="close" onclick="closePopup('urbanway12')">&times;</span>
           <h3>IVECO URBANWAY 12</h3>
-          <!-- Conteneur des images côte à côte -->
           <div class="popup-images">
             <img src="images/201Av.png" alt="IVECO URBANWAY 12" class="bus-img">
             <img src="images/logoS.png" alt="Logo partenaire" class="side-img">
@@ -981,14 +974,10 @@
 
 
 <!-- IRISBUS CREALIS 18 -->
-
-
-    <!-- Fenêtre pop-up cachée -->
     <div id="popup-crealis18" class="popup">
       <div class="popup-content">
         <span class="close" onclick="closePopup('crealis18')">&times;</span>
         <h3>IRISBUS CREALIS 18</h3>
-        <!-- Conteneur des images côte à côte -->
         <div class="popup-images">
           <img src="images/103.png" alt="IRISBUS CREALIS 18" class="bus-img">
           <img src="images/logoS.png" alt="Logo partenaire" class="side-img">
@@ -1050,12 +1039,10 @@
       </div>
     </div>
 
-  <!-- Fenêtre pop-up cachée -->
     <div id="popup-crealisneo18" class="popup">
       <div class="popup-content">
         <span class="close" onclick="closePopup('crealisneo18')">&times;</span>
         <h3>IRISBUS CREALIS NEO 18</h3>
-        <!-- Conteneur des images côte à côte -->
         <div class="popup-images">
           <img src="images/1112.png" alt="IRISBUS CREALIS NEO 18" class="bus-img">
           <img src="images/logoS.png" alt="Logo partenaire" class="side-img">
@@ -1119,12 +1106,10 @@
 </div>
 </div>
 
-<!-- Fenêtre pop-up cachée -->
       <div id="popup-urbanway18" class="popup">
         <div class="popup-content">
           <span class="close" onclick="closePopup('urbanway18')">&times;</span>
           <h3>IVECO URBANWAY 18</h3>
-          <!-- Conteneur des images côte à côte -->
           <div class="popup-images">
             <img src="images/200.jpg" alt="IVECO URBANWAY 18" class="bus-img">
             <img src="images/logoS.png" alt="Logo partenaire" class="side-img">
@@ -1300,7 +1285,6 @@
     document.body.classList.remove("popup-open");
   }
 
-  /* fermer en cliquant sur le fond */
   document.querySelectorAll(".popup").forEach(popup => {
     popup.addEventListener("click", e => {
       if (e.target === popup) {
@@ -1310,7 +1294,6 @@
     });
   });
 
-  /* fermer avec ESC */
   document.addEventListener("keydown", e => {
     if (e.key === "Escape") {
       document.querySelectorAll(".popup.show").forEach(p => p.classList.remove("show"));
