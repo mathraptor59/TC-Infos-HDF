@@ -164,16 +164,15 @@
         }
     </style>
     <script>
-        const maintenance = false; // false pour réactiver
+        const maintenance = false;
 
-        if (maintenance) {
-            window.location.href = "maintenance.html";
+        if (maintenance === true) {
+            window.location.replace("maintenance.html");
         }
+
     </script>
 </head>
 <body>
-
-
 
 <header>
     <div class="logo">
