@@ -215,9 +215,9 @@
 
     <script>
         // CounterAPI
-        const counterUrl = 'https://counterapi.dev/v2/tcinfos-hf/visite/up';
+        const counterUrl = 'https://counterapi.dev/v2/tcinfos-hf/visite';
 
-        fetch(counterUrl, { method: 'POST' })
+        fetch(counterUrl, { method: 'GET' })
             .then(response => response.json())
             .then(data => {
                 document.getElementById('visitor-count').textContent = data.data.value;
