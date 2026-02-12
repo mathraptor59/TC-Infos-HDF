@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Histoire du réseau - TC-Infos-HDF</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #ffe5eb;
+        }
+
+        /* HEADER */
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #0056b3;
+            padding: 10px 20px;
+            position: relative;
+        }
+
+        header .logo img {
+            height: 80px;
+        }
+
+        header h1 {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            margin: 0;
+        }
+
+        header nav a {
+            margin-left: 15px;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            background-color: #2dac3a;
+            border-radius: 8px;
+            border: 2px solid white;
+        }
+
+        /* HERO */
+        .hero {
+            background-color: #0077cc;
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            border-radius: 0 0 20px 20px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        /* SECTION HISTOIRE */
+        .history-section {
+            margin-bottom: 50px;
+            line-height: 1.6;
+        }
+
+        .history-section h3 {
+            color: #0056b3;
+        }
+
+        /* LOGO À GAUCHE */
+        .logo-left {
+            display: flex;
+            align-items: flex-start;
+            gap: 40px;
+        }
+
+        .history-logo {
+            width: 280px;
+            max-width: 40%;
+            background: white;
+            padding: 15px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .history-text {
+            flex: 1;
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: 40px;
+        }
+
+        /* RESPONSIVE */
+        @media(max-width: 768px) {
+            .logo-left {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .history-logo {
+                width: 200px;
+            }
+
+            header h1 {
+                position: static;
+                transform: none;
+            }
+
+            header {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">
+        <img src="images/logo.png" alt="Logo">
+    </div>
+    <h1>TC-Infos-HDF</h1>
+    <nav>
+        <a href="index.html">Accueil</a>
+        <a href="lesbus.html">Le parc</a>
+        <a href="ancienParc.html">L'ancien parc</a>
+        <a href="histoire.html">Histoire</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
+
+<div class="hero">
+    <h2>Histoire du réseau STIBUS</h2>
+    <p>Découvrez l'évolution du réseau et de son organisation depuis 1979.</p>
+</div>
+
+<div class="container">
+
+    <section class="history-section logo-left">
+
+        <img src="images/logoS.png" alt="Logo Stibus" class="history-logo">
+
+        <div class="history-text">
+            <h3>Création du réseau</h3>
+
+            <p>
+                Le réseau Stibus est créé en 1979 par le Syndicat Intercommunal du Bassin de la Sambre (SIBS),
+                regroupant dix-neuf communes des environs de Maubeuge. L'exploitation du réseau est déléguée
+                à une société d'économie mixte locale (SEM), la Société d'économie mixte des transports
+                intercommunaux du bassin de la Sambre (SEMITIB).
+            </p>
+
+            <p>
+                En 1995, le SIBS devient le Syndicat Intercommunal du Val de Sambre (SIVS),
+                puis Syndicat Mixte du Val de Sambre (SMVS) en 2000.
+            </p>
+        </div>
+
+    </section>
+
+    <section class="history-section">
+        <h3>Réorganisation du réseau en 2008</h3>
+
+        <p>
+            Le projet Viavil prévoit la création d'un site propre d'une longueur de 8 km entre la
+            polyclinique du parc à Maubeuge et la zone commerciale de Louvroil pour un montant total
+            de 68 millions d'euros. Les travaux se déroulent entre 2006 et 2008.
+        </p>
+
+        <p>
+            Le 12 décembre 2008, le « BusWay » est inauguré. Il s'agit d'une ligne de bus à haut niveau
+            de service reliant Hautmont à Jeumont en empruntant le site propre du projet Viavil et
+            offrant une fréquence attractive sur sa portion centrale entre Maubeuge et Hautmont.
+            Cette ligne est exploitée à l'aide de 20 bus du type Crealis du constructeur Irisbus.
+        </p>
+
+        <p>
+            Le réseau est restructuré à cette même date et se compose de 17 lignes régulières circulant
+            du lundi au samedi et de 4 lignes dominicales.
+        </p>
+    </section>
+
+    <section class="history-section">
+        <h3>Évolutions récentes</h3>
+
+        <p>
+            Le 1er avril 2012, la SEMITIB devient une société publique locale et prend le nom de
+            « Société publique locale des transports intercommunaux de Sambre-Avesnois » (SPLTISA).
+        </p>
+
+        <p>
+            En 2013, le SMVS devient un syndicat mixte à vocation unique et est transformé en
+            « Syndicat mixte des transports urbains de la Sambre » (SMTUS).
+        </p>
+
+        <p>
+            Le 1er janvier 2018, le réseau est restructuré. Quatre lignes structurantes
+            (lignes A à D) sont créées et certaines lignes secondaires sont modifiées.
+            Cette restructuration s'accompagne par l'extension du service de transport
+            à la demande à certaines communes.
+        </p>
+
+        <p>
+            En janvier 2024, le SMTUS devient « Sambre Mobilités ».
+        </p>
+    </section>
+
+</div>
+
+<footer>
+    © 2026 TC-Infos-HDF
+</footer>
+
+</body>
+</html>
