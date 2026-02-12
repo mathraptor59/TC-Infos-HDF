@@ -12,7 +12,7 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background-color: #ffe5eb;
+      background-image: url("images/fond.png");
     }
 
     a {
@@ -102,6 +102,10 @@
       border-radius: 5px;
       font-weight: bold;
     }
+
+
+
+
 
     .bus-section {
       display: flex;
@@ -325,6 +329,38 @@
       }
     }
 
+    .btn.crealis {
+      background-color: #ff0000; /* rouge */
+      color: white;
+    }
+
+    .btn.neo {
+      background-color: #ffcc00; /* jaune */
+      color: black;
+    }
+
+    .btn.urbanway {
+      background-color: #0077cc; /* bleu */
+      color: white;
+    }
+
+    .btn.navette {
+      background-color: #00cccc; /* bleu ciel */
+      color: white;
+    }
+
+    .btn.citelis {
+      background-color: #8000ff; /* violet */
+      color: white;
+    }
+
+    /* Optionnel : effet hover pour chaque type */
+    .btn.crealis:hover { background-color: #cc0000; }
+    .btn.neo:hover { background-color: #e6b800; }
+    .btn.urbanway:hover { background-color: #005fa3; }
+    .btn.navette:hover { background-color: #009999; }
+    .btn.citelis:hover { background-color: #6600cc; }
+
   </style>
 </head>
 <body>
@@ -365,50 +401,50 @@
         <div class="bus">
           <img src="images/101.png" alt="IRISBUS CREALIS 12">
           <h3>IRISBUS CREALIS 12 <br> BHNS</h3>
-          <button onclick="openPopup('crealis12')">Voir les bus de ce modèle</button>
+          <button class="btn crealis" onclick="openPopup('crealis12')">Voir les bus de ce modèle</button>
         </div>
 
         <div class="bus">
           <img src="images/11082.jpg" alt="IRISBUS CREALIS NEO 12">
           <h3>IRISBUS CREALIS NEO 12 BHNS</h3>
-          <button onclick="openPopup('crealisneo12')">Voir les bus de ce modèle</button>
+          <button class="btn neo" onclick="openPopup('crealisneo12')">Voir les bus de ce modèle</button>
         </div>
 
         <div class="bus">
           <img src="images/201.jpg" alt="IVECO URBANWAY 12">
           <h3>IVECO URBANWAY 12 BHNS</h3>
-          <button onclick="openPopup('urbanway12')">Voir les bus de ce modèle</button>
+          <button class="btn urbanway" onclick="openPopup('urbanway12')">Voir les bus de ce modèle</button>
         </div>
 
         <div class="bus">
           <img src="images/103.png" alt="IRISBUS CREALIS 18">
           <h3>IRISBUS CREALIS 18 <br> BHNS</h3>
-          <button onclick="openPopup('crealis18')">Voir les bus de ce modèle</button>
+          <button class="btn crealis" onclick="openPopup('crealis18')">Voir les bus de ce modèle</button>
         </div>
 
         <div class="bus">
           <img src="images/1112.png" alt="IRISBUS CREALIS NEO 18">
           <h3>IRISBUS CREALIS NEO 18 BHNS</h3>
-          <button onclick="openPopup('crealisneo18')">Voir les bus de ce modèle</button>
+          <button class="btn neo" onclick="openPopup('crealisneo18')">Voir les bus de ce modèle</button>
         </div>
 
         <div class="bus">
           <img src="images/200.jpg" alt="IVECO URBANWAY 18">
           <h3>IVECO URBANWAY 18 BHNS</h3>
-          <button onclick="openPopup('urbanway18')">Voir les bus de ce modèle</button>
+          <button class="btn urbanway" onclick="openPopup('urbanway18')">Voir les bus de ce modèle</button>
         </div>
 
         <div class="bus">
             <img src="images/060.jpg" alt="IRISBUS CITELIS 12">
             <h3>IRISBUS CITELIS 12</h3>
-            <button onclick="openPopup('citelis12')">Voir les bus de ce modèle</button>
+            <button class="btn citelis" onclick="openPopup('citelis12')">Voir les bus de ce modèle</button>
 
         </div>
 
         <div class="bus">
           <img src="images/243.jpg" alt="NAVETTE / CITADINE">
           <h3>NAVETTE / CITADINE</h3>
-          <button onclick="openPopup('citadine')">Voir les bus de ce modèle</button>
+          <button class="btn navette" onclick="openPopup('citadine')">Voir les bus de ce modèle</button>
         </div>
 
 
