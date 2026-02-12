@@ -215,17 +215,17 @@
 
     <script>
         // CounterAPI
-        const counterUrl = 'https://counterapi.dev/v2/tcinfos-hf/visite';
+        const counterUrl = 'https://api.counterapi.dev/v2/tcinfos-hf/visite/up';
 
-        fetch(counterUrl, { method: 'GET' })
-            .then(response => response.json())
+        fetch(counterUrl, { method: 'POST' })
+            .then(res => res.json())
             .then(data => {
                 document.getElementById('visitor-count').textContent = data.data.value;
             })
-            .catch(error => {
-                console.error('Erreur compteur:', error);
-            });
+            .catch(err => console.error('Erreur compteur:', err));
+
     </script>
+
 
 
 </main>
