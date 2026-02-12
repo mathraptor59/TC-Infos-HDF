@@ -205,6 +205,28 @@
             </div>
         </div>
     </div>
+
+
+
+
+    <div style="text-align:center; margin-top:20px; font-size:18px; font-weight:bold;">
+        Nombre de visites totales : <span id="visitor-count">0</span>
+    </div>
+
+    <script>
+        const countApiUrl = 'https://api.countapi.xyz/hit/tc-infos-hdf/index';
+
+        fetch(countApiUrl)
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('visitor-count').textContent = data.value;
+            })
+            .catch(error => {
+                console.error('Erreur compteur:', error);
+            });
+    </script>
+
+
 </main>
 
 <footer>
