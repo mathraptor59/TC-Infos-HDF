@@ -213,18 +213,15 @@
         Nombre de visites totales : <span id="visitor-count">0</span>
     </div>
 
+    <script src="https://cdn.counterapi.dev/counter.min.js"></script>
     <script>
-        // CounterAPI
-        const counterUrl = 'https://api.counterapi.dev/v2/tcinfos-hf/visite/up';
-
-        fetch(counterUrl, { method: 'POST' })
-            .then(res => res.json())
+        Counter.up('tcinfos-hf', 'visite')
             .then(data => {
-                document.getElementById('visitor-count').textContent = data.data.value;
+                document.getElementById('visitor-count').textContent = data.value;
             })
             .catch(err => console.error('Erreur compteur:', err));
-
     </script>
+
 
 
 
