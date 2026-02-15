@@ -47,7 +47,7 @@
         header h1 {
             color: white;
             margin: 0;
-            font-size: clamp(18px, 4vw, 32px); /* taille adaptative */
+            font-size: clamp(18px, 4vw, 32px);
             text-align: center;
             flex: 1;
         }
@@ -73,7 +73,6 @@
             color: white;
         }
 
-        /* Hero */
         .hero {
             background-color: #0077cc;
             color: white;
@@ -208,14 +207,36 @@
         Nombre de visites totales : <span id="visitor-count">0</span>
     </div>
 
-    <script src="https://cdn.counterapi.dev/counter.min.js"></script>
     <script>
-        Counter.up('tcinfos-hf', 'visite')
+        const counterUrl = 'https://api.counterapi.dev/v2/tcinfos-hf/visite/up';
+
+        fetch(counterUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(response => response.json())
             .then(data => {
-                document.getElementById('visitor-count').textContent = data.value;
+                console.log(data);
+                document.getElementById('visitor-count').textContent = data.data.up_count ?? data.data.value ?? 0;
+            })
+            .catch(error => console.error('Erreur compteur:', error));
+    </script>
+
+    <script>
+        const counterUrl = 'https://api.counterapi.dev/v2/tcinfos-hf/visite/up';
+
+        fetch(counterUrl, { method: 'POST' })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                document.getElementById('visitor-count').textContent = data.data.up_count;
             })
             .catch(err => console.error('Erreur compteur:', err));
     </script>
+
+
 
 
 
