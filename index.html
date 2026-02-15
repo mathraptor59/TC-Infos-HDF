@@ -212,18 +212,21 @@
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-        // URL pour incrémenter le compteur
         const url = "https://api.counterapi.dev/v2/tcinfos-hf/visite/up";
 
         fetch(url, {
             method: "POST",
             mode: "no-cors"
         })
+            .then(() => {
+                console.log("Requête envoyée à CounterAPI (no-cors, impossible de lire la réponse)");
+            })
             .catch(err => {
-                console.warn("Impossible d'incrémenter le compteur depuis le site:", err);
+                console.error("Erreur réseau lors de l'envoi à CounterAPI :", err);
             });
     });
 </script>
+
 
 
 
