@@ -219,29 +219,12 @@
 <script>
     document.addEventListener("DOMContentLoaded", function () {
 
-        fetch('https://api.counterapi.dev/v2/tcinfos-hf/visite/up', {
-            method: 'POST'
-        })
-            .then(response => response.json())
-            .then(data => {
-                console.log("Réponse API :", data);
-
-                let count = 0;
-
-                if (data.data && data.data.up_count !== undefined) {
-                    count = data.data.up_count;
-                } else if (data.value !== undefined) {
-                    count = data.value;
-                }
-
-                document.getElementById('visitor-count').textContent = count;
-            })
-            .catch(error => {
-                console.error("Erreur compteur :", error);
-            });
+        console.log("Script chargé !");
+        document.getElementById("visitor-count").textContent = "TEST";
 
     });
 </script>
+
 
 
 
