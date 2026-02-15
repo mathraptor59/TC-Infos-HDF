@@ -211,17 +211,20 @@
 
 
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        fetch('https://api.counterapi.dev/v2/tcinfos-hf/visite/up', {
-            method: 'POST'
+    document.addEventListener("DOMContentLoaded", function() {
+        // URL pour incrémenter le compteur
+        const url = "https://api.counterapi.dev/v2/tcinfos-hf/visite/up";
+
+        fetch(url, {
+            method: "POST",
+            mode: "no-cors"
         })
-            .then(response => response.json())
-            .then(data => {
-                console.log("Compteur incrémenté :", data.data.up_count);
-            })
-            .catch(error => console.error("Erreur compteur :", error));
+            .catch(err => {
+                console.warn("Impossible d'incrémenter le compteur depuis le site:", err);
+            });
     });
 </script>
+
 
 
 
