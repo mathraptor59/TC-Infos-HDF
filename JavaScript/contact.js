@@ -1,71 +1,51 @@
-// contact.js
-
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.querySelector('form');
-    const nomInput = form.elements['nom'];
-    const emailInput = form.elements['email'];
-    const messageInput = form.elements['message'];
+    const statusDiv = document.getElementById('form-status');
     const submitBtn = form.querySelector('button[type="submit"]');
 
-    form.addEventListener('submit', async (e) => {
-        e.preventDefault(); // Empêche l'envoi classique pour gérer via JS
+    form.addEventListener('submit', (e) => {
+        e.preventDefault(); // stop envoi classique
 
-        // Validation simple
-        if(nomInput.value.trim().length < 2) {
-            alert('Veuillez entrer un nom valide (au moins 2 caractères).');
-            nomInput.focus();
-            return;
-        }
+        const nom = form.elements['nom'].value.trim();
+        const email = form.elements['email'].value.trim();
+        const message = form.elements['message'].value.trim();
 
-        if(!validateEmail(emailInput.value)) {
-            alert('Veuillez entrer une adresse email valide.');
-            emailInput.focus();
-            return;
-        }
+        if(nom.length < 2) { statusDiv.textContent = 'Veuillez entrer un nom valide.'; return; }
+        if(!validateEmail(email)) { statusDiv.textContent = 'Veuillez entrer un email valide.'; return; }
+        if(message.length < 5) { statusDiv.textContent = 'Veuillez entrer un message plus long.'; return; }
 
-        if(messageInput.value.trim().length < 5) {
-            alert('Veuillez entrer un message plus long (au moins 5 caractères).');
-            messageInput.focus();
-            return;
-        }
-
-        // Bouton envoi
         submitBtn.disabled = true;
         submitBtn.textContent = 'Envoi en cours...';
+        statusDiv.textContent = '';
 
-        try {
-            const response = await fetch(form.action, {
-                method: 'POST',
-                headers: {
-                    'Accept': 'application/json'
-                },
-                body: new FormData(form)
+        fetch(form.action, {
+            method: 'POST',
+            headers: { 'Accept': 'application/json' },
+            body: new FormData(form)
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.ok) {
+                    statusDiv.textContent = 'Merci ! Votre message a été envoyé.';
+                    form.reset();
+                } else {
+                    statusDiv.style.color = 'red';
+                    statusDiv.textContent = 'Oups, une erreur est survenue. Réessayez.';
+                }
+            })
+            .catch(err => {
+                statusDiv.style.color = 'red';
+                statusDiv.textContent = 'Oups, une erreur est survenue. Réessayez.';
+                console.error(err);
+            })
+            .finally(() => {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Envoyer';
             });
-
-            if (response.ok) {
-                alert('Merci pour votre message ! Je vous répondrai dès que possible.');
-                form.reset();
-            } else {
-                const data = await response.json();
-                alert(data.error || 'Une erreur est survenue. Veuillez réessayer.');
-            }
-        } catch (error) {
-            alert('Impossible d’envoyer le message. Vérifiez votre connexion.');
-            console.error(error);
-        } finally {
-            submitBtn.disabled = false;
-            submitBtn.textContent = 'Envoyer';
-        }
     });
 
-    // Validation email simple regex
     function validateEmail(email) {
         const re = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
         return re.test(email);
     }
-
-    // Effet bouton au clic
-    submitBtn.addEventListener('mousedown', () => submitBtn.style.transform = 'scale(0.95)');
-    submitBtn.addEventListener('mouseup', () => submitBtn.style.transform = 'scale(1)');
-    submitBtn.addEventListener('mouseleave', () => submitBtn.style.transform = 'scale(1)');
 });
