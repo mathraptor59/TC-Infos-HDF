@@ -7,8 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const messageInput = form.elements['message'];
     const submitBtn = form.querySelector('button[type="submit"]');
 
-    form.addEventListener('submit', (e) => {
-        e.preventDefault(); // Empêche l'envoi classique pour tester ici
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault(); // Empêche l'envoi classique pour gérer via JS
 
         // Validation simple
         if(nomInput.value.trim().length < 2) {
@@ -29,16 +29,33 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // Si tout est ok : simulateur d'envoi
+        // Bouton envoi
         submitBtn.disabled = true;
         submitBtn.textContent = 'Envoi en cours...';
 
-        setTimeout(() => {
-            alert('Merci pour votre message ! Je vous répondrai dès que possible.');
-            form.reset();
+        try {
+            const response = await fetch(form.action, {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json'
+                },
+                body: new FormData(form)
+            });
+
+            if (response.ok) {
+                alert('Merci pour votre message ! Je vous répondrai dès que possible.');
+                form.reset();
+            } else {
+                const data = await response.json();
+                alert(data.error || 'Une erreur est survenue. Veuillez réessayer.');
+            }
+        } catch (error) {
+            alert('Impossible d’envoyer le message. Vérifiez votre connexion.');
+            console.error(error);
+        } finally {
             submitBtn.disabled = false;
             submitBtn.textContent = 'Envoyer';
-        }, 1500);
+        }
     });
 
     // Validation email simple regex
@@ -48,15 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Effet bouton au clic
-    submitBtn.addEventListener('mousedown', () => {
-        submitBtn.style.transform = 'scale(0.95)';
-    });
-
-    submitBtn.addEventListener('mouseup', () => {
-        submitBtn.style.transform = 'scale(1)';
-    });
-
-    submitBtn.addEventListener('mouseleave', () => {
-        submitBtn.style.transform = 'scale(1)';
-    });
+    submitBtn.addEventListener('mousedown', () => submitBtn.style.transform = 'scale(0.95)');
+    submitBtn.addEventListener('mouseup', () => submitBtn.style.transform = 'scale(1)');
+    submitBtn.addEventListener('mouseleave', () => submitBtn.style.transform = 'scale(1)');
 });
