@@ -207,37 +207,6 @@
         Nombre de visites totales : <span id="visitor-count">0</span>
     </div>
 
-    <script>
-        const counterUrl = 'https://api.counterapi.dev/v2/tcinfos-hf/visite/up';
-
-        fetch(counterUrl, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-            .then(response => response.json())
-            .then(data => {
-                console.log(data);
-                document.getElementById('visitor-count').textContent = data.data.up_count ?? data.data.value ?? 0;
-            })
-            .catch(error => console.error('Erreur compteur:', error));
-    </script>
-
-    <script>
-        const counterUrl = 'https://api.counterapi.dev/v2/tcinfos-hf/visite/up';
-
-        fetch(counterUrl, { method: 'POST' })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-                document.getElementById('visitor-count').textContent = data.data.up_count;
-            })
-            .catch(err => console.error('Erreur compteur:', err));
-    </script>
-
-
-
 
 
 
@@ -246,6 +215,35 @@
 <footer>
     &copy; 2026 TC-Infos-HDF | Conçu par MR et ML | Contact : <a href="mailto:tcinfoshdf@gmail.com">tcinfoshdf@gmail.com</a>  | Mis à jour le 12/02/2026
 </footer>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+        fetch('https://api.counterapi.dev/v2/tcinfos-hf/visite/up', {
+            method: 'POST'
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log("Réponse API :", data);
+
+                let count = 0;
+
+                if (data.data && data.data.up_count !== undefined) {
+                    count = data.data.up_count;
+                } else if (data.value !== undefined) {
+                    count = data.value;
+                }
+
+                document.getElementById('visitor-count').textContent = count;
+            })
+            .catch(error => {
+                console.error("Erreur compteur :", error);
+            });
+
+    });
+</script>
+
+
 
 </body>
 </html>
