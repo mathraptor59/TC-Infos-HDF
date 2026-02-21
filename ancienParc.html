@@ -124,6 +124,40 @@
             margin-top:40px;
         }
 
+        footer a {
+            color: #ff6600;
+            text-decoration: none;
+            font-weight:bold;
+        }
+
+        footer a:hover {
+            color: #c433ff;
+        }
+
+        .gallery figure {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 10px;
+        }
+
+        .gallery figure img {
+            width: 250px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        .gallery figure figcaption {
+            margin-top: 8px;
+            font-weight: bold;
+            color: #fff;
+            background: rgba(0,0,0,0.2);
+            padding: 4px 8px;
+            border-radius: 6px;
+            text-align: center;
+            width: fit-content;
+        }
+
         @media(max-width:600px){
             header{
                 flex-direction:column;
@@ -180,7 +214,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr><td>14</td><td>Renault</td><td>PR180</td><td>924-MJ-59</td><td>Diesel</td><td></td><td>Oui</td></tr>
+            <tr><td>14</td><td>Renault</td><td>PR100</td><td>924-MJ-59</td><td>Diesel</td><td></td><td>Oui</td></tr>
             <tr><td>16</td><td>Renault</td><td>PR100</td><td>1312-MK-59</td><td>Diesel</td><td></td><td>Oui</td></tr>
             <tr><td>17</td><td>Renault</td><td>PR100</td><td>4284-LG-59</td><td>Diesel</td><td></td><td>Oui</td></tr>
             <tr><td>873</td><td>Renault</td><td>PR100.2</td><td>7457-QE-59</td><td>Diesel</td><td>1987</td><td>Oui</td></tr>
@@ -224,14 +258,42 @@
         </table>
     </div>
 
-    <h2 style="text-align:center;">Galerie photos</h2>
+<h2 style="text-align:center;">Galerie photos</h2>
 
-    <div class="gallery">
-        <img src="images/025.png">
-        <img src="images/003.png">
-        <img src="images/982.png">
-        <img src="images/891.jpg">
-    </div>
+<div class="gallery">
+    <figure>
+        <img src="images/16.jpg" alt="Bus 16">
+        <figcaption>RENAULT PR 100</figcaption>
+    </figure>
+    <figure>
+        <img src="images/8205.png" alt="Bus 8205">
+        <figcaption>RENAULT PR 180</figcaption>
+    </figure>
+    <figure>
+        <img src="images/891.jpg" alt="Bus 891">
+        <figcaption>RENAULT PR 100.2</figcaption>
+    </figure>
+    <figure>
+        <img src="images/912.jpg" alt="Bus 912">
+        <figcaption>RENAULT PR 180.2</figcaption>
+    </figure>
+    <figure>
+        <img src="images/908.png" alt="Bus 873">
+        <figcaption>RENAULT PR 180.2</figcaption>
+    </figure>
+    <figure>
+        <img src="images/891.jpg" alt="Bus 891">
+        <figcaption>Bus</figcaption>
+    </figure>
+    <figure>
+        <img src="images/003.png" alt="Bus 003">
+        <figcaption>RENAULT AGORA S</figcaption>
+    </figure>
+    <figure>
+        <img src="images/982_STIBUS.png" alt="Bus 982">
+        <figcaption>RENAULT AGORA L</figcaption>
+    </figure>
+</div>
 
 </div>
 

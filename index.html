@@ -116,7 +116,6 @@
             padding: 0 15px;
         }
 
-        /* Bus section logo centré */
         .bus-section.centered-logo {
             display: flex;
             justify-content: center;
@@ -130,7 +129,6 @@
             height: auto;
         }
 
-        /* Footer */
         footer {
             background-color: #333;
             color: white;
@@ -142,6 +140,63 @@
         footer a {
             color: #ff6600;
             font-weight: bold;
+            text-decoration: none;
+        }
+        footer a:hover {
+            color: #c433ff;
+        }
+
+        .hero {
+            background-color: #0077cc;
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            border-radius: 0 0 20px 20px;
+            position: relative;
+        }
+
+        .hero .launch-announcement,
+        .hero .disclaimer {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .hero .launch-announcement {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: #ffcc00;
+            background-color: rgba(0,0,0,0.2);
+            padding: 6px 12px;
+            border-radius: 8px;
+        }
+
+        .hero .disclaimer {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            color: #ffcc00;
+            background-color: rgba(0,0,0,0.2);
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+
+        @media(max-width:600px){
+            .hero .disclaimer {
+                position: static;
+                display: block;
+                text-align: center;
+                margin-top: 15px;
+            }
+        }
+
+        @media(max-width:600px){
+            .hero .launch-announcement {
+                position: static;
+                display: inline-block;
+                margin-bottom: 15px;
+                text-align: center;
+            }
         }
 
         @media(max-width:600px){
@@ -195,11 +250,18 @@
 
 <main>
     <div class="hero">
+        <div class="launch-announcement">
+            🚀 Lancement officiel du site web le 21/02/2026
+        </div>
         <h2>Bienvenue sur TC-Infos-HDF !</h2>
         <p>Toutes les infos sur les véhicules du réseau STIBUS, leurs lignes, statuts et modèles en un seul endroit.</p>
         <p>Bonne visite !</p>
         <a href="lesbus.html" class="btn">Voir la liste des bus</a>
         <a href="https://stibus.fr" class="btn">Voir le site officiel du réseau STIBUS</a>
+
+        <div class="disclaimer">
+            ⚠️ Ce site n'est pas le site officiel de STIBUS
+        </div>
     </div>
 
     <div class="container">
