@@ -158,6 +158,28 @@
             width: fit-content;
         }
 
+
+        #lightboxOverlay {
+            position: fixed;
+            display: none;
+            top:0;
+            left:0;
+            width:100%;
+            height:100%;
+            background: rgba(0,0,0,0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            cursor: pointer;
+        }
+
+        #lightboxOverlay img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+
         @media(max-width:600px){
             header{
                 flex-direction:column;
@@ -221,7 +243,7 @@
             <tr><td>878</td><td>Renault</td><td>PR180.2</td><td>597-QF-59</td><td>Diesel</td><td>1987</td><td>Oui</td></tr>
             <tr><td>891</td><td>Renault</td><td>PR100.2</td><td>545-WJ-59</td><td>Diesel</td><td>1989</td><td>Oui</td></tr>
             <tr><td>893</td><td>Renault</td><td>R312</td><td>6609-RJ-59</td><td>Diesel</td><td>1989</td><td>Oui</td></tr>
-            <tr><td>908</td><td>Renault</td><td>PR180.2 (ex RATP)</td><td>501-ADV-59</td><td>Diesel</td><td>1990</td><td>Oui</td></tr>
+            <tr><td>908</td><td>Renault</td><td>PR180.2 (ex RATP)</td><td>601-ADV-59</td><td>Diesel</td><td>1990</td><td>Oui</td></tr>
             <tr><td>911</td><td>Renault</td><td>R312</td><td>9747-TJ-59</td><td>Diesel</td><td>1991</td><td>Oui</td></tr>
             <tr><td>912</td><td>Renault</td><td>PR180.2</td><td>9749-TJ-59</td><td>Diesel</td><td>1991</td><td>Oui</td></tr>
             <tr><td>931</td><td>Renault</td><td>R312</td><td>9187-VQ-59</td><td>Diesel</td><td>1993</td><td>Oui</td></tr>
@@ -274,6 +296,10 @@
         <figcaption>RENAULT PR 100.2</figcaption>
     </figure>
     <figure>
+        <img src="images/951.jpg" alt="Bus 951">
+        <figcaption>RENAULT R312</figcaption>
+    </figure>
+    <figure>
         <img src="images/912.jpg" alt="Bus 912">
         <figcaption>RENAULT PR 180.2</figcaption>
     </figure>
@@ -282,8 +308,8 @@
         <figcaption>RENAULT PR 180.2</figcaption>
     </figure>
     <figure>
-        <img src="images/891.jpg" alt="Bus 891">
-        <figcaption>Bus</figcaption>
+        <img src="images/966.png" alt="Bus 966">
+        <figcaption>RENAULT PR 118</figcaption>
     </figure>
     <figure>
         <img src="images/003.png" alt="Bus 003">
@@ -292,6 +318,10 @@
     <figure>
         <img src="images/982_STIBUS.png" alt="Bus 982">
         <figcaption>RENAULT AGORA L</figcaption>
+    </figure>
+    <figure>
+        <img src="images/025.png" alt="Bus 025">
+        <figcaption>IRISBUS AGORA S</figcaption>
     </figure>
 </div>
 
@@ -322,7 +352,30 @@
         table.setAttribute("data-sort",asc?"asc":"desc");
         rows.forEach(row=>table.tBodies[0].appendChild(row));
     }
+
 </script>
 
+<div id="lightboxOverlay">
+    <img src="" alt="Agrandissement">
+</div>
+
+<script>
+    // Lightbox
+    const lightbox = document.getElementById("lightboxOverlay");
+    const lightboxImg = lightbox.querySelector("img");
+
+    document.querySelectorAll(".gallery img").forEach(img => {
+        img.addEventListener("click", () => {
+            lightbox.style.display = "flex";
+            lightboxImg.src = img.src;
+            lightboxImg.alt = img.alt;
+        });
+    });
+
+    lightbox.addEventListener("click", () => {
+        lightbox.style.display = "none";
+        lightboxImg.src = "";
+    });
+</script>
 </body>
 </html>
