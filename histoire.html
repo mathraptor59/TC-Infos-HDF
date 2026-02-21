@@ -129,6 +129,24 @@
             color: #c433ff;
         }
 
+        .logos-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .logo-item {
+            width: 30%;
+            max-width: 200px;
+            height: auto;
+            background-color: transparent;
+            padding: 0;
+            border: none;
+            box-shadow: none;
+            object-fit: contain;
+        }
+
         @media (max-width: 600px) {
             header {
                 flex-direction: column;
@@ -257,11 +275,11 @@
             <li>Renault R312 – urbain classique des années 1980–1990</li>
             <li>Renault PR 118 – version articulée</li>
             <li>Renault Agora S et Renault Agora L – urbains modernes fin des années 90 – début 2000</li>
-            <li>Irisbus Agora S</li>
+            <li>Irisbus Agora S - urbain modern de fin des années 90- début 2000, qui fait suite au Renault Agora S</li>
         </ul>
 
         <p>
-            Ce sont des bus standards diesel qui ont longuement servi avant la modernisation du réseau
+            Ce sont des bus diesel qui ont longuement servi avant la modernisation du réseau
             vers des bus à haut niveau de service (BHNS).
         </p>
 
@@ -298,6 +316,18 @@
         <ul>
             <li>Minibus / citadines – utilisés pour les navettes centre-ville et services locaux</li>
         </ul>
+
+        <div class="container">
+            <section class="history-section">
+                <h4>Historique des logos du réseau</h4>
+                <div class="logos-container">
+                    <img src="images/logo1stibus.jpg" alt="Logo Historique 1" class="logo-item">
+                    <img src="images/logoS2.png" alt="Logo Historique 2" class="logo-item">
+                    <img src="images/logoS.png" alt="Logo Historique 3" class="logo-item">
+                </div>
+            </section>
+        </div>
+
     </section>
 
 </div>
