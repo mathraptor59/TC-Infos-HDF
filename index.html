@@ -185,6 +185,28 @@
             border-radius: 6px;
         }
 
+        .partenaires {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .logos-partenaires {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .logos-partenaires img {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            background: white;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
         @media(max-width:600px){
             .hero .disclaimer {
                 position: static;
@@ -224,6 +246,8 @@
             .bus-section.centered-logo .side-logo img {
                 width: 200px;
             }
+
+
         }
     </style>
     <script>
@@ -276,6 +300,17 @@
         </div>
     </div>
 
+    <div class="container">
+        <div class="partenaires">
+            <h2>Nos partenaires</h2>
+
+            <div class="logos-partenaires">
+                <a href="https://www.facebook.com/Auto2000Boussois/" target="_blank">
+                    <img src="images/PUB-AUTO-2000.png" alt="Auto 2000">
+                </a>
+            </div>
+        </div>
+    </div>
 
 
 </main>
