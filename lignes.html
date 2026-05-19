@@ -38,6 +38,32 @@
         p {
             opacity: 0.8;
         }
+
+        /* Container pour le texte + bouton sur la même ligne */
+        .text-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px; /* espace entre le texte et le bouton */
+            margin-top: 20px;
+        }
+
+        /* Style du bouton */
+        .btn {
+            padding: 10px 20px;
+            font-size: 1rem;
+            color: white;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
     </style>
 </head>
 <body>
@@ -45,6 +71,11 @@
     <h1>🚧 Page en maintenance</h1>
     <p>Cette page, dédiée aux lignes du réseau STIBUS, est actuellement en développement.</p>
     <p>Du nouveau contenu sera bientôt disponible ! </p>
+
+    <div class="text-button">
+        <p>Retour au menu principal :</p>
+        <a href="index.html" class="btn">Menu principal</a>
+    </div>
 </div>
 </body>
 </html>
