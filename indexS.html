@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <title>TC-Infos-HDF</title>
+
+    <link rel="icon" href="images/logoMAJ.png" type="image/png">
+    <link rel="apple-touch-icon" href="images/logo.png" type="image/png">
+
+    <meta name="google-site-verification" content="W8E_jCZL4aD6uqbwpIzSrZKoBF1TunsBKSu8qHb2HBk"/>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-N256W6SZKR"></script>
+
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-N256W6SZKR');
+    </script>
+
+    <style>
+
+        :root{
+            --bg:#0b1220;
+            --surface:#121c2e;
+            --surface-2:#18253b;
+
+            --primary:#3b82f6;
+            --primary-hover:#2563eb;
+
+            --accent:#ff7a00;
+
+            --text:#f4f7fb;
+            --text-soft:#b6c2d9;
+
+            --border:rgba(255,255,255,0.08);
+
+            --shadow:
+                    0 10px 30px rgba(0,0,0,0.35);
+
+            --radius:22px;
+        }
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        html{
+            scroll-behavior:smooth;
+        }
+
+        body{
+            font-family:'Inter',sans-serif;
+            background:
+                    radial-gradient(circle at top left, rgba(59,130,246,0.15), transparent 30%),
+                    radial-gradient(circle at bottom right, rgba(255,122,0,0.10), transparent 25%),
+                    var(--bg);
+
+            color:var(--text);
+            min-height:100vh;
+
+            display:flex;
+            flex-direction:column;
+        }
+
+        a{
+            text-decoration:none;
+            color:inherit;
+        }
+
+        main{
+            flex:1;
+        }
+
+        /* =========================
+           HEADER
+        ========================== */
+
+        header{
+            position:sticky;
+            top:0;
+            z-index:1000;
+
+            backdrop-filter:blur(14px);
+
+            background:rgba(11,18,32,0.75);
+
+            border-bottom:1px solid var(--border);
+
+            padding:16px 30px;
+
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            gap:25px;
+        }
+
+        .brand{
+            display:flex;
+            align-items:center;
+            gap:18px;
+            min-width:max-content;
+        }
+
+        .brand img{
+            width:72px;
+            height:72px;
+            object-fit:contain;
+        }
+
+        .brand h1{
+            font-size:clamp(22px, 3vw, 34px);
+            font-weight:800;
+            letter-spacing:-1px;
+        }
+
+        nav{
+            display:flex;
+            flex-wrap:wrap;
+            justify-content:center;
+            gap:12px;
+        }
+
+        nav a{
+            padding:12px 18px;
+
+            background:rgba(255,255,255,0.05);
+
+            border:1px solid rgba(255,255,255,0.08);
+
+            border-radius:14px;
+
+            color:var(--text-soft);
+
+            font-weight:600;
+            font-size:15px;
+
+            transition:0.25s ease;
+        }
+
+        nav a:hover{
+            background:white;
+            color:#0b1220;
+
+            transform:translateY(-2px);
+        }
+
+        /* =========================
+           HERO
+        ========================== */
+
+        .hero-wrapper{
+            width:min(1400px, calc(100% - 40px));
+            margin:40px auto 0;
+        }
+
+        .announcement{
+            display:inline-flex;
+            align-items:center;
+            gap:10px;
+
+            margin-bottom:18px;
+
+            padding:12px 18px;
+
+            border-radius:999px;
+
+            background:rgba(255,255,255,0.06);
+
+            border:1px solid rgba(255,255,255,0.08);
+
+            color:#ffd27c;
+
+            font-weight:600;
+            font-size:14px;
+        }
+
+        .hero{
+            position:relative;
+
+            overflow:hidden;
+
+            background:
+                    linear-gradient(135deg, rgba(59,130,246,0.18), rgba(255,255,255,0.02));
+
+            border:1px solid var(--border);
+
+            border-radius:36px;
+
+            padding:90px 60px;
+
+            box-shadow:var(--shadow);
+        }
+
+        .hero::before{
+            content:"";
+
+            position:absolute;
+            inset:0;
+
+            background:
+                    radial-gradient(circle at top right, rgba(255,255,255,0.08), transparent 30%);
+
+            pointer-events:none;
+        }
+
+        .hero-content{
+            position:relative;
+            z-index:2;
+
+            max-width:900px;
+        }
+
+        .hero h2{
+            font-size:clamp(42px, 7vw, 72px);
+            line-height:1;
+
+            margin-bottom:28px;
+
+            letter-spacing:-3px;
+
+            font-weight:800;
+        }
+
+        .hero p{
+            color:var(--text-soft);
+
+            font-size:18px;
+
+            line-height:1.8;
+
+            margin-bottom:14px;
+        }
+
+        .hero-buttons{
+            display:flex;
+            flex-wrap:wrap;
+            gap:18px;
+
+            margin-top:40px;
+        }
+
+        .btn{
+            display:inline-flex;
+            align-items:center;
+            justify-content:center;
+
+            min-height:58px;
+
+            padding:0 26px;
+
+            border-radius:18px;
+
+            font-weight:700;
+
+            transition:0.25s ease;
+        }
+
+        .btn-primary{
+            background:var(--primary);
+            color:white;
+
+            box-shadow:
+                    0 10px 25px rgba(59,130,246,0.35);
+        }
+
+        .btn-primary:hover{
+            background:var(--primary-hover);
+
+            transform:translateY(-3px);
+        }
+
+        .btn-secondary{
+            background:rgba(255,255,255,0.06);
+
+            border:1px solid rgba(255,255,255,0.08);
+
+            color:white;
+        }
+
+        .btn-secondary:hover{
+            background:white;
+            color:#0b1220;
+
+            transform:translateY(-3px);
+        }
+
+        .disclaimer{
+            margin-top:40px;
+
+            padding:18px 22px;
+
+            width:fit-content;
+
+            border-radius:18px;
+
+            background:rgba(255,122,0,0.10);
+
+            border:1px solid rgba(255,122,0,0.20);
+
+            color:#ffd4ad;
+
+            line-height:1.6;
+
+            font-weight:600;
+        }
+
+        /* =========================
+           CONTENT
+        ========================== */
+
+        .section{
+            width:min(1200px, calc(100% - 40px));
+            margin:60px auto;
+        }
+
+        .card{
+            background:rgba(255,255,255,0.04);
+
+            border:1px solid rgba(255,255,255,0.08);
+
+            border-radius:30px;
+
+            padding:40px;
+
+            box-shadow:var(--shadow);
+        }
+
+        .logo-center{
+            display:flex;
+            justify-content:center;
+            align-items:center;
+        }
+
+        .logo-center img{
+            width:min(320px, 100%);
+            transition:0.3s ease;
+        }
+
+        .logo-center img:hover{
+            transform:scale(1.04);
+        }
+
+        .partenaires h2{
+            text-align:center;
+
+            font-size:38px;
+
+            margin-bottom:35px;
+
+            letter-spacing:-1px;
+        }
+
+        .logos-partenaires{
+            display:flex;
+            justify-content:center;
+            flex-wrap:wrap;
+            gap:30px;
+        }
+
+        .logos-partenaires a{
+            background:white;
+
+            padding:20px;
+
+            border-radius:24px;
+
+            transition:0.3s ease;
+
+            box-shadow:
+                    0 10px 25px rgba(0,0,0,0.25);
+        }
+
+        .logos-partenaires a:hover{
+            transform:translateY(-6px);
+        }
+
+        .logos-partenaires img{
+            width:min(320px, 100%);
+            display:block;
+        }
+
+        /* =========================
+           FOOTER
+        ========================== */
+
+        footer{
+            margin-top:70px;
+
+            border-top:1px solid rgba(255,255,255,0.08);
+
+            background:rgba(0,0,0,0.25);
+
+            padding:28px 20px;
+
+            text-align:center;
+
+            color:var(--text-soft);
+
+            line-height:1.8;
+
+            font-size:15px;
+        }
+
+        footer a{
+            color:#7db4ff;
+            font-weight:600;
+        }
+
+        footer a:hover{
+            color:white;
+        }
+
+        /* =========================
+           MOBILE
+        ========================== */
+
+        @media(max-width:980px){
+
+            header{
+                flex-direction:column;
+                align-items:center;
+            }
+
+            nav{
+                width:100%;
+            }
+
+            .hero{
+                padding:70px 30px;
+            }
+
+            .hero h2{
+                line-height:1.1;
+            }
+        }
+
+        @media(max-width:600px){
+
+            .brand{
+                flex-direction:column;
+                text-align:center;
+                gap:10px;
+            }
+
+            .brand img{
+                width:64px;
+                height:64px;
+            }
+
+            nav a{
+                width:100%;
+                text-align:center;
+            }
+
+            .hero{
+                padding:55px 24px;
+                border-radius:28px;
+            }
+
+            .hero h2{
+                font-size:42px;
+            }
+
+            .hero p{
+                font-size:16px;
+            }
+
+            .hero-buttons{
+                flex-direction:column;
+            }
+
+            .btn{
+                width:100%;
+            }
+
+            .partenaires h2{
+                font-size:30px;
+            }
+
+            .card{
+                padding:28px;
+            }
+        }
+
+    </style>
+
+    <script>
+        const maintenance = false;
+
+        if (maintenance === true) {
+            window.location.replace("maintenance.html");
+        }
+    </script>
+
+</head>
+
+<body>
+
+<header>
+
+    <div class="brand">
+        <img src="images/logoMAJ.png" alt="Logo StiBus">
+        <h1>TC-Infos-HDF</h1>
+    </div>
+
+    <nav>
+        <a href="index.html">Accueil</a>
+        <a href="lesbus.html">Le parc</a>
+        <a href="histoire.html">Histoire du réseau</a>
+        <a href="ancienParc.html">L'ancien parc</a>
+        <a href="lignes.html">Lignes du réseau</a>
+        <a href="galerie.html">Galerie</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+</header>
+
+<main>
+
+    <div class="hero-wrapper">
+
+        <div class="announcement">
+            🚀 Lancement officiel du site web le 21/02/2026
+        </div>
+
+        <section class="hero">
+
+            <div class="hero-content">
+
+                <h2>Bienvenue sur TC-Infos-HDF !</h2>
+
+                <p>
+                    Toutes les infos sur les véhicules du réseau STIBUS,
+                    leurs lignes, statuts et modèles en un seul endroit.
+                </p>
+
+                <p>
+                    A terme, ce site regroupera les informations de plusieurs
+                    réseaux de transport en commun.
+                </p>
+
+                <p>
+                    Bonne visite !
+                </p>
+
+                <div class="hero-buttons">
+
+                    <a href="lesbus.html" class="btn btn-primary">
+                        Voir la liste des bus
+                    </a>
+
+                    <a href="https://stibus.fr"
+                       target="_blank"
+                       class="btn btn-secondary">
+
+                        Voir le site officiel du réseau STIBUS
+                    </a>
+
+                </div>
+
+                <div class="disclaimer">
+                    ⚠️ Ce site n'est pas le site officiel de STIBUS
+                    <br>
+                    il s'agit d'un fan-site
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+    <section class="section">
+
+        <div class="card logo-center">
+
+            <a href="https://stibus.fr" target="_blank">
+                <img src="images/logoS.png" alt="Logo partenaire">
+            </a>
+
+        </div>
+
+    </section>
+
+    <section class="section">
+
+        <div class="card partenaires">
+
+            <h2>Nos partenaires</h2>
+
+            <div class="logos-partenaires">
+
+                <a href="https://www.facebook.com/Auto2000Boussois/"
+                   target="_blank">
+
+                    <img src="images/PUB-AUTO-2000.png" alt="Auto 2000">
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+<footer>
+
+    &copy; 2026 TC-Infos-HDF |
+    Conçu par MR et ML |
+
+    Contact :
+    <a href="mailto:tcinfoshdf@gmail.com">
+        tcinfoshdf@gmail.com
+    </a>
+
+    | Mis à jour le 13/05/2026 |
+    Version 1.0
+
+</footer>
+
+<script>
+
+    fetch('https://api.counterapi.dev/v2/tcinfos-hf/visite/up', {
+        method: 'POST'
+    })
+        .then(res => res.json())
+        .then(data => console.log("Compteur mis à jour :", data))
+        .catch(err => console.error(err));
+
+</script>
+
+</body>
+</html>
