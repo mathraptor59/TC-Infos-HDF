@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <title>TC-Infos-HDF</title>
+
+    <link rel="icon" href="images/Logo-hdf.png">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+
+        /* ===================== */
+        /* THEME SYSTEM */
+        /* ===================== */
+
+        :root{
+            --bg:#07111f;
+            --card:#101c2e;
+            --text:#ffffff;
+            --muted:#b8c7dc;
+            --primary:#00b7ff;
+            --shadow:0 10px 30px rgba(0,0,0,0.35);
+        }
+
+        body.light{
+            --bg:#f5f7fb;
+            --card:#ffffff;
+            --text:#0b1b2b;
+            --muted:#516a85;
+            --shadow:0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        *{margin:0;padding:0;box-sizing:border-box;}
+
+        body{
+            font-family:Poppins,sans-serif;
+            background:var(--bg);
+            color:var(--text);
+            transition:0.3s ease;
+        }
+
+        a{text-decoration:none;color:inherit;}
+
+        /* ===================== */
+        /* HEADER */
+        /* ===================== */
+
+        header{
+            position:sticky;
+            top:0;
+            z-index:999;
+            backdrop-filter:blur(12px);
+            background:rgba(0,0,0,0.4);
+            border-bottom:1px solid rgba(255,255,255,0.08);
+        }
+
+        .nav{
+            max-width:1300px;
+            margin:auto;
+            padding:15px 20px;
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+        }
+
+        .logo{
+            display:flex;
+            align-items:center;
+            gap:10px;
+        }
+
+        .logo img{width:80px;}
+
+        nav{
+            display:flex;
+            gap:10px;
+            align-items:center;
+        }
+
+        /* LINKS */
+        nav a{
+            padding:10px 14px;
+            border-radius:10px;
+            transition:0.2s;
+        }
+
+        nav a:hover{
+            background:rgba(255,255,255,0.08);
+        }
+
+        /* BUTTONS */
+        .btn{
+            background:linear-gradient(135deg,#00b7ff,#0077ff);
+            color:white;
+        }
+
+        /* ===================== */
+        /* HAMBURGER */
+        /* ===================== */
+
+        .hamburger{
+            display:none;
+            flex-direction:column;
+            gap:5px;
+            cursor:pointer;
+        }
+
+        .hamburger span{
+            width:28px;
+            height:3px;
+            background:white;
+            border-radius:5px;
+            transition:0.3s;
+        }
+
+        .mobile-menu{
+            display:none;
+            flex-direction:column;
+            gap:10px;
+            padding:15px;
+        }
+
+        /* ===================== */
+        /* HERO */
+        /* ===================== */
+
+        .hero{
+            max-width:1300px;
+            margin:auto;
+            padding:60px 20px;
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            gap:40px;
+        }
+
+        .hero h1{
+            font-size:48px;
+        }
+
+        .hero h1 span{color:var(--primary);}
+
+        .hero p{
+            color:var(--muted);
+            margin-top:15px;
+            line-height:1.7;
+        }
+
+        /* ===================== */
+        /* NEWS */
+        /* ===================== */
+
+        .section{
+            max-width:1300px;
+            margin:auto;
+            padding:30px 20px;
+        }
+
+        .news-grid{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+            gap:20px;
+        }
+
+        .card{
+            background:var(--card);
+            border-radius:16px;
+            overflow:hidden;
+            box-shadow:var(--shadow);
+        }
+
+        .card img{
+            width:100%;
+            height:180px;
+            object-fit:cover;
+        }
+
+        .card-content{
+            padding:15px;
+        }
+
+        .tag{
+            font-size:12px;
+            color:var(--primary);
+            font-weight:600;
+        }
+
+        /* ===================== */
+        /* TOGGLE BUTTON */
+        /* ===================== */
+
+        .toggle{
+            cursor:pointer;
+            padding:10px 14px;
+            border-radius:10px;
+            background:rgba(255,255,255,0.08);
+        }
+
+        /* ===================== */
+        /* RESPONSIVE */
+        /* ===================== */
+
+        @media(max-width:900px){
+
+            .hero{
+                grid-template-columns:1fr;
+            }
+
+            nav{
+                display:none;
+            }
+
+            .hamburger{
+                display:flex;
+            }
+
+            .mobile-menu.active{
+                display:flex;
+                background:var(--card);
+                position:absolute;
+                top:70px;
+                right:20px;
+                border-radius:12px;
+                box-shadow:var(--shadow);
+                width:200px;
+            }
+
+        }
+
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="nav">
+
+        <div class="logo">
+            <img src="images/Logo-hdf.png">
+            <strong>TC-Infos-HDF</strong>
+        </div>
+
+        <nav>
+            <a href="#">Accueil</a>
+            <a href="lesbus.html">Bus</a>
+            <a href="lignes.html">Lignes</a>
+            <a href="galerie.html">Galerie</a>
+            <a href="https://stibus.fr" class="btn">STIBUS</a>
+
+            <div class="toggle" onclick="toggleTheme()">🌙</div>
+        </nav>
+
+        <div class="hamburger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+    </div>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#">Accueil</a>
+        <a href="lesbus.html">Bus</a>
+        <a href="lignes.html">Lignes</a>
+        <a href="galerie.html">Galerie</a>
+        <a href="https://stibus.fr">STIBUS</a>
+    </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+
+    <div>
+        <h1>TC-Infos-HDF <span>2026</span></h1>
+
+        <p>
+            Site d’informations sur le réseau STIBUS et transports Hauts-de-France.
+        </p>
+
+        <p>
+            Version moderne avec news dynamiques et design futuriste.
+        </p>
+
+    </div>
+
+</section>
+
+<!-- NEWS -->
+<section class="section">
+
+    <h2>📰 News du mois</h2>
+    <div class="news-grid" id="newsGrid"></div>
+
+</section>
+
+<script>
+
+    /* ===================== */
+    /* MENU MOBILE */
+    /* ===================== */
+
+    function toggleMenu(){
+        document.getElementById("mobileMenu").classList.toggle("active");
+    }
+
+    /* ===================== */
+    /* DARK MODE */
+    /* ===================== */
+
+    function toggleTheme(){
+        document.body.classList.toggle("light");
+    }
+
+    /* ===================== */
+    /* NEWS DYNAMIQUES */
+    /* ===================== */
+
+    const news = [
+        {
+            title:"Nouveaux véhicules STIBUS",
+            date:"Mai 2026",
+            img:"images/news1.jpg",
+            text:"Arrivée de nouveaux bus modernes sur le réseau."
+        },
+        {
+            title:"Galerie mise à jour",
+            date:"Mai 2026",
+            img:"images/news2.jpg",
+            text:"Ajout de photos HD et navigation améliorée."
+        },
+        {
+            title:"Version 2026 lancée",
+            date:"Mai 2026",
+            img:"images/news3.jpg",
+            text:"Refonte complète du site avec design futuriste."
+        }
+    ];
+
+    const container = document.getElementById("newsGrid");
+
+    news.forEach(n=>{
+        container.innerHTML += `
+        <div class="card">
+            <img src="${n.img}">
+            <div class="card-content">
+                <div class="tag">${n.date}</div>
+                <h3>${n.title}</h3>
+                <p>${n.text}</p>
+            </div>
+        </div>
+    `;
+    });
+
+</script>
+
+</body>
+</html>

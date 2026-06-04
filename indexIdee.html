@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>TC-Infos-HDF</title>
+
+    <link rel="icon" href="images/Logo-hdf.png" type="image/png">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+
+        *{margin:0;padding:0;box-sizing:border-box;}
+
+        :root{
+            --bg:#07111f;
+            --card:#101c2e;
+            --primary:#00b7ff;
+            --secondary:#0077ff;
+            --text:#fff;
+            --text2:#b8c7dc;
+            --shadow:0 10px 30px rgba(0,0,0,0.35);
+        }
+
+        body{
+            font-family:Poppins, sans-serif;
+            background:var(--bg);
+            color:var(--text);
+        }
+
+        a{text-decoration:none;color:inherit;}
+
+        header{
+            position:sticky;
+            top:0;
+            z-index:999;
+            backdrop-filter:blur(12px);
+            background:rgba(7,17,31,0.8);
+            border-bottom:1px solid rgba(255,255,255,0.08);
+        }
+
+        .nav{
+            max-width:1400px;
+            margin:auto;
+            padding:18px 25px;
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            gap:20px;
+            flex-wrap:wrap;
+        }
+
+        .logo{
+            display:flex;
+            align-items:center;
+            gap:12px;
+        }
+
+        .logo img{
+            width:85px;
+        }
+
+        nav{
+            display:flex;
+            gap:10px;
+            flex-wrap:wrap;
+            justify-content:center;
+        }
+
+        nav a{
+            padding:10px 14px;
+            border-radius:12px;
+            font-weight:500;
+        }
+
+        nav a:hover{
+            background:rgba(255,255,255,0.08);
+        }
+
+        .btn-site{
+            background:linear-gradient(135deg,var(--primary),var(--secondary));
+            border-radius:12px;
+        }
+
+        .hero{
+            max-width:1400px;
+            margin:auto;
+            padding:70px 25px;
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            gap:40px;
+            align-items:center;
+        }
+
+        .hero h1{
+            font-size:48px;
+        }
+
+        .hero h1 span{
+            color:var(--primary);
+        }
+
+        .hero p{
+            color:var(--text2);
+            margin-top:15px;
+            line-height:1.7;
+        }
+
+        .hero .buttons{
+            margin-top:25px;
+            display:flex;
+            gap:15px;
+            flex-wrap:wrap;
+        }
+
+        .btn{
+            padding:14px 22px;
+            border-radius:12px;
+            font-weight:600;
+        }
+
+        .btn-primary{
+            background:linear-gradient(135deg,var(--primary),var(--secondary));
+        }
+
+        .btn-secondary{
+            background:rgba(255,255,255,0.08);
+        }
+
+        .hero-card{
+            background:#101c2e;
+            border-radius:20px;
+            overflow:hidden;
+            box-shadow:var(--shadow);
+        }
+
+        .hero-card img{
+            width:100%;
+            height:300px;
+            object-fit:cover;
+        }
+
+        .hero-card div{
+            padding:20px;
+        }
+
+
+        .section{
+            max-width:1400px;
+            margin:auto;
+            padding:30px 25px;
+        }
+
+        .title h2{
+            font-size:32px;
+            margin-bottom:20px;
+        }
+
+        .news{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+            gap:20px;
+        }
+
+        .card{
+            background:var(--card);
+            border-radius:16px;
+            overflow:hidden;
+        }
+
+        .card img{
+            width:100%;
+            height:180px;
+            object-fit:cover;
+        }
+
+        .card div{
+            padding:15px;
+        }
+
+        .tag{
+            color:var(--primary);
+            font-size:12px;
+            font-weight:600;
+        }
+
+        .partners img{
+            max-width:500px;
+            width:100%;
+            background:#fff;
+            padding:10px;
+            border-radius:10px;
+        }
+
+
+        footer{
+            text-align:center;
+            padding:30px;
+            color:var(--text2);
+            border-top:1px solid rgba(255,255,255,0.08);
+            margin-top:50px;
+        }
+
+        @media(max-width:900px){
+            .hero{grid-template-columns:1fr;}
+            .hero h1{font-size:36px;}
+        }
+
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="nav">
+
+        <div class="logo">
+            <img src="images/LogoNouvRect.png" alt="Logo">
+            <strong>TC-Infos-HDF</strong>
+        </div>
+
+        <nav>
+            <a href="index.html">Accueil</a>
+            <a href="lesbus.html">Le parc</a>
+            <a href="histoire.html">Histoire</a>
+            <a href="ancienParc.html">Ancien parc</a>
+            <a href="lignes.html">Lignes</a>
+            <a href="galerie.html">Galerie</a>
+            <a href="contact.html">Contact</a>
+            <a class="btn-site" href="https://stibus.fr" target="_blank">STIBUS</a>
+        </nav>
+
+    </div>
+</header>
+
+
+<section class="hero">
+
+    <div>
+        <h1>Bienvenue sur <span>TC-Infos-HDF</span></h1>
+
+        <p>
+            Toutes les infos sur les véhicules du réseau STIBUS,
+            leurs lignes, statuts et modèles en un seul endroit.
+        </p>
+
+        <p>
+            À terme, ce site regroupera les informations de plusieurs réseaux de transport en commun.
+        </p>
+
+        <div class="buttons">
+            <a class="btn btn-primary" href="lesbus.html">Voir les bus</a>
+            <a class="btn btn-secondary" href="https://stibus.fr">Site officiel STIBUS</a>
+        </div>
+
+        <p style="margin-top:20px;color:#ffcc00;font-size:14px;">
+            🚀 Lancement officiel du site web le 21/02/2026
+        </p>
+
+        <p style="margin-top:10px;color:#ffcc00;font-size:12px;">
+            ⚠️ Site non officiel • Fan-site indépendant • Aucun lien avec tc-infos.fr
+        </p>
+
+    </div>
+
+    <div class="hero-card">
+        <img src="images/logoS.png" alt="STIBUS">
+        <div>
+            <strong>Version 2026</strong>
+            <p style="color:#b8c7dc;">
+                Une interface moderne, rapide et pensée pour les passionnés de transport.
+            </p>
+        </div>
+    </div>
+
+</section>
+
+
+<section class="section">
+
+    <div class="title">
+        <h2>📰 News du mois</h2>
+    </div>
+
+    <div class="news">
+
+        <div class="card">
+            <img src="images/Navettes_S25x.jpg">
+            <div>
+                <div class="tag">Mars 2026</div>
+                <h3>Nouvelles navettes</h3>
+                <p style="color:#b8c7dc;">Mise en service des nouvelles navettes électriques ! Les nouvelles navettes
+                 Karsan E-jest 100% électriques ont été mises en service (n°250/251/252) !</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="images/261_av.jpg">
+            <div>
+                <div class="tag">Mai 2026</div>
+                <h3>Nouveau bus</h3>
+                <p style="color:#b8c7dc;">Le tout nouveau bus Iveco Urbanway 12 hybride n°261 a été mis en service
+                    ce mois de mai !</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="images/news3.jpg">
+            <div>
+                <div class="tag">Mai 2026</div>
+                <h3>Version 2026</h3>
+                <p style="color:#b8c7dc;">Refonte complète du site en design moderne.</p>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="section">
+
+    <h2>Nos partenaires</h2>
+
+    <div class="partners" style="margin-top:20px;">
+        <a href="https://www.facebook.com/Auto2000Boussois/" target="_blank">
+            <img src="images/PUB-AUTO-2000.png" alt="Auto 2000">
+        </a>
+    </div>
+
+</section>
+
+<footer>
+    © 2026 TC-Infos-HDF | Conçu par MR et ML |
+    Contact : <a href="mailto:tcinfoshdf@gmail.com">tcinfoshdf@gmail.com</a>
+    <br>
+    Mis à jour le 23/05/2026 • Version 1.1
+</footer>
+
+</body>
+</html>
