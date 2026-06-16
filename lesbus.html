@@ -19,6 +19,17 @@
         document.documentElement.setAttribute("data-theme","light");
       }
     })();
+
+    document.addEventListener("scroll", () => {
+      document.getElementById("menu").classList.remove("active");
+    });
+
+    document.querySelectorAll("#menu a").forEach(a => {
+      a.addEventListener("click", () => {
+        document.getElementById("menu").classList.remove("active");
+      });
+    });
+
   </script>
 
   <style>
@@ -368,9 +379,10 @@
 
 
       nav{
-        position:absolute;
-        top:80px;
+        position:fixed;
+        top:70px;
         right:20px;
+        z-index:1000;
 
         background:var(--mobile-nav-bg);
         border-radius:15px;
