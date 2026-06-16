@@ -1,231 +1,378 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>Ancien parc - TC-Infos-HDF</title>
+
     <link rel="icon" href="images/Logo-hdf.png" type="image/png">
     <link rel="apple-touch-icon" href="images/Logo-hdf.png" type="image/png">
 
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-N256W6SZKR"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-N256W6SZKR');
+    </script>
+
     <style>
-        body{
-            margin:0;
-            font-family:Arial, sans-serif;
-            background-color:#d8a8e4;
-            background-image: url("images/fond_ancien_parc.png");
-            background-repeat: no-repeat;
-            background-position: center;
-            background-attachment: fixed;
-            background-size: cover;
+
+        *{margin:0;padding:0;box-sizing:border-box;}
+
+        :root{
+            --bg:#07111f;
+            --card:#101c2e;
+            --primary: #a824d8;
+            --secondary: #e09ff3;
+            --text:#fff;
+            --text2:#b8c7dc;
+            --shadow:0 10px 30px rgba(0,0,0,0.35);
         }
+
+        body{
+            font-family:Poppins, sans-serif;
+            color:var(--text);
+            background-color:var(--bg);
+            background-image:
+                    linear-gradient(rgba(7,17,31,0.88), rgba(7,17,31,0.88)),
+                    url("images/fond_ancien_parc.png");
+            background-repeat:no-repeat;
+            background-position:center;
+            background-attachment:fixed;
+            background-size:cover;
+        }
+
+        a{text-decoration:none;color:inherit;}
+
         header{
+            position:sticky;
+            top:0;
+            z-index:999;
+            backdrop-filter:blur(12px);
+            background:rgba(7,17,31,0.8);
+            border-bottom:1px solid rgba(255,255,255,0.08);
+        }
+
+        .nav{
+            max-width:1400px;
+            margin:auto;
+            padding:18px 25px;
             display:flex;
             align-items:center;
             justify-content:space-between;
-            background:#0056b3;
-            padding:10px 20px;
+            gap:20px;
             flex-wrap:wrap;
         }
-        header .logo img{height:110px;}
-        header h1{
-            color:white;
-            margin:0;
-            font-size:clamp(18px,4vw,32px);
+
+        .logo{
+            display:flex;
+            align-items:center;
+            gap:12px;
+        }
+
+        .logo img{
+            width:85px;
+        }
+
+        nav{
+            display:flex;
+            gap:10px;
+            flex-wrap:wrap;
+            justify-content:center;
+        }
+
+        nav a{
+            padding:10px 14px;
+            border-radius:12px;
+            font-weight:500;
+        }
+
+        nav a:hover{
+            background:rgba(255,255,255,0.08);
+        }
+
+        .btn-site{
+            box-shadow:0 0 20px #0077ff;
+            border-radius:12px;
+        }
+
+        .hero{
+            max-width:1400px;
+            margin:auto;
+            padding:60px 25px 40px;
             text-align:center;
-            flex:1;
-        }
-        header nav{margin-left:auto;}
-        header nav a{
-            margin-left:15px;
-            font-weight:bold;
-            color:white;
-            display:inline-block;
-            padding:8px 16px;
-            background:#2dac3a;
-            border-radius:8px;
-            border:2px solid white;
-            transition:.2s;
-            text-decoration:none;
-        }
-        .hero {
-            background-color: #a824d8;
-            color: white;
-            text-align: center;
-            padding: 40px 20px;
-            border-radius: 0 0 20px 20px;
-            margin-bottom: 30px;
         }
 
-        .hero h2 {
-            font-size: 28px;
-            margin: 0 0 10px;
+        .hero h2{
+            font-size:42px;
         }
 
-        .hero p {
-            margin: 0;
-            font-size: 18px;
+        .hero h2 span{
+            color:var(--primary);
         }
-        header nav a:hover{background:#ff6600;}
 
-        .container{
-            max-width:1200px;
-            margin:40px auto;
-            padding:0 20px;
+        .hero p{
+            color:var(--text2);
+            margin-top:15px;
+            line-height:1.7;
+            max-width:800px;
+            margin-left:auto;
+            margin-right:auto;
+        }
+
+        .section{
+            max-width:1400px;
+            margin:auto;
+            padding:30px 25px;
+        }
+
+        .title h2{
+            font-size:32px;
+            margin-bottom:20px;
+            text-align:center;
         }
 
         .search-box{
             text-align:center;
-            margin-bottom:20px;
-        }
-        .search-box input{
-            padding:8px;
-            width:250px;
-            border-radius:5px;
-            border:1px solid #ccc;
+            margin-bottom:25px;
         }
 
-        .table-wrapper {
-            overflow-x:auto;
-            background:white;
-            border-radius:10px;
-            box-shadow:0 4px 10px rgba(0,0,0,0.2);
-            max-width: 1500px;
-            margin: 0 auto;
+        .search-box input{
+            padding:12px 18px;
+            width:280px;
+            max-width:100%;
+            border-radius:12px;
+            border:1px solid rgba(255,255,255,0.15);
+            background:rgba(255,255,255,0.06);
+            color:var(--text);
+            font-family:Poppins, sans-serif;
+            outline:none;
         }
+
+        .search-box input::placeholder{
+            color:var(--text2);
+        }
+
+        .search-box input:focus{
+            border-color:var(--primary);
+        }
+
+        .table-wrapper{
+            overflow-x:auto;
+            background:var(--card);
+            border-radius:16px;
+            box-shadow:var(--shadow);
+            max-width:1500px;
+            margin:0 auto;
+        }
+
         table{
             width:100%;
             border-collapse:collapse;
         }
+
         th,td{
-            padding:10px;
-            border:1px solid #ddd;
+            padding:12px;
+            border:1px solid rgba(255,255,255,0.08);
             text-align:center;
+            white-space:nowrap;
         }
+
         th{
-            background:#a824d8;
-            color:white;
+            background:linear-gradient(135deg,var(--primary),var(--secondary));
+            color:#fff;
             cursor:pointer;
+            font-weight:600;
         }
-        tr:nth-child(even){background:#f9f9f9;}
-        tr:hover{background:#f1e3f7;}
+
+        tr:nth-child(even){background:rgba(255,255,255,0.03);}
+        tr:hover{background:rgba(0,183,255,0.1);}
 
         .gallery{
-            margin-top:50px;
+            margin-top:40px;
             display:flex;
             flex-wrap:wrap;
             justify-content:center;
             gap:20px;
         }
-        .gallery img{
+
+        .gallery figure{
+            display:flex;
+            flex-direction:column;
+            align-items:center;
+            margin:0;
+            background:var(--card);
+            border-radius:16px;
+            padding:14px;
+            box-shadow:var(--shadow);
+        }
+
+        .gallery figure img{
             width:250px;
             border-radius:10px;
-            box-shadow:0 2px 8px rgba(0,0,0,0.2);
+            transition:transform 0.3s ease;
+            cursor:pointer;
         }
 
-        footer{
-            background:#333;
-            color:white;
+        .gallery figure img:hover{
+            transform:scale(1.05);
+        }
+
+        .gallery figure figcaption{
+            margin-top:10px;
+            font-weight:600;
+            color:var(--text2);
             text-align:center;
-            padding:15px;
-            margin-top:40px;
         }
 
-        footer a {
-            color: #ff6600;
-            text-decoration: none;
-            font-weight:bold;
+        .sr-only{
+            position:absolute;
+            left:-9999px;
         }
 
-        footer a:hover {
-            color: #c433ff;
-        }
-
-        .gallery figure {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin: 10px;
-        }
-
-        .gallery figure img {
-            width: 250px;
-            border-radius: 10px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-        }
-
-        .gallery figure figcaption {
-            margin-top: 8px;
-            font-weight: bold;
-            color: #fff;
-            background: rgba(0,0,0,0.2);
-            padding: 4px 8px;
-            border-radius: 6px;
-            text-align: center;
-            width: fit-content;
-        }
-
-
-        #lightboxOverlay {
-            position: fixed;
-            display: none;
+        #lightboxOverlay{
+            position:fixed;
+            display:none;
             top:0;
             left:0;
             width:100%;
             height:100%;
-            background: rgba(0,0,0,0.8);
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            cursor: pointer;
+            background:rgba(0,0,0,0.85);
+            justify-content:center;
+            align-items:center;
+            z-index:1000;
+            cursor:pointer;
         }
 
-        #lightboxOverlay img {
-            max-width: 90%;
-            max-height: 90%;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        #lightboxOverlay img{
+            max-width:90%;
+            max-height:90%;
+            border-radius:14px;
+            box-shadow:0 10px 40px rgba(0,0,0,0.6);
         }
 
-        @media(max-width:600px){
-            header{
+        footer{
+            text-align:center;
+            padding:30px;
+            color:var(--text2);
+            border-top:1px solid rgba(255,255,255,0.08);
+            margin-top:50px;
+        }
+
+        @media(max-width:900px){
+            .hero h2{font-size:30px;}
+        }
+
+        .menu-mobile{
+            display:none;
+            font-size:32px;
+            cursor:pointer;
+        }
+
+
+        @media(max-width:700px){
+
+            .nav{
+                flex-wrap:nowrap;
+            }
+
+            .menu-mobile{
+                display:block;
+            }
+
+
+            nav{
+                position:absolute;
+                top:80px;
+                right:20px;
+
+                background:#101c2e;
+                border-radius:15px;
+                padding:15px;
+
+                display:none;
                 flex-direction:column;
-                align-items:center;
+                width:220px;
+
+                box-shadow:0 15px 40px rgba(0,0,0,.5);
             }
-            header nav{margin-left:0;}
-            header nav a{
-                margin:5px 10px;
+
+
+            nav.active{
+                display:flex;
             }
+
+
+            nav a{
+                width:100%;
+                text-align:center;
+            }
+
         }
+
     </style>
 </head>
+
+<script>
+
+    function toggleMenu(){
+
+        document.getElementById("menu")
+            .classList.toggle("active");
+
+    }
+
+</script>
 
 <body>
 
 <header>
-    <div class="logo">
-        <img src="images/LogoNouvRect.png" alt="Logo">
+    <div class="nav">
+
+        <div class="logo">
+            <img src="images/LogoNouvRect.png" alt="Logo">
+        </div>
+
+        <div class="menu-mobile" onclick="toggleMenu()">
+            ☰
+        </div>
+
+        <nav id="menu">
+            <a href="index.html">Accueil</a>
+            <a href="lesbus.html">Le parc</a>
+            <a href="histoire.html">Histoire</a>
+            <a href="ancienParc.html">Ancien parc</a>
+            <a href="lignes.html">Lignes</a>
+            <a href="galerie.html">Galerie</a>
+            <a href="contact.html">Contact</a>
+            <a class="btn-site" href="https://stibus.fr" target="_blank">STIBUS</a>
+        </nav>
+
     </div>
-    <h1>TC-Infos-HDF</h1>
-    <nav>
-        <a href="index.html">Accueil</a>
-        <a href="lesbus.html">Le parc</a>
-        <a href="histoire.html">Histoire du réseau</a>
-        <a href="lignes.html">Lignes du réseau</a>
-        <a href="galerie.html">Galerie</a>
-        <a href="contact.html">Contact</a>
-    </nav>
 </header>
 
-<div class="hero">
-    <h2>L'ancien parc de véhicules</h2>
+<section class="hero">
+    <h2>L'<span>ancien parc</span> de véhicules</h2>
     <p>
-        Vous trouverez sur cette page, les anciens bus du réseau STIBUS,
-        des années 80 jusqu'en 2006.<br> <br>
-        Vous trouverez également une série de photographies de ces anciens véhicules en bas de page.
+        Vous trouverez sur cette page les anciens bus du réseau STIBUS, des années 80 jusqu'en 2006.
+        Une série de photographies de ces anciens véhicules est également disponible en bas de page.
     </p>
-</div>
+</section>
+
+<section class="section">
+
+    <div class="title">
+        <h2>📋 Liste des véhicules</h2>
+    </div>
 
     <div class="search-box">
+        <label for="searchInput" class="sr-only">Rechercher un bus</label>
         <input type="text" id="searchInput" placeholder="Rechercher un bus...">
     </div>
 
@@ -287,56 +434,69 @@
         </table>
     </div>
 
-<h2 style="text-align:center;">Galerie photos</h2>
+</section>
 
-<div class="gallery">
-    <figure>
-        <img src="images/16.jpg" alt="Bus 16">
-        <figcaption>RENAULT PR 100</figcaption>
-    </figure>
-    <figure>
-        <img src="images/8205.png" alt="Bus 8205">
-        <figcaption>RENAULT PR 180</figcaption>
-    </figure>
-    <figure>
-        <img src="images/891.jpg" alt="Bus 891">
-        <figcaption>RENAULT PR 100.2</figcaption>
-    </figure>
-    <figure>
-        <img src="images/908.png" alt="Bus 873">
-        <figcaption>RENAULT PR 180.2</figcaption>
-    </figure>
-    <figure>
-        <img src="images/912.jpg" alt="Bus 912">
-        <figcaption>RENAULT PR 180.2</figcaption>
-    </figure>
-    <figure>
-        <img src="images/951.jpg" alt="Bus 951">
-        <figcaption>RENAULT R312</figcaption>
-    </figure>
-    <figure>
-        <img src="images/966.png" alt="Bus 966">
-        <figcaption>RENAULT PR 118</figcaption>
-    </figure>
-    <figure>
-        <img src="images/003.png" alt="Bus 003">
-        <figcaption>RENAULT AGORA S</figcaption>
-    </figure>
-    <figure>
-        <img src="images/982_STIBUS.png" alt="Bus 982">
-        <figcaption>RENAULT AGORA L</figcaption>
-    </figure>
-    <figure>
-        <img src="images/025.png" alt="Bus 025">
-        <figcaption>IRISBUS AGORA S</figcaption>
-    </figure>
-</div>
+<section class="section">
 
-</div>
+    <div class="title">
+        <h2>📸 Galerie photos</h2>
+    </div>
+
+    <div class="gallery">
+        <figure>
+            <img src="images/16.jpg" alt="Bus 16">
+            <figcaption>RENAULT PR 100</figcaption>
+        </figure>
+        <figure>
+            <img src="images/8205.png" alt="Bus 8205">
+            <figcaption>RENAULT PR 180</figcaption>
+        </figure>
+        <figure>
+            <img src="images/891.jpg" alt="Bus 891">
+            <figcaption>RENAULT PR 100.2</figcaption>
+        </figure>
+        <figure>
+            <img src="images/908.png" alt="Bus 873">
+            <figcaption>RENAULT PR 180.2</figcaption>
+        </figure>
+        <figure>
+            <img src="images/912.jpg" alt="Bus 912">
+            <figcaption>RENAULT PR 180.2</figcaption>
+        </figure>
+        <figure>
+            <img src="images/951.jpg" alt="Bus 951">
+            <figcaption>RENAULT R312</figcaption>
+        </figure>
+        <figure>
+            <img src="images/966.png" alt="Bus 966">
+            <figcaption>RENAULT PR 118</figcaption>
+        </figure>
+        <figure>
+            <img src="images/003.png" alt="Bus 003">
+            <figcaption>RENAULT AGORA S</figcaption>
+        </figure>
+        <figure>
+            <img src="images/982_STIBUS.png" alt="Bus 982">
+            <figcaption>RENAULT AGORA L</figcaption>
+        </figure>
+        <figure>
+            <img src="images/025.png" alt="Bus 025">
+            <figcaption>IRISBUS AGORA S</figcaption>
+        </figure>
+    </div>
+
+</section>
 
 <footer>
-    &copy; 2026 TC-Infos-HDF | Conçu par MR et ML | Contact : <a href="mailto:tcinfoshdf@gmail.com">tcinfoshdf@gmail.com</a>  | Mis à jour le 16/06/2026 | Version 1.0
+    © 2026 TC-Infos-HDF | Conçu par MR et ML |
+    Contact : <a href="mailto:tcinfoshdf@gmail.com">tcinfoshdf@gmail.com</a>
+    <br>
+    Mis à jour le 16/06/2026 • Version 1.2
 </footer>
+
+<div id="lightboxOverlay">
+    <img src="" alt="Agrandissement">
+</div>
 
 <script>
     document.getElementById("searchInput").addEventListener("keyup", function(){
@@ -360,13 +520,6 @@
         rows.forEach(row=>table.tBodies[0].appendChild(row));
     }
 
-</script>
-
-<div id="lightboxOverlay">
-    <img src="" alt="Agrandissement">
-</div>
-
-<script>
     // Lightbox
     const lightbox = document.getElementById("lightboxOverlay");
     const lightboxImg = lightbox.querySelector("img");
@@ -384,5 +537,6 @@
         lightboxImg.src = "";
     });
 </script>
+
 </body>
 </html>

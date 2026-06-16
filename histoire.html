@@ -7,188 +7,312 @@
     <link rel="icon" href="images/Logo-hdf.png" type="image/png">
     <link rel="apple-touch-icon" href="images/Logo-hdf.png" type="image/png">
 
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-N256W6SZKR"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-N256W6SZKR');
+    </script>
+
     <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #ffe5eb;
+
+        *{margin:0;padding:0;box-sizing:border-box;}
+
+        :root{
+            --bg:#07111f;
+            --card:#101c2e;
+            --primary:#00b7ff;
+            --secondary:#0077ff;
+            --text:#fff;
+            --text2:#b8c7dc;
+            --shadow:0 10px 30px rgba(0,0,0,0.35);
         }
 
-        header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background-color: #0056b3;
-            padding: 10px 20px;
-            position: relative;
-            flex-wrap: wrap;
+        body{
+            font-family:Poppins, sans-serif;
+            background:var(--bg);
+            color:var(--text);
         }
 
-        header .logo img {
-            height: 110px;
-            width: auto;
+        a{text-decoration:none;color:inherit;}
+
+        header{
+            position:sticky;
+            top:0;
+            z-index:999;
+            backdrop-filter:blur(12px);
+            background:rgba(7,17,31,0.8);
+            border-bottom:1px solid rgba(255,255,255,0.08);
         }
 
-        header h1 {
-            color: white;
-            margin: 0;
-            font-size: clamp(18px, 4vw, 32px);
-            text-align: center;
-            flex: 1;
+        .nav{
+            max-width:1400px;
+            margin:auto;
+            padding:18px 25px;
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            gap:20px;
+            flex-wrap:wrap;
         }
 
-        header nav {
-            margin-left: auto;
+        .logo{
+            display:flex;
+            align-items:center;
+            gap:12px;
         }
 
-        header nav a {
-            margin-left: 15px;
-            font-weight: bold;
-            color: white;
-            display: inline-block;
-            padding: 8px 16px;
-            background-color: #2dac3a;
-            border-radius: 8px;
-            border: 2px solid white;
-            transition: 0.2s;
-            text-decoration: none;
+        .logo img{
+            width:85px;
         }
 
-        header nav a:hover {
-            background-color: #ff6600;
-            color: white;
+        nav{
+            display:flex;
+            gap:10px;
+            flex-wrap:wrap;
+            justify-content:center;
         }
 
-        .hero {
-            background-color: #0077cc;
-            color: white;
-            text-align: center;
-            padding: 40px 20px;
-            border-radius: 0 0 20px 20px;
+        nav a{
+            padding:10px 14px;
+            border-radius:12px;
+            font-weight:500;
         }
 
-        .container {
-            max-width: 1100px;
-            margin: 40px auto;
-            padding: 0 20px;
+        nav a:hover{
+            background:rgba(255,255,255,0.08);
         }
 
-        .history-section {
-            margin-bottom: 50px;
-            line-height: 1.6;
+        .btn-site{
+            box-shadow:0 0 20px #0077ff;
+            border-radius:12px;
         }
 
-        .history-section h3 {
-            color: #0056b3;
+        .hero{
+            max-width:1400px;
+            margin:auto;
+            padding:60px 25px 40px;
+            text-align:center;
         }
 
-        .logo-left {
-            display: flex;
-            align-items: flex-start;
-            gap: 40px;
+        .hero h2{
+            font-size:42px;
         }
 
-        .history-logo {
-            width: 280px;
-            max-width: 40%;
-            margin-top: 50px;
-            background: transparent;
-            padding: 0;
-            border-radius: 0;
-            box-shadow: none;
+        .hero h2 span{
+            color:var(--primary);
         }
 
-        .history-text {
-            flex: 1;
+        .hero p{
+            color:var(--text2);
+            margin-top:15px;
+            line-height:1.7;
+            max-width:800px;
+            margin-left:auto;
+            margin-right:auto;
         }
 
-        .btn {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #a163df;
-            color: white;
-            border-radius: 5px;
-            font-weight: bold;
-            text-decoration: none;
+        .container{
+            max-width:1100px;
+            margin:auto;
+            padding:30px 25px;
         }
 
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 15px;
-            margin-top: 40px;
+        .history-section{
+            background:var(--card);
+            border-radius:16px;
+            box-shadow:var(--shadow);
+            padding:30px;
+            margin-bottom:30px;
+            line-height:1.7;
         }
 
-        footer a {
-            color: #ff6600;
-            text-decoration: none;
-            font-weight: bold;
+        .history-section h3{
+            color:var(--primary);
+            font-size:24px;
+            margin-bottom:15px;
         }
 
-        footer a:hover {
-            color: #c433ff;
+        .history-section h4{
+            color:var(--primary);
+            font-size:18px;
+            margin:20px 0 10px;
         }
 
-        .logos-container {
-            display: flex;
-            justify-content: space-between;
-            gap: 20px;
-            flex-wrap: wrap;
+        .history-section p{
+            color:var(--text2);
+            margin-bottom:12px;
         }
 
-        .logo-item {
-            width: 30%;
-            max-width: 200px;
-            height: auto;
-            background-color: transparent;
-            padding: 0;
-            border: none;
-            box-shadow: none;
-            object-fit: contain;
+        .history-section ul{
+            color:var(--text2);
+            margin:10px 0 10px 20px;
         }
 
-        @media (max-width: 600px) {
-            header {
-                flex-direction: column;
-                align-items: center;
+        .history-section li{
+            margin-bottom:6px;
+        }
+
+        .logo-left{
+            display:flex;
+            align-items:flex-start;
+            gap:40px;
+            flex-wrap:wrap;
+        }
+
+        .history-logo{
+            width:280px;
+            max-width:100%;
+            border-radius:12px;
+            background:#fff;
+            padding:10px;
+        }
+
+        .history-text{
+            flex:1;
+            min-width:250px;
+        }
+
+        .btn{
+            display:inline-block;
+            margin-top:10px;
+            padding:14px 22px;
+            border-radius:12px;
+            font-weight:600;
+            background:linear-gradient(135deg,var(--primary),var(--secondary));
+            color:#fff;
+        }
+
+        .logos-container{
+            display:flex;
+            justify-content:space-between;
+            gap:20px;
+            flex-wrap:wrap;
+        }
+
+        .logo-item{
+            width:30%;
+            max-width:200px;
+            height:auto;
+            background:#fff;
+            border-radius:10px;
+            padding:10px;
+            object-fit:contain;
+        }
+
+        footer{
+            text-align:center;
+            padding:30px;
+            color:var(--text2);
+            border-top:1px solid rgba(255,255,255,0.08);
+            margin-top:50px;
+        }
+
+        @media(max-width:900px){
+            .hero h2{font-size:30px;}
+        }
+
+        @media(max-width:600px){
+            .logo-left{flex-direction:column;}
+        }
+
+        .menu-mobile{
+            display:none;
+            font-size:32px;
+            cursor:pointer;
+        }
+
+
+        @media(max-width:700px){
+
+            .nav{
+                flex-wrap:nowrap;
             }
 
-            header h1 {
-                flex: none;
+            .menu-mobile{
+                display:block;
             }
 
-            header nav {
-                margin-left: 0;
+
+            nav{
+                position:absolute;
+                top:80px;
+                right:20px;
+
+                background:#101c2e;
+                border-radius:15px;
+                padding:15px;
+
+                display:none;
+                flex-direction:column;
+                width:220px;
+
+                box-shadow:0 15px 40px rgba(0,0,0,.5);
             }
 
-            header nav a {
-                margin: 5px;
+
+            nav.active{
+                display:flex;
             }
+
+
+            nav a{
+                width:100%;
+                text-align:center;
+            }
+
         }
+
     </style>
 </head>
+
+<script>
+
+    function toggleMenu(){
+
+        document.getElementById("menu")
+            .classList.toggle("active");
+
+    }
+
+</script>
 
 <body>
 
 <header>
-    <div class="logo">
-        <img src="images/LogoNouvRect.png" alt="Logo">
+    <div class="nav">
+
+        <div class="logo">
+            <img src="images/LogoNouvRect.png" alt="Logo">
+        </div>
+
+        <div class="menu-mobile" onclick="toggleMenu()">
+            ☰
+        </div>
+
+        <nav id="menu">
+            <a href="index.html">Accueil</a>
+            <a href="lesbus.html">Le parc</a>
+            <a href="histoire.html">Histoire</a>
+            <a href="ancienParc.html">Ancien parc</a>
+            <a href="lignes.html">Lignes</a>
+            <a href="galerie.html">Galerie</a>
+            <a href="contact.html">Contact</a>
+            <a class="btn-site" href="https://stibus.fr" target="_blank">STIBUS</a>
+        </nav>
+
     </div>
-    <h1>TC-Infos-HDF</h1>
-    <nav>
-        <a href="index.html">Accueil</a>
-        <a href="lesbus.html">Le parc</a>
-        <a href="lignes.html">Lignes du réseau</a>
-        <a href="galerie.html">Galerie</a>
-        <a href="contact.html">Contact</a>
-    </nav>
 </header>
 
-<div class="hero">
-    <h2>Histoire du réseau STIBUS</h2>
+<section class="hero">
+    <h2>Histoire du <span>réseau STIBUS</span></h2>
     <p>Découvrez l'évolution du réseau et de son organisation depuis 1979.</p>
-</div>
+</section>
 
 <div class="container">
 
@@ -205,7 +329,6 @@
                 à une société d'économie mixte locale (SEM), la Société d'économie mixte des transports
                 intercommunaux du bassin de la Sambre (SEMITIB).
             </p>
-
 
             <p>
                 En 1995, le SIBS devient le Syndicat Intercommunal du Val de Sambre (SIVS),
@@ -284,7 +407,6 @@
             vers des bus à haut niveau de service (BHNS).
         </p>
 
-
         <h4>Années 2000 : Arrivée des IRISBUS CITELIS 12</h4>
 
         <ul>
@@ -317,17 +439,14 @@
 
         <ul>
             <li>Minibus / citadines – utilisés pour les navettes centre-ville et services locaux</li>
-            <li>Des navettes électriques sont mises en services le 22 Mars 2026. (Karsan e-jest).</li>
+            <li>Des navettes 100 % électriques ont été mises en service le 22 mars 2026 (Karsan e-Jest).</li>
         </ul>
+
         <h4>Historique des logos du réseau</h4>
-        <div class="container">
-            <section class="history-section">
-                <div class="logos-container">
-                    <img src="images/LogoSt1.jpg" alt="Logo Historique 1" class="logo-item">
-                    <img src="images/logoSt2.png" alt="Logo Historique 2" class="logo-item">
-                    <img src="images/logoS.png" alt="Logo Historique 3" class="logo-item">
-                </div>
-            </section>
+        <div class="logos-container">
+            <img src="images/LogoSt1.jpg" alt="Logo Historique 1" class="logo-item">
+            <img src="images/logoSt2.png" alt="Logo Historique 2" class="logo-item">
+            <img src="images/logoS.png" alt="Logo Historique 3" class="logo-item">
         </div>
 
     </section>
@@ -335,7 +454,10 @@
 </div>
 
 <footer>
-    &copy; 2026 TC-Infos-HDF | Conçu par MR et ML | Contact : <a href="mailto:tcinfoshdf@gmail.com">tcinfoshdf@gmail.com</a>  | Mis à jour le 21/02/2026 | Version 1.0
+    © 2026 TC-Infos-HDF | Conçu par MR et ML |
+    Contact : <a href="mailto:tcinfoshdf@gmail.com">tcinfoshdf@gmail.com</a>
+    <br>
+    Mis à jour le 16/06/2026 • Version 1.2
 </footer>
 
 </body>
