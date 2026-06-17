@@ -11,7 +11,7 @@
 
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- Applique le thème sauvegardé AVANT le rendu pour éviter le flash -->
+
   <script>
     (function(){
       var saved = localStorage.getItem("tc-theme");
@@ -19,17 +19,6 @@
         document.documentElement.setAttribute("data-theme","light");
       }
     })();
-
-    document.addEventListener("scroll", () => {
-      document.getElementById("menu").classList.remove("active");
-    });
-
-    document.querySelectorAll("#menu a").forEach(a => {
-      a.addEventListener("click", () => {
-        document.getElementById("menu").classList.remove("active");
-      });
-    });
-
   </script>
 
   <style>
@@ -105,6 +94,11 @@
       min-height:100vh;
     }
 
+    html.popup-open,
+    body.popup-open{
+      overflow:hidden;
+    }
+
     header{
       display:flex;
       justify-content:space-between;
@@ -116,6 +110,12 @@
       position:sticky;
       top:0;
       z-index:1000;
+      gap:20px;
+      transition: transform .3s ease, background-color .3s ease;
+    }
+
+    header.header-hidden{
+      transform:translateY(-100%);
     }
 
     html[data-theme="light"] header{
@@ -129,6 +129,12 @@
     header h1{
       font-size:28px;
       font-weight:800;
+    }
+
+    .header-actions{
+      display:flex;
+      align-items:center;
+      gap:14px;
     }
 
     nav{
@@ -295,6 +301,7 @@
       background:rgba(0,0,0,0.6);
       justify-content:center;
       align-items:center;
+      z-index:2000;
     }
 
     .popup.show{
@@ -309,7 +316,9 @@
       max-width: 1000px;
       max-height: 85vh;
       overflow-y: auto;
+      overflow-x: hidden;
       color:var(--text);
+      position:relative;
     }
 
     .popup-images {
@@ -333,9 +342,25 @@
 
     .side-img {
       width: 520px;
+      max-width: 45%;
       height: auto;
       flex-shrink: 0;
       align-self: center;
+    }
+
+    @media(max-width:700px){
+      .popup-images{
+        flex-direction:column;
+        align-items:center;
+      }
+
+      .side-img{
+        max-width:80%;
+      }
+
+      .bus-img{
+        max-width:100%;
+      }
     }
 
     .popup table{
@@ -357,6 +382,19 @@
       font-size:24px;
       float:right;
       color:var(--text);
+      position:sticky;
+      top:0;
+      right:0;
+      background:var(--surface);
+      width:36px;
+      height:36px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:50%;
+      z-index:10;
+      margin-left:auto;
+      margin-bottom:-36px;
     }
 
     .menu-mobile{
@@ -406,16 +444,15 @@
         text-align:center;
       }
 
-      .theme-toggle{
-        margin-top:10px;
-      }
-
     }
 
   </style>
 </head>
 
 <script>
+
+  var lastScrollY = window.scrollY;
+  var SCROLL_HIDE_THRESHOLD = 80;
 
   function toggleMenu(){
 
@@ -446,7 +483,49 @@
     btn.textContent = isLight ? "🌙" : "☀️";
   }
 
-  document.addEventListener("DOMContentLoaded", updateThemeIcon);
+  function setHeaderHidden(hidden){
+    var header = document.querySelector("header");
+    if(!header) return;
+    header.classList.toggle("header-hidden", hidden);
+    if(hidden){
+      var menu = document.getElementById("menu");
+      if(menu) menu.classList.remove("active");
+    }
+  }
+
+  function isAnyPopupOpen(){
+    return document.querySelectorAll(".popup.show").length > 0;
+  }
+
+  function handleScroll(){
+    if(isAnyPopupOpen()) return;
+
+    var currentY = window.scrollY;
+
+    if(currentY <= SCROLL_HIDE_THRESHOLD){
+      setHeaderHidden(false);
+    } else if(currentY > lastScrollY){
+      setHeaderHidden(true);
+    } else if(currentY < lastScrollY){
+      setHeaderHidden(false);
+    }
+
+    lastScrollY = currentY;
+  }
+
+  document.addEventListener("DOMContentLoaded", function(){
+    updateThemeIcon();
+
+    var menu = document.getElementById("menu");
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    menu.querySelectorAll("a").forEach(function(a){
+      a.addEventListener("click", function(){
+        menu.classList.remove("active");
+      });
+    });
+  });
 
 </script>
 
@@ -455,12 +534,6 @@
 <header>
   <div class="logo">
     <img src="images/LogoNouvRect.png">
-  </div>
-
-
-
-  <div class="menu-mobile" onclick="toggleMenu()">
-    ☰
   </div>
 
   <nav id="menu">
@@ -472,16 +545,21 @@
     <a href="galerie.html">Galerie</a>
     <a href="contact.html">Contact</a>
     <a class="btn-site" href="https://stibus.fr" target="_blank">STIBUS</a>
-    <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="Changer de thème" title="Changer de thème">🌙</button>
   </nav>
+
+  <div class="header-actions">
+    <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="Changer de thème" title="Changer de thème">🌙</button>
+
+    <div class="menu-mobile" onclick="toggleMenu()">
+      ☰
+    </div>
+  </div>
 </header>
 
 <div class="hero">
   <h2>Le parc de véhicules</h2>
   <p>Vous trouverez sur cette page, les diverses informations sur chaque bus du réseau STIBUS</p>
 </div>
-
-
 
 
 
@@ -1497,7 +1575,7 @@
 </div>
 
 <footer>
-  &copy; 2026 TC-Infos-HDF | Conçu par MR et ML | Contact : <a href="mailto:tcinfoshdf@gmail.com">tcinfoshdf@gmail.com</a>  | Mis à jour le 13/05/2026 | Version 1.2
+  &copy; 2026 TC-Infos-HDF | Conçu par MR et ML | Contact : <a href="mailto:tcinfoshdf@gmail.com">tcinfoshdf@gmail.com</a>  | Mis à jour le 17/06/2026 | Version 1.2
 </footer>
 
 
@@ -1505,20 +1583,27 @@
   function openPopup(id) {
     const popup = document.getElementById("popup-" + id);
     popup.classList.add("show");
-    document.body.classList.add("popup-open");
+    syncPopupUI();
   }
 
   function closePopup(id) {
     const popup = document.getElementById("popup-" + id);
     popup.classList.remove("show");
-    document.body.classList.remove("popup-open");
+    syncPopupUI();
+  }
+
+  function syncPopupUI() {
+    const anyOpen = document.querySelectorAll(".popup.show").length > 0;
+    document.documentElement.classList.toggle("popup-open", anyOpen);
+    document.body.classList.toggle("popup-open", anyOpen);
+    setHeaderHidden(anyOpen);
   }
 
   document.querySelectorAll(".popup").forEach(popup => {
     popup.addEventListener("click", e => {
       if (e.target === popup) {
         popup.classList.remove("show");
-        document.body.classList.remove("popup-open");
+        syncPopupUI();
       }
     });
   });
@@ -1526,7 +1611,7 @@
   document.addEventListener("keydown", e => {
     if (e.key === "Escape") {
       document.querySelectorAll(".popup.show").forEach(p => p.classList.remove("show"));
-      document.body.classList.remove("popup-open");
+      syncPopupUI();
     }
   });
 </script>
