@@ -21,6 +21,15 @@
         gtag('config', 'G-N256W6SZKR');
     </script>
 
+    <script>
+        (function(){
+            var saved = localStorage.getItem("tc-theme");
+            if(saved === "light"){
+                document.documentElement.setAttribute("data-theme","light");
+            }
+        })();
+    </script>
+
     <style>
 
         *{margin:0;padding:0;box-sizing:border-box;}
@@ -33,6 +42,38 @@
             --text:#fff;
             --text2:#b8c7dc;
             --shadow:0 10px 30px rgba(0,0,0,0.35);
+            --border:rgba(255,255,255,0.08);
+            --surface:rgba(255,255,255,0.06);
+            --row-alt:rgba(255,255,255,0.03);
+            --row-hover:rgba(0,183,255,0.1);
+            --nav-link-bg:transparent;
+            --nav-hover-bg:rgba(255,255,255,0.08);
+            --mobile-nav-bg:#101c2e;
+            --header-bg:rgba(7,17,31,0.8);
+            --bg-image-overlay:rgba(7,17,31,0.88);
+        }
+
+        html[data-theme="light"]{
+            --bg:#f4f1fb;
+            --card:#ffffff;
+            --primary:#8a1cc4;
+            --secondary:#c054e0;
+            --text:#1a1330;
+            --text2:#5a5470;
+            --shadow:0 10px 30px rgba(80,30,120,0.1);
+            --border:rgba(30,10,50,0.1);
+            --surface:rgba(30,10,50,0.04);
+            --row-alt:rgba(30,10,50,0.03);
+            --row-hover:rgba(168,36,216,0.08);
+            --nav-link-bg:transparent;
+            --nav-hover-bg:rgba(30,10,50,0.06);
+            --mobile-nav-bg:#ffffff;
+            --header-bg:rgba(255,255,255,0.85);
+            --bg-image-overlay:rgba(244,241,251,0.9);
+        }
+
+        html, body{
+            transition: background-color .3s ease, color .3s ease;
         }
 
         body{
@@ -40,12 +81,17 @@
             color:var(--text);
             background-color:var(--bg);
             background-image:
-                    linear-gradient(rgba(7,17,31,0.88), rgba(7,17,31,0.88)),
+                    linear-gradient(var(--bg-image-overlay), var(--bg-image-overlay)),
                     url("images/fond_ancien_parc.png");
             background-repeat:no-repeat;
             background-position:center;
             background-attachment:fixed;
             background-size:cover;
+        }
+
+        html.popup-open,
+        body.popup-open{
+            overflow:hidden;
         }
 
         a{text-decoration:none;color:inherit;}
@@ -55,8 +101,13 @@
             top:0;
             z-index:999;
             backdrop-filter:blur(12px);
-            background:rgba(7,17,31,0.8);
-            border-bottom:1px solid rgba(255,255,255,0.08);
+            background:var(--header-bg);
+            border-bottom:1px solid var(--border);
+            transition: transform .3s ease, background-color .3s ease;
+        }
+
+        header.header-hidden{
+            transform:translateY(-100%);
         }
 
         .nav{
@@ -91,15 +142,43 @@
             padding:10px 14px;
             border-radius:12px;
             font-weight:500;
+            background:var(--nav-link-bg);
+            color:var(--text);
         }
 
         nav a:hover{
-            background:rgba(255,255,255,0.08);
+            background:var(--nav-hover-bg);
         }
 
         .btn-site{
             box-shadow:0 0 20px #0077ff;
             border-radius:12px;
+        }
+
+        .header-actions{
+            display:flex;
+            align-items:center;
+            gap:14px;
+        }
+
+        .theme-toggle{
+            width:42px;
+            height:42px;
+            border-radius:50%;
+            border:1px solid var(--border);
+            background:var(--card);
+            color:var(--text);
+            cursor:pointer;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            font-size:18px;
+            transition:.2s;
+        }
+
+        .theme-toggle:hover{
+            transform:scale(1.08);
+            box-shadow:var(--shadow);
         }
 
         .hero{
@@ -148,8 +227,8 @@
             width:280px;
             max-width:100%;
             border-radius:12px;
-            border:1px solid rgba(255,255,255,0.15);
-            background:rgba(255,255,255,0.06);
+            border:1px solid var(--border);
+            background:var(--surface);
             color:var(--text);
             font-family:Poppins, sans-serif;
             outline:none;
@@ -179,7 +258,7 @@
 
         th,td{
             padding:12px;
-            border:1px solid rgba(255,255,255,0.08);
+            border:1px solid var(--border);
             text-align:center;
             white-space:nowrap;
         }
@@ -191,8 +270,8 @@
             font-weight:600;
         }
 
-        tr:nth-child(even){background:rgba(255,255,255,0.03);}
-        tr:hover{background:rgba(0,183,255,0.1);}
+        tr:nth-child(even){background:var(--row-alt);}
+        tr:hover{background:var(--row-hover);}
 
         .gallery{
             margin-top:40px;
@@ -261,7 +340,7 @@
             text-align:center;
             padding:30px;
             color:var(--text2);
-            border-top:1px solid rgba(255,255,255,0.08);
+            border-top:1px solid var(--border);
             margin-top:50px;
         }
 
@@ -273,6 +352,7 @@
             display:none;
             font-size:32px;
             cursor:pointer;
+            color:var(--text);
         }
 
 
@@ -292,7 +372,7 @@
                 top:80px;
                 right:20px;
 
-                background:#101c2e;
+                background:var(--mobile-nav-bg);
                 border-radius:15px;
                 padding:15px;
 
@@ -321,12 +401,82 @@
 
 <script>
 
+    var lastScrollY = window.scrollY;
+    var SCROLL_HIDE_THRESHOLD = 80;
+
     function toggleMenu(){
 
         document.getElementById("menu")
             .classList.toggle("active");
 
     }
+
+    function toggleTheme(){
+        var html = document.documentElement;
+        var isLight = html.getAttribute("data-theme") === "light";
+
+        if(isLight){
+            html.removeAttribute("data-theme");
+            localStorage.setItem("tc-theme","dark");
+        } else {
+            html.setAttribute("data-theme","light");
+            localStorage.setItem("tc-theme","light");
+        }
+
+        updateThemeIcon();
+    }
+
+    function updateThemeIcon(){
+        var btn = document.getElementById("themeToggle");
+        if(!btn) return;
+        var isLight = document.documentElement.getAttribute("data-theme") === "light";
+        btn.textContent = isLight ? "🌙" : "☀️";
+    }
+
+    function setHeaderHidden(hidden){
+        var header = document.querySelector("header");
+        if(!header) return;
+        header.classList.toggle("header-hidden", hidden);
+        if(hidden){
+            var menu = document.getElementById("menu");
+            if(menu) menu.classList.remove("active");
+        }
+    }
+
+    function isAnyOverlayOpen(){
+        var lightbox = document.getElementById("lightboxOverlay");
+        return lightbox && lightbox.style.display === "flex";
+    }
+
+    function handleScroll(){
+        if(isAnyOverlayOpen()) return;
+
+        var currentY = window.scrollY;
+
+        if(currentY <= SCROLL_HIDE_THRESHOLD){
+            setHeaderHidden(false);
+        } else if(currentY > lastScrollY){
+            setHeaderHidden(true);
+        } else if(currentY < lastScrollY){
+            setHeaderHidden(false);
+        }
+
+        lastScrollY = currentY;
+    }
+
+    document.addEventListener("DOMContentLoaded", function(){
+        updateThemeIcon();
+
+        var menu = document.getElementById("menu");
+
+        window.addEventListener("scroll", handleScroll, { passive: true });
+
+        menu.querySelectorAll("a").forEach(function(a){
+            a.addEventListener("click", function(){
+                menu.classList.remove("active");
+            });
+        });
+    });
 
 </script>
 
@@ -339,10 +489,6 @@
             <img src="images/LogoNouvRect.png" alt="Logo">
         </div>
 
-        <div class="menu-mobile" onclick="toggleMenu()">
-            ☰
-        </div>
-
         <nav id="menu">
             <a href="index.html">Accueil</a>
             <a href="lesbus.html">Le parc</a>
@@ -353,6 +499,14 @@
             <a href="contact.html">Contact</a>
             <a class="btn-site" href="https://stibus.fr" target="_blank">STIBUS</a>
         </nav>
+
+        <div class="header-actions">
+            <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="Changer de thème" title="Changer de thème">🌙</button>
+
+            <div class="menu-mobile" onclick="toggleMenu()">
+                ☰
+            </div>
+        </div>
 
     </div>
 </header>
@@ -524,17 +678,34 @@
     const lightbox = document.getElementById("lightboxOverlay");
     const lightboxImg = lightbox.querySelector("img");
 
+    function syncOverlayUI(){
+        const isOpen = lightbox.style.display === "flex";
+        document.documentElement.classList.toggle("popup-open", isOpen);
+        document.body.classList.toggle("popup-open", isOpen);
+        setHeaderHidden(isOpen);
+    }
+
     document.querySelectorAll(".gallery img").forEach(img => {
         img.addEventListener("click", () => {
             lightbox.style.display = "flex";
             lightboxImg.src = img.src;
             lightboxImg.alt = img.alt;
+            syncOverlayUI();
         });
     });
 
     lightbox.addEventListener("click", () => {
         lightbox.style.display = "none";
         lightboxImg.src = "";
+        syncOverlayUI();
+    });
+
+    document.addEventListener("keydown", e => {
+        if (e.key === "Escape" && lightbox.style.display === "flex") {
+            lightbox.style.display = "none";
+            lightboxImg.src = "";
+            syncOverlayUI();
+        }
     });
 </script>
 
