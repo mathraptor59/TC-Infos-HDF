@@ -1,79 +1,877 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <title>Page en maintenance</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Lignes | TC-Infos-HDF</title>
+
     <link rel="icon" href="images/Logo-hdf.png" type="image/png">
-    <link rel="apple-touch-icon" href="images/Logo-hdf.png" type="image/png">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <meta name="google-site-verification" content="W8E_jCZL4aD6uqbwpIzSrZKoBF1TunsBKSu8qHb2HBk" />
+    <!--référencement google-->
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-N256W6SZKR"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-N256W6SZKR');
+    </script>
+
+    <!-- Applique le thème sauvegardé AVANT le rendu pour éviter le flash -->
+    <script>
+        (function(){
+            var saved = localStorage.getItem("tc-theme");
+            if(saved === "light"){
+                document.documentElement.setAttribute("data-theme","light");
+            }
+        })();
+    </script>
+
     <style>
-        body {
-            margin: 0;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
 
-            background-image: url("images/maintenance2.png");
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
+        *{margin:0;padding:0;box-sizing:border-box;}
 
-            color: white;
-            font-family: Arial;
-            text-align: center;
+        :root{
+            --bg:#07111f;
+            --card:#101c2e;
+            --primary: #c65ac6;
+            --secondary:#0077ff;
+            --text:#fff;
+            --text2:#b8c7dc;
+            --shadow:0 10px 30px rgba(0,0,0,0.35);
+            --border:rgba(255,255,255,0.08);
+            --nav-bg:rgba(7,17,31,0.8);
+            --hover-bg:rgba(255,255,255,0.08);
+            --btn-secondary-bg:rgba(255,255,255,0.08);
         }
 
-        .box {
-            max-width: 600px;
-            background: rgba(0,0,0,0.6);
-            padding: 30px;
-            border-radius: 12px;
+        html[data-theme="light"]{
+            --bg:#f4f8fc;
+            --card:#ffffff;
+            --primary:#0077ff;
+            --secondary:#00b7ff;
+            --text:#0a1a2e;
+            --text2:#48566b;
+            --shadow:0 10px 30px rgba(0,40,90,0.08);
+            --border:rgba(0,30,60,0.08);
+            --nav-bg:rgba(255,255,255,0.85);
+            --hover-bg:rgba(0,90,200,0.08);
+            --btn-secondary-bg:rgba(0,90,200,0.08);
         }
 
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
+        html, body{
+            transition: background-color .3s ease, color .3s ease;
         }
 
-        p {
-            opacity: 0.8;
+        body{
+            font-family:Poppins, sans-serif;
+            color:var(--text);
+            background-color:var(--bg);
+            background-image:
+                    linear-gradient(180deg, rgba(7,17,31,0.75), rgba(7,17,31,0.9)),
+                    url("images/");
+            background-size:contain;
+            background-position:top center;
+            background-repeat:no-repeat;
+            background-attachment:fixed;
+            min-height:100vh;
         }
 
-        .text-button {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 20px;
+        html[data-theme="light"] body{
+            background-image:
+                    linear-gradient(180deg, rgba(244,248,252,0.8), rgba(244,248,252,0.92)),
+                    url("images/");
         }
 
-        .btn {
-            padding: 10px 20px;
-            font-size: 1rem;
-            color: white;
-            background-color: #007BFF;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            text-decoration: none;
+        a{text-decoration:none;color:inherit;}
+
+        header{
+            position:sticky;
+            top:0;
+            z-index:999;
+            backdrop-filter:blur(12px);
+            background:var(--nav-bg);
+            border-bottom:1px solid var(--border);
+            transition:transform .35s ease;
         }
 
-        .btn:hover {
-            background-color: #0056b3;
+        header.header-hidden{
+            transform:translateY(-100%);
+        }
+
+        .nav{
+            max-width:1400px;
+            margin:auto;
+            padding:18px 25px;
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            gap:20px;
+            flex-wrap:wrap;
+        }
+
+        .logo{
+            display:flex;
+            align-items:center;
+            gap:12px;
+        }
+
+        header .logo img{
+            height:70px;
+        }
+
+        nav{
+            display:flex;
+            gap:10px;
+            flex-wrap:wrap;
+            justify-content:center;
+            align-items:center;
+        }
+
+        nav a{
+            padding:10px 14px;
+            border-radius:12px;
+            font-weight:500;
+        }
+
+        nav a:hover{
+            background:var(--hover-bg);
+        }
+
+        .btn-site{
+            box-shadow:0 0 20px #0077ff;
+            border-radius:12px;
+        }
+
+        .theme-toggle{
+            width:42px;
+            height:42px;
+            border-radius:50%;
+            border:1px solid var(--border);
+            background:var(--card);
+            color:var(--text);
+            cursor:pointer;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            font-size:18px;
+            transition:.2s;
+        }
+
+        .theme-toggle:hover{
+            transform:scale(1.08);
+            box-shadow:var(--shadow);
+        }
+
+        /* ---------- BANNIERE LIGNES (image de fond globale) ---------- */
+
+        .lignes-banner{
+            position:relative;
+            padding:90px 25px;
+            text-align:center;
+            overflow:hidden;
+            background-image:
+                    linear-gradient(180deg, rgba(7,17,31,0.55), var(--bg) 92%),
+                    url("");
+            background-size:cover;
+            background-position:center;
+        }
+
+        html[data-theme="light"] .lignes-banner{
+            background-image:
+                    linear-gradient(180deg, rgba(244,248,252,0.55), var(--bg) 92%),
+                    url("");
+        }
+
+        .lignes-banner h1{
+            font-size:44px;
+        }
+
+        .lignes-banner h1 span{
+            color:var(--primary);
+        }
+
+        .lignes-banner p{
+            color:var(--text2);
+            max-width:650px;
+            margin:15px auto 0;
+            line-height:1.7;
+        }
+
+        /* ---------- SECTIONS ---------- */
+
+        .section{
+            max-width:1400px;
+            margin:auto;
+            padding:30px 25px 60px;
+        }
+
+        .title h2{
+            font-size:32px;
+            margin-bottom:6px;
+        }
+
+        .title p{
+            color:var(--text2);
+            margin-bottom:25px;
+        }
+
+        /* Grille : cartes plafonnées en largeur, centrées -> une carte seule ne s'étire plus énormément */
+        .lines-grid{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(380px,460px));
+            gap:25px;
+            justify-content:center;
+        }
+
+        .line-card{
+            background:var(--card);
+            border-radius:16px;
+            overflow:hidden;
+            box-shadow:var(--shadow);
+            transition:.3s;
+            display:flex;
+            flex-direction:column;
+        }
+
+        .line-card:hover{
+            transform:translateY(-8px);
+            box-shadow:0 20px 40px rgba(0,183,255,.25);
+        }
+
+        .line-card .line-img{
+            position:relative;
+            aspect-ratio:1692 / 930;
+            background:rgba(0,0,0,0.15);
+            cursor:zoom-in;
+            overflow:hidden;
+        }
+
+        .line-card .line-img img{
+            width:100%;
+            height:100%;
+            object-fit:contain;
+            display:block;
+            transition:transform .35s ease;
+        }
+
+        .line-card .line-img:hover img{
+            transform:scale(1.04);
+        }
+
+        .line-badge{
+            position:absolute;
+            top:14px;
+            left:14px;
+            width:48px;
+            height:48px;
+            border-radius:12px;
+            background:linear-gradient(135deg,var(--primary),var(--secondary));
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            font-weight:700;
+            font-size:18px;
+            color:#fff;
+            box-shadow:0 6px 16px rgba(0,0,0,.35);
+        }
+
+        .line-card .line-body{
+            padding:18px;
+            display:flex;
+            flex-direction:column;
+            gap:10px;
+            flex:1;
+        }
+
+        .line-card h3{
+            font-size:18px;
+        }
+
+        .line-card .line-route{
+            color:var(--text2);
+            font-size:14px;
+            line-height:1.5;
+            flex:1;
+        }
+
+        .btn-pdf{
+            margin-top:auto;
+            display:inline-flex;
+            align-items:center;
+            justify-content:center;
+            gap:8px;
+            padding:12px 16px;
+            border-radius:12px;
+            font-weight:600;
+            font-size:14px;
+            background:linear-gradient(135deg,var(--primary),var(--secondary));
+            color:#fff;
+            transition:.2s;
+        }
+
+        .btn-pdf:hover{
+            filter:brightness(1.1);
+            transform:translateY(-2px);
+        }
+
+        /* variante pour lignes du dimanche / affrétées : accent différent */
+
+        .section.dimanche .line-badge{
+            background:linear-gradient(135deg,#ffb000,#ff7a00);
+        }
+
+        .section.dimanche .btn-pdf{
+            background:linear-gradient(135deg,#ffb000,#ff7a00);
+        }
+
+        .section.affretees .line-badge{
+            background:linear-gradient(135deg,#22c98e,#0077ff);
+        }
+
+        .section.affretees .btn-pdf{
+            background:linear-gradient(135deg,#22c98e,#0077ff);
+        }
+
+        footer{
+            text-align:center;
+            padding:30px;
+            color:var(--text2);
+            border-top:1px solid var(--border);
+            margin-top:50px;
+        }
+
+        /* ---------- LIGHTBOX ---------- */
+
+        .lightbox{
+            position:fixed;
+            inset:0;
+            background:rgba(0,0,0,0.92);
+            display:none;
+            align-items:center;
+            justify-content:center;
+            z-index:3000;
+            padding:40px;
+            cursor:zoom-out;
+        }
+
+        .lightbox.active{
+            display:flex;
+        }
+
+        .lightbox img{
+            max-width:90vw;
+            max-height:88vh;
+            border-radius:14px;
+            box-shadow:0 25px 70px rgba(0,0,0,.6);
+            cursor:default;
+            image-rendering:auto;
+        }
+
+        .lightbox-close{
+            position:fixed;
+            top:20px;
+            right:25px;
+            font-size:28px;
+            color:#fff;
+            cursor:pointer;
+            background:rgba(255,255,255,0.12);
+            width:46px;
+            height:46px;
+            border-radius:50%;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            transition:.2s;
+        }
+
+        .lightbox-close:hover{
+            background:rgba(255,255,255,0.25);
+            transform:scale(1.08);
+        }
+
+        .lightbox-caption{
+            position:fixed;
+            bottom:25px;
+            left:50%;
+            transform:translateX(-50%);
+            color:var(--text2);
+            font-size:14px;
+            background:rgba(0,0,0,0.4);
+            padding:8px 18px;
+            border-radius:20px;
+        }
+
+        @media(max-width:900px){
+            .lignes-banner h1{font-size:32px;}
+            .lines-grid{
+                grid-template-columns:1fr;
+            }
+        }
+
+        .menu-mobile{
+            display:none;
+            font-size:32px;
+            cursor:pointer;
+        }
+
+        @media(max-width:700px){
+
+            .nav{
+                flex-wrap:nowrap;
+            }
+
+            .menu-mobile{
+                display:block;
+            }
+
+            nav{
+                position:absolute;
+                top:80px;
+                right:20px;
+
+                background:var(--card);
+                border-radius:15px;
+                padding:15px;
+
+                display:none;
+                flex-direction:column;
+                width:220px;
+
+                box-shadow:0 15px 40px rgba(0,0,0,.5);
+            }
+
+            nav.active{
+                display:flex;
+            }
+
+            nav a{
+                width:100%;
+                text-align:center;
+            }
+
+            .theme-toggle{
+                margin-top:10px;
+            }
+
         }
 
     </style>
 </head>
-<body>
-<div class="box">
-    <h1>🚧 Page en développement</h1>
-    <p>Cette page, dédiée aux lignes du réseau STIBUS, est actuellement en développement.</p>
-    <p>Du nouveau contenu sera bientôt disponible ! </p>
 
-    <div class="text-button">
-        <p>Retour au menu principal :</p>
-        <a href="index.html" class="btn">Menu principal</a>
+<script>
+
+    var lastScrollY = window.scrollY;
+    var SCROLL_HIDE_THRESHOLD = 80;
+
+    function toggleMenu(){
+
+        document.getElementById("menu")
+            .classList.toggle("active");
+
+    }
+
+    function toggleTheme(){
+        var html = document.documentElement;
+        var isLight = html.getAttribute("data-theme") === "light";
+
+        if(isLight){
+            html.removeAttribute("data-theme");
+            localStorage.setItem("tc-theme","dark");
+        } else {
+            html.setAttribute("data-theme","light");
+            localStorage.setItem("tc-theme","light");
+        }
+
+        updateThemeIcon();
+    }
+
+    function updateThemeIcon(){
+        var btn = document.getElementById("themeToggle");
+        if(!btn) return;
+        var isLight = document.documentElement.getAttribute("data-theme") === "light";
+        btn.textContent = isLight ? "🌙" : "☀️";
+    }
+
+    function setHeaderHidden(hidden){
+        var header = document.querySelector("header");
+        if(!header) return;
+        header.classList.toggle("header-hidden", hidden);
+        if(hidden){
+            var menu = document.getElementById("menu");
+            if(menu) menu.classList.remove("active");
+        }
+    }
+
+    function isAnyOverlayOpen(){
+        var lightbox = document.getElementById("lightbox");
+        return lightbox && lightbox.classList.contains("active");
+    }
+
+    function handleScroll(){
+        if(isAnyOverlayOpen()) return;
+
+        var currentY = window.scrollY;
+
+        if(currentY <= SCROLL_HIDE_THRESHOLD){
+            setHeaderHidden(false);
+        } else if(currentY > lastScrollY){
+            setHeaderHidden(true);
+        } else if(currentY < lastScrollY){
+            setHeaderHidden(false);
+        }
+
+        lastScrollY = currentY;
+    }
+
+    document.addEventListener("DOMContentLoaded", function(){
+        updateThemeIcon();
+
+        var menu = document.getElementById("menu");
+
+        window.addEventListener("scroll", handleScroll, { passive: true });
+
+        if(menu){
+            menu.querySelectorAll("a").forEach(function(a){
+                a.addEventListener("click", function(){
+                    menu.classList.remove("active");
+                });
+            });
+        }
+    });
+
+    /* ---------- LIGHTBOX ---------- */
+
+    function openLightbox(src, caption){
+        var lb = document.getElementById("lightbox");
+        var img = document.getElementById("lightboxImg");
+        var cap = document.getElementById("lightboxCaption");
+
+        img.src = src;
+        cap.textContent = caption || "";
+
+        lb.classList.add("active");
+        document.body.style.overflow = "hidden";
+        setHeaderHidden(false);
+    }
+
+    function closeLightbox(){
+        document.getElementById("lightbox").classList.remove("active");
+        document.body.style.overflow = "";
+    }
+
+    document.addEventListener("keydown", function(e){
+        if(e.key === "Escape") closeLightbox();
+    });
+
+</script>
+
+<body>
+
+<header>
+    <div class="nav">
+
+        <div class="logo">
+            <img src="images/LogoNouvRect.png" alt="Logo">
+        </div>
+
+        <div class="menu-mobile" onclick="toggleMenu()">
+            ☰
+        </div>
+
+        <nav id="menu">
+            <a href="index.html">Accueil</a>
+            <a href="lesbus.html">Le parc</a>
+            <a href="histoire.html">Histoire</a>
+            <a href="ancienParc.html">Ancien parc</a>
+            <a href="lignes.html">Lignes</a>
+            <a href="galerie.html">Galerie</a>
+            <a href="contact.html">Contact</a>
+            <a class="btn-site" href="https://stibus.fr" target="_blank">STIBUS</a>
+            <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="Changer de thème" title="Changer de thème">🌙</button>
+        </nav>
+
     </div>
+</header>
+
+<!-- Bannière avec image de fond globale (à remplacer : images/lignes-bg.jpg) -->
+<section class="lignes-banner">
+    <h1>Les <span>lignes</span> du réseau STIBUS</h1>
+    <p>
+        Retrouvez ici l'ensemble des lignes du réseau : lignes principales,
+        lignes du dimanche et lignes affrétées, avec leurs horaires à télécharger.
+    </p>
+</section>
+
+<!-- ============ LIGNES PRINCIPALES ============ -->
+<section class="section principales">
+
+    <div class="title">
+        <h2>🚌 Lignes principales</h2>
+        <p>Les lignes régulières du réseau, en circulation du lundi au samedi.</p>
+    </div>
+
+    <div class="lines-grid">
+
+        <div class="line-card">
+            <div class="line-img" onclick="openLightbox('images/Lignes/Ligne-A-TC-Infos-HDF.png','Ligne A')">
+                <img src="images/Lignes/Ligne-A-TC-Infos-HDF.png" alt="Ligne A">
+            </div>
+            <div class="line-body">
+                <h3>Ligne A</h3>
+                <p class="line-route">Piscine ↔ Camp turc</p>
+                <p class="line-route">Piscine ↔ Gare SNCB</p>
+                <p class="line-route">Queue du bois ↔ Polyclinique</p>
+                <a class="btn-pdf" href="pdf/Ligne_A_2026.pdf" target="_blank">📄 Horaires PDF</a>
+            </div>
+        </div>
+
+        <div class="line-card">
+            <div class="line-img" onclick="openLightbox('images/Lignes/Ligne-B-TC-Infos-HDF.png','Ligne B')">
+                <img src="images/Lignes/Ligne-B-TC-Infos-HDF.png" alt="Ligne B">
+            </div>
+            <div class="line-body">
+                <h3>Ligne B</h3>
+                <p class="line-route">Maubeuge - Polyclinique du val de sambre ↔ Louvroil - Centre Commercial</p>
+                <a class="btn-pdf" href="pdf/Ligne_B_2026.pdf" target="_blank">📄 Horaires PDF</a>
+            </div>
+        </div>
+
+        <div class="line-card">
+            <div class="line-img" onclick="openLightbox('images/Lignes/Ligne-C-TC-Infos-HDF.png','Ligne C')">
+                <img src="images/Lignes/Ligne-C-TC-Infos-HDF.png" alt="Ligne C">
+            </div>
+            <div class="line-body">
+                <h3>Ligne C</h3>
+                <p class="line-route">Maubeuge - Epinette ↔ Louvroil - Centre Commercial</p>
+                <a class="btn-pdf" href="pdf/Ligne_C_2026.pdf" target="_blank">📄 Horaires PDF</a>
+            </div>
+        </div>
+
+        <div class="line-card">
+            <div class="line-img" onclick="openLightbox('images/Lignes/Ligne-D-TC-Infos-HDF.png','Ligne D')">
+                <img src="images/Lignes/Ligne-D-TC-Infos-HDF.png" alt="Ligne D">
+            </div>
+            <div class="line-body">
+                <h3>Ligne D</h3>
+                <p class="line-route">Terminus A ↔ Terminus B</p>
+                <a class="btn-pdf" href="pdf/Ligne_D_2026.pdf" target="_blank">📄 Horaires PDF</a>
+            </div>
+        </div>
+
+        <div class="line-card">
+            <div class="line-img" onclick="openLightbox('images/Lignes/Ligne-10-TC-Infos-HDF.png','Ligne 10')">
+                <img src="images/Lignes/Ligne-10-TC-Infos-HDF.png" alt="Ligne 10">
+            </div>
+            <div class="line-body">
+                <h3>Ligne 10</h3>
+                <p class="line-route">Terminus A ↔ Terminus B</p>
+                <a class="btn-pdf" href="pdf/Ligne_10_2026.pdf" target="_blank">📄 Horaires PDF</a>
+            </div>
+        </div>
+
+        <div class="line-card">
+            <div class="line-img" onclick="openLightbox('images/Lignes/Ligne-55-TC-Infos-HDF.png','Ligne 55')">
+                <img src="images/Lignes/Ligne-55-TC-Infos-HDF.png" alt="Ligne 55">
+            </div>
+            <div class="line-body">
+                <h3>Ligne 55</h3>
+                <p class="line-route">Terminus A ↔ Terminus B</p>
+                <a class="btn-pdf" href="pdf/Ligne_55_2026.pdf" target="_blank">📄 Horaires PDF</a>
+            </div>
+        </div>
+
+        <div class="line-card">
+            <div class="line-img" onclick="openLightbox('images/Lignes/Ligne-21-TC-Infos-HDF.png','Ligne 21')">
+                <img src="images/Lignes/Ligne-21-TC-Infos-HDF.png" alt="Ligne 21">
+            </div>
+            <div class="line-body">
+                <h3>Ligne 21</h3>
+                <p class="line-route">Terminus A ↔ Terminus B</p>
+                <a class="btn-pdf" href="pdf/Ligne_21_2026.pdf" target="_blank">📄 Horaires PDF</a>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ============ LIGNES DU DIMANCHE ============ -->
+<section class="section dimanche">
+
+    <div class="title">
+        <h2>☀️ Lignes du dimanche</h2>
+        <p>Service réduit assuré les dimanches et jours fériés.</p>
+    </div>
+
+    <div class="lines-grid">
+
+        <div class="line-card">
+            <div class="line-img" onclick="openLightbox('images/Lignes/Ligne-61-TC-Infos-HDF.png','Ligne 61')">
+                <img src="images/Lignes/Ligne-61-TC-Infos-HDF.png" alt="Ligne 61">
+            </div>
+            <div class="line-body">
+                <h3>Ligne 61</h3>
+                <p class="line-route">Terminus A ↔ Terminus B</p>
+                <a class="btn-pdf" href="pdf/LIGNE_61_62_63_64_2026.pdf" target="_blank">📄 Horaires PDF</a>
+            </div>
+        </div>
+
+        <div class="line-card">
+            <div class="line-img" onclick="openLightbox('images/Lignes/Ligne-62-TC-Infos-HDF.png','Ligne 62')">
+                <img src="images/Lignes/Ligne-62-TC-Infos-HDF.png" alt="Ligne 62">
+            </div>
+            <div class="line-body">
+                <h3>Ligne 62</h3>
+                <p class="line-route">Terminus A ↔ Terminus B</p>
+                <a class="btn-pdf" href="pdf/LIGNE_61_62_63_64_2026.pdf" target="_blank">📄 Horaires PDF</a>
+            </div>
+        </div>
+
+        <div class="line-card">
+            <div class="line-img" onclick="openLightbox('images/Lignes/Ligne-63-TC-Infos-HDF.png','Ligne 63')">
+                <img src="images/Lignes/Ligne-63-TC-Infos-HDF.png" alt="Ligne 63">
+            </div>
+            <div class="line-body">
+                <h3>Ligne 63</h3>
+                <p class="line-route">Terminus A ↔ Terminus B</p>
+                <a class="btn-pdf" href="pdf/LIGNE_61_62_63_64_2026.pdf" target="_blank">📄 Horaires PDF</a>
+            </div>
+        </div>
+
+        <div class="line-card">
+            <div class="line-img" onclick="openLightbox('images/Lignes/Ligne-64-TC-Infos-HDF.png','Ligne 64')">
+                <img src="images/Lignes/Ligne-64-TC-Infos-HDF.png" alt="Ligne 64">
+            </div>
+            <div class="line-body">
+                <h3>Ligne 64</h3>
+                <p class="line-route">Terminus A ↔ Terminus B</p>
+                <a class="btn-pdf" href="pdf/LIGNE_61_62_63_64_2026.pdf" target="_blank">📄 Horaires PDF</a>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ============ LIGNES AFFRÉTÉES ============ -->
+<section class="section affretees">
+
+    <div class="title">
+        <h2>🚐 Lignes affrétées</h2>
+        <p>Lignes exploitées pour le compte de STIBUS par des transporteurs partenaires.</p>
+    </div>
+
+    <div class="lines-grid">
+
+        <div class="line-card">
+            <div class="line-img" onclick="openLightbox('images/Lignes/Ligne-24-TC-Infos-HDF.png','Ligne 24')">
+                <img src="images/Lignes/Ligne-24-TC-Infos-HDF.png" alt="Ligne 24">
+            </div>
+            <div class="line-body">
+                <h3>Ligne 24</h3>
+                <p class="line-route">Terminus A ↔ Terminus B</p>
+                <a class="btn-pdf" href="pdf/Ligne_24_2026.pdf" target="_blank">📄 Horaires PDF</a>
+            </div>
+        </div>
+
+        <div class="line-card">
+            <div class="line-img" onclick="openLightbox('images/Lignes/Ligne-41-TC-Infos-HDF.png','Ligne 41')">
+                <img src="images/Lignes/Ligne-41-TC-Infos-HDF.png" alt="Ligne 41">
+            </div>
+            <div class="line-body">
+                <h3>Ligne 41</h3>
+                <p class="line-route">Terminus A ↔ Terminus B</p>
+                <a class="btn-pdf" href="pdf/Ligne_41_2026.pdf" target="_blank">📄 Horaires PDF</a>
+            </div>
+        </div>
+
+        <div class="line-card">
+            <div class="line-img" onclick="openLightbox('images/Lignes/Ligne-57-TC-Infos-HDF.png','Ligne 57')">
+                <img src="images/Lignes/Ligne-57-TC-Infos-HDF.png" alt="Ligne 57">
+            </div>
+            <div class="line-body">
+                <h3>Ligne 57</h3>
+                <p class="line-route">Terminus A ↔ Terminus B</p>
+                <a class="btn-pdf" href="pdf/Ligne_57_2026.pdf" target="_blank">📄 Horaires PDF</a>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ============ NAVETTES ============ -->
+<section class="section navettes">
+
+    <div class="title">
+        <h2>🚐 Navettes</h2>
+        <p>Plusieurs navettes parcourent différents quartiers de Maubeuge, Jeumont, Hautmont, ainsi qu'Aulnoye-Aymeries. <br>
+            Celles-ci passent toutes les 30 minutes pour Maubeuge, et 1H pour Jeumont.</p>
+    </div>
+
+    <div class="lines-grid">
+
+        <div class="line-card">
+            <div class="line-img" onclick="openLightbox('images/Navette-250-251-252-TC-Infos-HDF.png','Navette')">
+                <img src="images/Navette-250-251-252-TC-Infos-HDF.png" alt="Navette">
+            </div>
+            <div class="line-body">
+                <h3>Navettes</h3>
+                <p class="line-route">Navette Pont-Allant</p>
+                <p class="line-route">Navette Maubeuge Sous-le-Bois</p>
+                <p class="line-route">Navette Jeumont</J></p>
+                <p class="line-route">Navette Hautmont</p>
+                <p class="line-route">Navette Aulnoye-Aymeries</p>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<!-- ============ DOUBLAGES SCOLAIRES ============ -->
+<section class="section doublages">
+
+    <div class="title">
+        <h2>🚐 Doublages scolaires</h2>
+        <p>Différents doublages scolaires sont effectués, afin de desservir les établissements scolaires et les communes mal desservies.</p>
+    </div>
+
+    <div class="lines-grid">
+
+        <div class="line-card">
+            <div class="line-img" onclick="openLightbox('images/Lignes/Doublages-Scolaires-TC-Infos-HDF.png','Doublages')">
+                <img src="images/Lignes/Doublages-Scolaires-TC-Infos-HDF.png" alt="Doublages">
+            </div>
+            <div class="line-body">
+                <h3>Doublages</h3>
+                <p class="line-route">Terminus A ↔ Terminus B</p>
+                <a class="btn-pdf" href="pdf/LIVRET-DOUBLAGE-2026.pdf" target="_blank">📄 Horaires PDF</a>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<footer>
+    © 2026 TC-Infos-HDF | Conçu par MR et ML |
+    Contact : <a href="mailto:tcinfoshdf@gmail.com">tcinfoshdf@gmail.com</a>
+    <br>
+    Mis à jour le 18/07/2026 • Version 1.2
+</footer>
+
+<!-- ---------- LIGHTBOX (image en grand) ---------- -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <div class="lightbox-close" onclick="closeLightbox()">&times;</div>
+    <img id="lightboxImg" src="" alt="Aperçu en grand" onclick="event.stopPropagation()">
+    <div class="lightbox-caption" id="lightboxCaption"></div>
 </div>
+
 </body>
 </html>
