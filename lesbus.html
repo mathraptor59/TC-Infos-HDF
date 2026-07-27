@@ -47,6 +47,7 @@
       --details-text:#ffd4ad;
       --bus-bg:rgba(255,255,255,0.04);
       --mobile-nav-bg:#101c2e;
+      --bg-image-overlay:rgba(11,18,32,0.82);
     }
 
     html[data-theme="light"]{
@@ -72,6 +73,7 @@
       --details-text:#8a4400;
       --bus-bg:rgba(0,40,90,0.03);
       --mobile-nav-bg:#ffffff;
+      --bg-image-overlay:rgba(244,248,252,0.88);
     }
 
     *{
@@ -89,7 +91,13 @@
       background:
               radial-gradient(circle at top left, var(--bg-radial-1), transparent 30%),
               radial-gradient(circle at bottom right, var(--bg-radial-2), transparent 25%),
+              linear-gradient(var(--bg-image-overlay), var(--bg-image-overlay)),
+              url("images/fond.png"),
               var(--bg);
+      background-repeat:no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+      background-position:top left, bottom right, center, center, center;
+      background-size:auto, auto, cover, cover, cover;
+      background-attachment:scroll, scroll, fixed, fixed, fixed;
       color:var(--text);
       min-height:100vh;
     }
