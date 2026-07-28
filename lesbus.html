@@ -231,6 +231,98 @@
       transform:translateY(-3px);
     }
 
+    /* ---------- BARRE DE RECHERCHE DE BUS ---------- */
+
+    .bus-search{
+      position:relative;
+      max-width:460px;
+      margin:24px auto 0;
+    }
+
+    .bus-search input{
+      width:100%;
+      padding:14px 18px;
+      border-radius:16px;
+      border:1px solid var(--border);
+      background:var(--surface);
+      color:var(--text);
+      font-family:'Inter',sans-serif;
+      font-size:15px;
+      outline:none;
+      transition:.2s;
+    }
+
+    .bus-search input:focus{
+      border-color:var(--primary);
+      box-shadow:0 0 0 3px rgba(59,130,246,0.18);
+    }
+
+    .bus-search-results{
+      display:none;
+      position:absolute;
+      top:calc(100% + 8px);
+      left:0;
+      right:0;
+      background:var(--surface);
+      border:1px solid var(--border);
+      border-radius:14px;
+      box-shadow:var(--shadow);
+      max-height:280px;
+      overflow-y:auto;
+      z-index:50;
+      text-align:left;
+    }
+
+    .bus-search-results.show{
+      display:block;
+    }
+
+    .bus-search-result-item{
+      padding:12px 16px;
+      cursor:pointer;
+      border-bottom:1px solid var(--border);
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:10px;
+      color:var(--text);
+      font-size:14px;
+    }
+
+    .bus-search-result-item:last-child{
+      border-bottom:none;
+    }
+
+    .bus-search-result-item:hover{
+      background:var(--nav-hover-bg);
+      color:var(--nav-hover-text);
+    }
+
+    .bus-search-result-item .bsr-model{
+      color:var(--text-soft);
+      font-size:12px;
+    }
+
+    .bus-search-result-item:hover .bsr-model{
+      color:inherit;
+      opacity:.8;
+    }
+
+    .bus-search-empty{
+      padding:14px 16px;
+      color:var(--text-soft);
+      font-size:14px;
+    }
+
+    .row-highlight{
+      animation: rowHighlightFlash 2s ease;
+    }
+
+    @keyframes rowHighlightFlash{
+      0%   { background-color: rgba(59,130,246,0.45); }
+      100% { background-color: transparent; }
+    }
+
     .container{
       width:min(1200px,92%);
       margin:40px auto;
@@ -676,6 +768,11 @@
 <div class="hero">
   <h2>Le parc de véhicules</h2>
   <p>Vous trouverez sur cette page, les diverses informations sur chaque bus du réseau STIBUS. Cliquez sur un numéro de parc dans les tableaux pour voir ses photos.</p>
+
+  <div class="bus-search">
+    <input type="text" id="busSearchInput" placeholder="🔍 Rechercher un bus par numéro (ex : 800, 1108, 220)..." autocomplete="off">
+    <div id="busSearchResults" class="bus-search-results"></div>
+  </div>
 </div>
 
 
@@ -1810,19 +1907,30 @@
     probe.src = busPhotoPath(currentBusNumero, nextIndex);
   }
 
-  // Rend chaque cellule "numéro" cliquable dans tous les tableaux des popups,
+  // Index de tous les bus : { numero, row, popupId, model }
+  // Rend aussi chaque cellule "numéro" cliquable dans tous les tableaux des popups,
   // sans avoir à toucher chaque ligne manuellement.
-  document.querySelectorAll(".popup-content table tbody tr").forEach(function(row){
-    var firstCell = row.cells[0];
-    if(!firstCell) return;
+  var busIndex = [];
 
-    var numero = firstCell.textContent.trim();
-    if(!numero) return;
+  document.querySelectorAll(".popup").forEach(function(popup){
+    var popupId = popup.id.replace(/^popup-/, "");
+    var titleEl = popup.querySelector("h3");
+    var model = titleEl ? titleEl.textContent.trim() : "";
 
-    firstCell.classList.add("bus-photo-trigger");
-    firstCell.title = "Cliquer pour voir les photos du bus n°" + numero;
-    firstCell.addEventListener("click", function(){
-      openBusPhotos(numero);
+    popup.querySelectorAll("table tbody tr").forEach(function(row){
+      var firstCell = row.cells[0];
+      if(!firstCell) return;
+
+      var numero = firstCell.textContent.trim();
+      if(!numero) return;
+
+      firstCell.classList.add("bus-photo-trigger");
+      firstCell.title = "Cliquer pour voir les photos du bus n°" + numero;
+      firstCell.addEventListener("click", function(){
+        openBusPhotos(numero);
+      });
+
+      busIndex.push({ numero: numero, row: row, popupId: popupId, model: model });
     });
   });
 
@@ -1832,6 +1940,111 @@
       closePhotoViewer();
     }
   });
+
+  /* ================= RECHERCHE DE BUS ================= */
+
+  function goToBusRow(entry){
+    // Ferme tout popup déjà ouvert et la visionneuse photo
+    document.querySelectorAll(".popup.show").forEach(function(p){
+      p.classList.remove("show");
+    });
+    if(document.getElementById("photoViewer").classList.contains("show")){
+      closePhotoViewer();
+    }
+
+    openPopup(entry.popupId);
+
+    setTimeout(function(){
+      entry.row.scrollIntoView({ behavior: "smooth", block: "center" });
+      entry.row.classList.remove("row-highlight");
+      void entry.row.offsetWidth; // force le reflow pour rejouer l'animation
+      entry.row.classList.add("row-highlight");
+    }, 150);
+  }
+
+  function initBusSearch(){
+    var input = document.getElementById("busSearchInput");
+    var results = document.getElementById("busSearchResults");
+    if(!input || !results) return;
+
+    function renderResults(query){
+      var q = query.trim().toLowerCase();
+      results.innerHTML = "";
+
+      if(!q){
+        results.classList.remove("show");
+        return;
+      }
+
+      var matches = busIndex.filter(function(entry){
+        return entry.numero.toLowerCase().indexOf(q) !== -1;
+      }).slice(0, 8);
+
+      if(matches.length === 0){
+        var empty = document.createElement("div");
+        empty.className = "bus-search-empty";
+        empty.textContent = "Aucun bus trouvé pour \"" + query + "\"";
+        results.appendChild(empty);
+        results.classList.add("show");
+        return;
+      }
+
+      matches.forEach(function(entry){
+        var item = document.createElement("div");
+        item.className = "bus-search-result-item";
+
+        var left = document.createElement("span");
+        left.textContent = "Bus n°" + entry.numero;
+
+        var right = document.createElement("span");
+        right.className = "bsr-model";
+        right.textContent = entry.model;
+
+        item.appendChild(left);
+        item.appendChild(right);
+
+        item.addEventListener("click", function(){
+          goToBusRow(entry);
+          results.classList.remove("show");
+          input.value = "";
+        });
+
+        results.appendChild(item);
+      });
+
+      results.classList.add("show");
+    }
+
+    input.addEventListener("input", function(){
+      renderResults(input.value);
+    });
+
+    input.addEventListener("keydown", function(e){
+      if(e.key === "Enter"){
+        var q = input.value.trim().toLowerCase();
+        if(!q) return;
+
+        var exact = busIndex.find(function(entry){ return entry.numero.toLowerCase() === q; });
+        var match = exact || busIndex.find(function(entry){ return entry.numero.toLowerCase().indexOf(q) !== -1; });
+
+        if(match){
+          goToBusRow(match);
+          results.classList.remove("show");
+          input.value = "";
+        }
+      } else if(e.key === "Escape"){
+        results.classList.remove("show");
+      }
+    });
+
+    document.addEventListener("click", function(e){
+      if(e.target !== input && !results.contains(e.target)){
+        results.classList.remove("show");
+      }
+    });
+  }
+
+  initBusSearch();
 </script>
 
 </body>
