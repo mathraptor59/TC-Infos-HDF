@@ -477,7 +477,6 @@
       border-color:var(--table-border) !important;
     }
 
-    /* Cellule "numéro" cliquable pour ouvrir les photos du bus */
     .bus-photo-trigger{
       cursor:pointer;
       text-decoration:underline dotted;
@@ -1837,15 +1836,11 @@
 
   /* ================= VISIONNEUSE PHOTOS PAR NUMÉRO DE BUS ================= */
 
-  // Dossier + convention de nommage des photos : images/parc/{numero}-{index}.jpg
-  // Ajoute simplement des fichiers 800-1.jpg, 800-2.jpg, 800-3.jpg... dans images/parc/
-  // pour que les flèches suivant/précédent les détectent automatiquement.
   const BUS_PHOTOS_FOLDER = "images/parc/";
 
   var currentBusNumero = null;
   var currentPhotoIndex = 1;
 
-  // Petit placeholder en SVG inline, utilisé quand aucune photo n'existe pour ce numéro
   const NO_PHOTO_PLACEHOLDER =
           "data:image/svg+xml;utf8," + encodeURIComponent(
                   '<svg xmlns="http://www.w3.org/2000/svg" width="480" height="320">' +
@@ -1894,7 +1889,7 @@
 
     var caption = document.getElementById("photoViewerCaption");
 
-    // On teste discrètement si la photo suivante existe avant de basculer
+
     var probe = new Image();
     probe.onload = function(){
       currentPhotoIndex = nextIndex;
@@ -1908,9 +1903,7 @@
     probe.src = busPhotoPath(currentBusNumero, nextIndex);
   }
 
-  // Index de tous les bus : { numero, row, popupId, model }
-  // Rend aussi chaque cellule "numéro" cliquable dans tous les tableaux des popups,
-  // sans avoir à toucher chaque ligne manuellement.
+
   var busIndex = [];
 
   document.querySelectorAll(".popup").forEach(function(popup){
@@ -1935,17 +1928,14 @@
     });
   });
 
-  // Clic en dehors de l'image ferme la visionneuse
   document.getElementById("photoViewer").addEventListener("click", function(e){
     if(e.target === this){
       closePhotoViewer();
     }
   });
 
-  /* ================= RECHERCHE DE BUS ================= */
-
   function goToBusRow(entry){
-    // Ferme tout popup déjà ouvert et la visionneuse photo
+
     document.querySelectorAll(".popup.show").forEach(function(p){
       p.classList.remove("show");
     });

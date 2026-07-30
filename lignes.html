@@ -13,7 +13,7 @@
     <meta name="google-site-verification" content="W8E_jCZL4aD6uqbwpIzSrZKoBF1TunsBKSu8qHb2HBk" />
     <!--référencement google-->
 
-    <!-- Google tag (gtag.js) -->
+    <!-- Google tag  -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-N256W6SZKR"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -23,7 +23,6 @@
         gtag('config', 'G-N256W6SZKR');
     </script>
 
-    <!-- Applique le thème sauvegardé AVANT le rendu pour éviter le flash -->
     <script>
         (function(){
             var saved = localStorage.getItem("tc-theme");
@@ -169,8 +168,6 @@
             box-shadow:var(--shadow);
         }
 
-        /* ---------- BANNIERE LIGNES (image de fond globale) ---------- */
-
         .lignes-banner{
             position:relative;
             padding:90px 25px;
@@ -203,8 +200,6 @@
             margin:15px auto 0;
             line-height:1.7;
         }
-
-        /* ---------- SECTIONS ---------- */
 
         .section{
             max-width:1400px;
@@ -344,8 +339,6 @@
             border-top:1px solid var(--border);
             margin-top:50px;
         }
-
-        /* ---------- LIGHTBOX ---------- */
 
         .lightbox{
             position:fixed;
@@ -544,7 +537,6 @@
         }
     });
 
-    /* ---------- LIGHTBOX ---------- */
 
     function openLightbox(src, caption){
         var lb = document.getElementById("lightbox");
@@ -899,13 +891,6 @@
         <h2>Sources</h2>
         <p>Les horaires et les plans sont issus du site stibus.fr</p>
     </div>
-
-
-
-
-
-
-
 </section>
 
 
@@ -917,7 +902,6 @@
     Mis à jour le 28/07/2026 • Version 1.3
 </footer>
 
-<!-- ---------- LIGHTBOX (image en grand) ---------- -->
 <div class="lightbox" id="lightbox" onclick="closeLightbox()">
     <div class="lightbox-close" onclick="closeLightbox()">&times;</div>
     <img id="lightboxImg" src="" alt="Aperçu en grand" onclick="event.stopPropagation()">
