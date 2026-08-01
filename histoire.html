@@ -19,6 +19,16 @@
         gtag('config', 'G-N256W6SZKR');
     </script>
 
+    <!-- Applique le thème sauvegardé AVANT le rendu pour éviter le flash -->
+    <script>
+        (function(){
+            var saved = localStorage.getItem("tc-theme");
+            if(saved === "light"){
+                document.documentElement.setAttribute("data-theme","light");
+            }
+        })();
+    </script>
+
     <style>
 
         *{margin:0;padding:0;box-sizing:border-box;}
@@ -31,6 +41,28 @@
             --text:#fff;
             --text2:#b8c7dc;
             --shadow:0 10px 30px rgba(0,0,0,0.35);
+            --border:rgba(255,255,255,0.08);
+            --nav-bg:rgba(7,17,31,0.8);
+            --hover-bg:rgba(255,255,255,0.08);
+            --btn-secondary-bg:rgba(255,255,255,0.08);
+        }
+
+        html[data-theme="light"]{
+            --bg:#f4f8fc;
+            --card:#ffffff;
+            --primary:#0077ff;
+            --secondary:#00b7ff;
+            --text:#0a1a2e;
+            --text2:#48566b;
+            --shadow:0 10px 30px rgba(0,40,90,0.08);
+            --border:rgba(0,30,60,0.08);
+            --nav-bg:rgba(255,255,255,0.85);
+            --hover-bg:rgba(0,90,200,0.08);
+            --btn-secondary-bg:rgba(0,90,200,0.08);
+        }
+
+        html, body{
+            transition: background-color .3s ease, color .3s ease;
         }
 
         body{
@@ -46,8 +78,8 @@
             top:0;
             z-index:999;
             backdrop-filter:blur(12px);
-            background:rgba(7,17,31,0.8);
-            border-bottom:1px solid rgba(255,255,255,0.08);
+            background:var(--nav-bg);
+            border-bottom:1px solid var(--border);
         }
 
         .nav{
@@ -67,8 +99,8 @@
             gap:12px;
         }
 
-        .logo img{
-            width:85px;
+        header .logo img{
+            height:70px;
         }
 
         nav{
@@ -76,6 +108,7 @@
             gap:10px;
             flex-wrap:wrap;
             justify-content:center;
+            align-items:center;
         }
 
         nav a{
@@ -85,12 +118,32 @@
         }
 
         nav a:hover{
-            background:rgba(255,255,255,0.08);
+            background:var(--hover-bg);
         }
 
         .btn-site{
             box-shadow:0 0 20px #0077ff;
             border-radius:12px;
+        }
+
+        .theme-toggle{
+            width:42px;
+            height:42px;
+            border-radius:50%;
+            border:1px solid var(--border);
+            background:var(--card);
+            color:var(--text);
+            cursor:pointer;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            font-size:18px;
+            transition:.2s;
+        }
+
+        .theme-toggle:hover{
+            transform:scale(1.08);
+            box-shadow:var(--shadow);
         }
 
         .hero{
@@ -209,7 +262,7 @@
             text-align:center;
             padding:30px;
             color:var(--text2);
-            border-top:1px solid rgba(255,255,255,0.08);
+            border-top:1px solid var(--border);
             margin-top:50px;
         }
 
@@ -244,7 +297,7 @@
                 top:80px;
                 right:20px;
 
-                background:#101c2e;
+                background:var(--card);
                 border-radius:15px;
                 padding:15px;
 
@@ -266,6 +319,10 @@
                 text-align:center;
             }
 
+            .theme-toggle{
+                margin-top:10px;
+            }
+
         }
 
     </style>
@@ -280,6 +337,30 @@
 
     }
 
+    function toggleTheme(){
+        var html = document.documentElement;
+        var isLight = html.getAttribute("data-theme") === "light";
+
+        if(isLight){
+            html.removeAttribute("data-theme");
+            localStorage.setItem("tc-theme","dark");
+        } else {
+            html.setAttribute("data-theme","light");
+            localStorage.setItem("tc-theme","light");
+        }
+
+        updateThemeIcon();
+    }
+
+    function updateThemeIcon(){
+        var btn = document.getElementById("themeToggle");
+        if(!btn) return;
+        var isLight = document.documentElement.getAttribute("data-theme") === "light";
+        btn.textContent = isLight ? "🌙" : "☀️";
+    }
+
+    document.addEventListener("DOMContentLoaded", updateThemeIcon);
+
 </script>
 
 <body>
@@ -289,6 +370,7 @@
 
         <div class="logo">
             <img src="images/LogoNouvRect.png" alt="Logo">
+
         </div>
 
         <div class="menu-mobile" onclick="toggleMenu()">
@@ -305,6 +387,7 @@
             <a href="contact.html">Contact</a>
             <a href="communeaute.html">Contributeurs</a>
             <a class="btn-site" href="https://stibus.fr" target="_blank">STIBUS</a>
+            <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="Changer de thème" title="Changer de thème">🌙</button>
         </nav>
 
     </div>
